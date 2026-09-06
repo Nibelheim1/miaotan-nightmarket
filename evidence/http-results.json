@@ -1,0 +1,26 @@
+{
+  "checks": [
+    {
+      "name": "HTTP index 200 and HTML MIME",
+      "passed": true
+    },
+    {
+      "name": "HTTP body equals production artifact byte-for-byte",
+      "passed": true,
+      "sha256": "2a37a160eaecceeffc8dc8a54a3bc4f24015ad82c96e403b7c22227b8baa8580"
+    },
+    {
+      "name": "Build metadata accessible",
+      "passed": true
+    },
+    {
+      "name": "Missing resource returns 404",
+      "passed": true
+    }
+  ],
+  "server": "tools/server.mjs --dist",
+  "url": "http://127.0.0.1:4176/",
+  "generatedAt": "2026-09-06T15:02:43.755Z",
+  "logs": "喵弹夜市: http://localhost:4176\nRoot: /mnt/data/miaotan-nightmarket/dist\nUse your computer's LAN address on your phone. Stop with Ctrl+C.\n",
+  "passed": true
+}

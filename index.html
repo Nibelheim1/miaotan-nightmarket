@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111522">
+<meta name="description" content="喵弹夜市：单指瞄准、弹射清场、三选一改装。让猫猫守住整条夜市。离线可玩，无广告。">
+<title>喵弹夜市 · Midnight Bounce Club</title>
+<link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+<link rel="stylesheet" href="public/styles.css">
+</head>
+<body>
+<main class="stage">
+  <aside class="desktop-intro" aria-label="游戏介绍">
+    <div class="edition"><span class="tiny-dot"></span> ORIGINAL WEB GAME · VOL. 01</div>
+    <h1>再弹一下，<br><span>就收摊。</span></h1>
+    <p class="intro-lead">夜市要关门了，<br>捣蛋鬼可不这么想。</p>
+    <div class="intro-rule"><span>01</span><p>单指瞄准，借墙绕到背后。</p></div>
+    <div class="intro-rule"><span>02</span><p>雷链、分裂、爆破，自己配一局。</p></div>
+    <div class="intro-rule"><span>03</span><p>守住夜市，把名场面带走。</p></div>
+    <div class="intro-footer"><span>无广告</span><span>无需登录</span><span>离线可玩</span></div>
+    <div class="corner-stamp">OPEN<br><strong>23:59</strong></div>
+  </aside>
+  <section class="phone" aria-label="喵弹夜市游戏">
+    <div class="home" id="home">
+      <header class="home-top"><span class="brand-mark" id="brand-paw"></span><span>午夜弹珠俱乐部</span><button class="icon-button" id="home-sound" aria-label="关闭声音"></button></header>
+      <div class="home-body">
+        <div class="overline">ONE MORE BOUNCE. ONE MORE NIGHT.</div>
+        <h2 class="game-title">喵弹<span>夜市</span><i>开摊啦</i></h2>
+        <div class="hero-art" id="hero-art"></div>
+        <p class="home-tagline">弹进怪物背后，<b>整条街一起开花。</b></p>
+        <div class="cat-picker" id="cat-picker" aria-label="选择店长"></div>
+        <div class="cat-info" id="cat-info"></div>
+        <button id="continue" class="button continue-button" hidden>继续上局 <span>回到本轮发射前</span></button>
+        <button id="start" class="button primary start-button">立即开摊 <span>18 波保卫战 →</span></button>
+        <div class="home-secondary"><button id="daily" class="button secondary"></button><button id="endless" class="button secondary"></button></div>
+        <div class="daily-note" id="daily-note"></div>
+      </div>
+      <footer class="home-footer"><button id="collection"></button><button id="records"></button><button id="settings"></button></footer>
+    </div>
+    <div class="game" id="game" hidden>
+      <header class="game-top">
+        <div class="run-name"><span id="mode-label">夜市保卫战</span><b id="wave-label">01 <small>/ 18</small></b></div>
+        <div class="score-box"><span>营业积分</span><b id="score-label">0</b></div>
+        <button class="icon-button" id="sound" aria-label="关闭声音"></button><button class="icon-button" id="pause" aria-label="暂停游戏"></button>
+      </header>
+      <div class="status-row"><div id="hearts" aria-label="剩余生命"></div><div id="shield-label"></div><div id="combo-label">瞄准，再松手</div></div>
+      <div class="wave-track" id="wave-track" aria-label="关卡进度"></div>
+      <div class="board-holder" id="board-holder"><canvas id="board" width="420" height="580" tabindex="0" aria-label="游戏区域：按住瞄准，松手发射。也可用左右方向键瞄准、空格发射。"></canvas></div>
+      <div class="loadout" id="loadout" aria-label="本局改装"></div>
+      <footer class="game-footer"><div><strong id="ball-label">8 颗弹珠</strong><span id="action-hint">借墙反弹，打到背面更赚</span></div><button class="speed-button" id="speed" aria-label="切换弹珠演出速度">演出 ×1</button></footer>
+    </div>
+    <div class="modal-layer" id="modal-layer" hidden><section class="modal" id="modal" role="dialog" aria-modal="true" aria-label="游戏菜单" tabindex="-1"></section></div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="storage-warning" id="storage-warning" hidden>浏览器未允许存档；本次仍可正常游玩。</div>
+  </section>
+</main>
+<noscript><p class="fatal">此游戏需要启用 JavaScript。所有游戏资源都在本地，不需要第三方服务。</p></noscript>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "generatedAt": "2026-09-06T15:04:57.407297+00:00",
+  "scope": "Fresh extraction of candidate archive; final archive adds only this validation report and checksum manifest. Production code/build unchanged.",
+  "checks": [
+    {
+      "name": "candidate ZIP CRC verification",
+      "passed": true
+    },
+    {
+      "name": "npm install --no-audit --no-fund",
+      "passed": true,
+      "stdoutTail": "\nup to date in 199ms\n",
+      "stderr": ""
+    },
+    {
+      "name": "npm run build",
+      "passed": true,
+      "stdoutTail": "\n> miaotan-nightmarket@1.0.0 build\n> node tools/build.mjs\n\nBuild OK: 9 source modules → dist/index.html (114327 bytes). Zero runtime dependencies; double-click/offline supported.\n",
+      "stderr": ""
+    },
+    {
+      "name": "npm test",
+      "passed": true,
+      "stdoutTail": "ings, numbers and chosen cat\nok 51 - profile sanitizes arrays, modes, settings, numbers and chosen cat\n  ---\n  duration_ms: 0.215581\n  type: 'test'\n  ...\n# Subtest: run awards stamps, discovers recipes and unlocks cats and endless\nok 52 - run awards stamps, discovers recipes and unlocks cats and endless\n  ---\n  duration_ms: 0.248611\n  type: 'test'\n  ...\n# Subtest: abandoning without kills cannot farm unlock stamps\nok 53 - abandoning without kills cannot farm unlock stamps\n  ---\n  duration_ms: 0.321779\n  type: 'test'\n  ...\n# Subtest: local leaderboard segregates daily dates and modes\nok 54 - local leaderboard segregates daily dates and modes\n  ---\n  duration_ms: 0.145236\n  type: 'test'\n  ...\n# Subtest: analytics are local-only and bounded to 256 events\nok 55 - analytics are local-only and bounded to 256 events\n  ---\n  duration_ms: 1.156241\n  type: 'test'\n  ...\n# Subtest: platform adapter does not pretend to submit scores\nok 56 - platform adapter does not pretend to submit scores\n  ---\n  duration_ms: 0.146468\n  type: 'test'\n  ...\n# Subtest: sound settings do not create an AudioContext before gesture\nok 57 - sound settings do not create an AudioContext before gesture\n  ---\n  duration_ms: 0.227328\n  type: 'test'\n  ...\n# Subtest: result title reflects mechanics and the one-heart finish\nok 58 - result title reflects mechanics and the one-heart finish\n  ---\n  duration_ms: 0.122332\n  type: 'test'\n  ...\n# Subtest: 200 restarts reset scores, effects, entities and seed deterministically\nok 59 - 200 restarts reset scores, effects, entities and seed deterministically\n  ---\n  duration_ms: 3.387934\n  type: 'test'\n  ...\n# Subtest: normal, daily, extreme seeds and endless runs reach valid bounded states\nok 60 - normal, daily, extreme seeds and endless runs reach valid bounded states\n  ---\n  duration_ms: 1568.065203\n  type: 'test'\n  ...\n# Subtest: all-upgrades stress remains bounded for 30 volleys\nok 61 - all-upgrades stress remains bounded for 30 volleys\n  ---\n  duration_ms: 11.234826\n  type: 'test'\n  ...\n# Subtest: production artifact has all resources inlined and no CDN dependency\nok 62 - production artifact has all resources inlined and no CDN dependency\n  ---\n  duration_ms: 1.491271\n  type: 'test'\n  ...\n# Subtest: corrupt JSON is not misreported as denied persistence, and recovered writes clear quota warning\nok 63 - corrupt JSON is not misreported as denied persistence, and recovered writes clear quota warning\n  ---\n  duration_ms: 0.198175\n  type: 'test'\n  ...\n1..63\n# tests 63\n# suites 0\n# pass 63\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 1711.485993\n",
+      "stderr": ""
+    },
+    {
+      "name": "fresh build matches delivered production SHA-256",
+      "passed": true,
+      "sha256": "2a37a160eaecceeffc8dc8a54a3bc4f24015ad82c96e403b7c22227b8baa8580"
+    },
+    {
+      "name": "required deliverables and entrypoints exist",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

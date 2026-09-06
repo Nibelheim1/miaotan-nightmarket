@@ -1,0 +1,584 @@
+{
+  "generatedAt": "2026-09-06T14:52:59Z",
+  "checks": [
+    {
+      "name": "production has no debug object by default",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unaltered production first shot reaches upgrade modal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "home viewport 320x568 no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "start CTA reachable 320x568",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "board inside viewport 320x568",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "footer inside viewport 320x568",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPI capped at 2 on 320x568",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "touch starts exactly one volley 320x568",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "touch volley reaches reward 320x568",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upgrade modal fits 320x568",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upgrade resumes next wave 320x568",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "home viewport 360x640 no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "start CTA reachable 360x640",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "board inside viewport 360x640",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "footer inside viewport 360x640",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPI capped at 2 on 360x640",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "touch starts exactly one volley 360x640",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "touch volley reaches reward 360x640",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upgrade modal fits 360x640",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upgrade resumes next wave 360x640",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "home viewport 390x844 no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "start CTA reachable 390x844",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "board inside viewport 390x844",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "footer inside viewport 390x844",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPI capped at 2 on 390x844",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "touch starts exactly one volley 390x844",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "touch volley reaches reward 390x844",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upgrade modal fits 390x844",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upgrade resumes next wave 390x844",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "home viewport 412x915 no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "start CTA reachable 412x915",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "board inside viewport 412x915",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "footer inside viewport 412x915",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPI capped at 2 on 412x915",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "touch starts exactly one volley 412x915",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "touch volley reaches reward 412x915",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upgrade modal fits 412x915",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upgrade resumes next wave 412x915",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "home viewport 480x960 no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "start CTA reachable 480x960",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "board inside viewport 480x960",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "footer inside viewport 480x960",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPI capped at 2 on 480x960",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "touch starts exactly one volley 480x960",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "touch volley reaches reward 480x960",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upgrade modal fits 480x960",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upgrade resumes next wave 480x960",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "home viewport 768x1024 no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "start CTA reachable 768x1024",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "board inside viewport 768x1024",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "footer inside viewport 768x1024",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPI capped at 2 on 768x1024",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "touch starts exactly one volley 768x1024",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "touch volley reaches reward 768x1024",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upgrade modal fits 768x1024",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upgrade resumes next wave 768x1024",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "home viewport 1280x900 no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "start CTA reachable 1280x900",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "board inside viewport 1280x900",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "footer inside viewport 1280x900",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPI capped at 2 on 1280x900",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "touch starts exactly one volley 1280x900",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "touch volley reaches reward 1280x900",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upgrade modal fits 1280x900",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upgrade resumes next wave 1280x900",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "home viewport 844x390 no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "start CTA reachable 844x390",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "board inside viewport 844x390",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "footer inside viewport 844x390",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPI capped at 2 on 844x390",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "touch starts exactly one volley 844x390",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "touch volley reaches reward 844x390",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upgrade modal fits 844x390",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "upgrade resumes next wave 844x390",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "settings panel accessible",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "sound toggle updates state",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "reduced motion updates renderer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "help explains rush and boss",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "idle does not fire or advance",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "cancelled pointer cannot fire",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "rapid repeated clicks during flight do not duplicate shots",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "pause freezes physics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "explicit resume restores play",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "visibility hidden pauses",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "visible again waits for confirmation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "window blur pauses",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "resize mid-run keeps phase and board",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "continue button appears after returning home",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "new-document checkpoint restored using explicit storage double",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "full UI-driven engine run reaches settlement",
+      "passed": true,
+      "detail": {
+        "phase": "end",
+        "wave": 19,
+        "shots": 19,
+        "kills": 73,
+        "paused": false
+      }
+    },
+    {
+      "name": "settlement records the run once",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "canvas share card exists",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "same seed restarts with clean state and correct analytics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "keyboard can launch",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "abandon leads to loss settlement",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "restart from loss works",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "12 rapid restarts leave bounded entities",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "daily seed and cat fixed across restarts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "local-only leaderboard label is honest",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "earned boss achievement unlocks endless",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "stress particles/entities stay capped",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unavailable storage displays a warning",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "blocked storage still allows gameplay",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "storage warning does not overlap footer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "corrupt saved JSON recovers to a playable game",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no uncaught page errors",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "game makes no external HTTP requests",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "pageErrors": [],
+  "networkRequests": [
+    "blob:null/4349324f-d29d-479e-80c0-b83241483bee",
+    "blob:null/4349324f-d29d-479e-80c0-b83241483bee"
+  ],
+  "loadMethod": "set_content of production bundle; only diagnostic query is injected",
+  "storageScope": "blocked native storage on opaque document; explicitly injected Storage-compatible test double for persistence tests",
+  "realDevices": [],
+  "safari": "not tested",
+  "androidWebView": "not tested",
+  "browser": "144.0.7559.96",
+  "urlNavigation": {
+    "url": "http://localhost:4173/dist/index.html?debug=1&seed=42",
+    "passed": false,
+    "error": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://localhost:4173/dist/index.html?debug=1&seed=42"
+  },
+  "fullRun": {
+    "seed": 42,
+    "victory": true,
+    "score": 27917,
+    "wave": 19,
+    "combo": 166,
+    "shots": 19,
+    "physicsSeconds": 73.60833333333798
+  },
+  "headlessStress": {
+    "balls": 111,
+    "particles": 214,
+    "effects": 64,
+    "dom": 264,
+    "medianFrameMs": 16.7,
+    "p95FrameMs": 16.8,
+    "frameCount": 110,
+    "scope": "Artificial crowded scene, shared host Chromium, not a phone FPS claim"
+  },
+  "executionSeconds": 18.23,
+  "passed": 107,
+  "failed": 0
+}

@@ -1,0 +1,5 @@
+
+> miaotan-nightmarket@1.0.0 build
+> node tools/build.mjs
+
+Build OK: 9 source modules → dist/index.html (114327 bytes). Zero runtime dependencies; double-click/offline supported.

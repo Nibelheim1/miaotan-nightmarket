@@ -1,0 +1,29 @@
+{
+  "urlNavigation": {
+    "url": "http://localhost:4173/dist/index.html?debug=1&seed=42",
+    "passed": false,
+    "error": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://localhost:4173/dist/index.html?debug=1&seed=42"
+  },
+  "fullRun": {
+    "seed": 42,
+    "victory": true,
+    "score": 27917,
+    "wave": 19,
+    "combo": 166,
+    "shots": 19,
+    "physicsSeconds": 73.60833333333798
+  },
+  "headlessStress": {
+    "balls": 110,
+    "particles": 208,
+    "effects": 64,
+    "dom": 264,
+    "medianFrameMs": 16.7,
+    "p95FrameMs": 16.7,
+    "frameCount": 110,
+    "scope": "Artificial crowded scene, shared host Chromium, not a phone FPS claim"
+  },
+  "executionSeconds": 18.75,
+  "passed": 107,
+  "failed": 0
+}

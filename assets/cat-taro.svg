@@ -1,0 +1,17 @@
+<svg viewBox="0 0 320 238" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="薄荷猫店长推着弹珠炮守护夜市">
+  <ellipse cx="168" cy="218" rx="102" ry="12" fill="#080d16" opacity=".4"/>
+  <path d="M91 169c-47 1-55-47-28-57 27-10 40 24 14 31" fill="none" stroke="#c1a0ff" stroke-width="20" stroke-linecap="round"/>
+  <path d="M94 212c-20-56-4-111 61-116 69 2 92 47 69 116Z" fill="#c1a0ff" stroke="#121725" stroke-width="6"/>
+  <path d="m102 79-5-60 49 28 36-2 41-28-2 66c24 54-9 88-62 88-54 0-90-32-57-92Z" fill="#c1a0ff" stroke="#121725" stroke-width="6" stroke-linejoin="round"/>
+  <path d="m107 34 4 40 25-22zm104 0-4 38-20-21z" fill="#ffb3ac"/>
+  <ellipse cx="158" cy="120" rx="46" ry="35" fill="#fff1d8"/>
+  <path d="m117 88 11-3m58 0 11 4" stroke="#121725" stroke-width="7" stroke-linecap="round"/>
+  <ellipse cx="129" cy="105" rx="5" ry="7" fill="#121725"/><ellipse cx="187" cy="105" rx="5" ry="7" fill="#121725"/>
+  <path d="m151 117 7 6 7-6m-7 6v6m0 0c-6 8-15 4-15 0m15 0c6 8 15 4 15 0" fill="none" stroke="#121725" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="114" cy="121" rx="8" ry="4" fill="#ff7898"/><ellipse cx="202" cy="121" rx="8" ry="4" fill="#ff7898"/>
+  <path d="m139 160 20 14 22-14-9 30h-25z" fill="#ff7898" stroke="#121725" stroke-width="4"/>
+  <g transform="translate(222 164) rotate(-33)"><rect x="-10" y="-34" width="62" height="47" rx="15" fill="#ffe2a1" stroke="#121725" stroke-width="6"/><ellipse cx="51" cy="-10" rx="10" ry="20" fill="#27334b" stroke="#121725" stroke-width="5"/></g>
+  <path d="M113 195c3-28 36-30 42-1m19 1c5-23 35-26 39-2" fill="#c1a0ff" stroke="#121725" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="263" cy="79" r="14" fill="#fff4df"/><circle cx="285" cy="41" r="9" fill="#ff7898"/><circle cx="241" cy="13" r="5" fill="#ffe2a1"/>
+  <path d="m36 47 5 12 12 4-12 5-5 12-5-12-12-5 12-4z" fill="#ffe2a1"/><path d="m269 128 3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#92e3c0"/>
+  </svg>

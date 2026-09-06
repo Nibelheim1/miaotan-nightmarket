@@ -1,0 +1,392 @@
+
+> miaotan-nightmarket@1.0.0 test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: seed determinism across 2,000 draws
+ok 1 - seed determinism across 2,000 draws
+  ---
+  duration_ms: 2.275355
+  type: 'test'
+  ...
+# Subtest: zero and uint32-max seeds remain finite and bounded
+ok 2 - zero and uint32-max seeds remain finite and bounded
+  ---
+  duration_ms: 0.84043
+  type: 'test'
+  ...
+# Subtest: shuffle preserves input and permutation
+ok 3 - shuffle preserves input and permutation
+  ---
+  duration_ms: 0.601715
+  type: 'test'
+  ...
+# Subtest: UTC+8 daily boundary is independent of local timezone
+ok 4 - UTC+8 daily boundary is independent of local timezone
+  ---
+  duration_ms: 0.447786
+  type: 'test'
+  ...
+# Subtest: opening has seven real enemies and immediately accepts input
+ok 5 - opening has seven real enemies and immediately accepts input
+  ---
+  duration_ms: 0.345644
+  type: 'test'
+  ...
+# Subtest: curated first shot has five kills and first upgrade under three physics seconds
+ok 6 - curated first shot has five kills and first upgrade under three physics seconds
+  ---
+  duration_ms: 3.698864
+  type: 'test'
+  ...
+# Subtest: non-finite aim cannot start a shot
+ok 7 - non-finite aim cannot start a shot
+  ---
+  duration_ms: 0.277413
+  type: 'test'
+  ...
+# Subtest: extreme finite aim is clamped to an upward non-horizontal direction
+ok 8 - extreme finite aim is clamped to an upward non-horizontal direction
+  ---
+  duration_ms: 0.151175
+  type: 'test'
+  ...
+# Subtest: 100 rapid clicks cannot create duplicate volleys
+ok 9 - 100 rapid clicks cannot create duplicate volleys
+  ---
+  duration_ms: 0.310592
+  type: 'test'
+  ...
+# Subtest: no input and invalid dt do not progress the game
+ok 10 - no input and invalid dt do not progress the game
+  ---
+  duration_ms: 1.119606
+  type: 'test'
+  ...
+# Subtest: side-wall bounce reflects and banks a charge
+ok 11 - side-wall bounce reflects and banks a charge
+  ---
+  duration_ms: 0.331673
+  type: 'test'
+  ...
+# Subtest: top bounce reflects downwards
+ok 12 - top bounce reflects downwards
+  ---
+  duration_ms: 0.226748
+  type: 'test'
+  ...
+# Subtest: bottom return is finite and consumes a return charge
+ok 13 - bottom return is finite and consumes a return charge
+  ---
+  duration_ms: 0.266586
+  type: 'test'
+  ...
+# Subtest: circle hitting a rectangle has damage and a normal reflection
+ok 14 - circle hitting a rectangle has damage and a normal reflection
+  ---
+  duration_ms: 0.227639
+  type: 'test'
+  ...
+# Subtest: piercing contact does not reflect the first hit
+ok 15 - piercing contact does not reflect the first hit
+  ---
+  duration_ms: 0.125867
+  type: 'test'
+  ...
+# Subtest: split only happens once per main ball, never recursively
+ok 16 - split only happens once per main ball, never recursively
+  ---
+  duration_ms: 0.295189
+  type: 'test'
+  ...
+# Subtest: ice alternates application and multiplied shatter
+ok 17 - ice alternates application and multiplied shatter
+  ---
+  duration_ms: 0.135311
+  type: 'test'
+  ...
+# Subtest: lightning can shatter ice on a nearby target
+ok 18 - lightning can shatter ice on a nearby target
+  ---
+  duration_ms: 0.199357
+  type: 'test'
+  ...
+# Subtest: spark cadence reaches neighbors on third hit
+ok 19 - spark cadence reaches neighbors on third hit
+  ---
+  duration_ms: 0.180939
+  type: 'test'
+  ...
+# Subtest: laser hits the row, not a separate row
+ok 20 - laser hits the row, not a separate row
+  ---
+  duration_ms: 0.137965
+  type: 'test'
+  ...
+# Subtest: armor can be removed by drill with neighbor lightning
+ok 21 - armor can be removed by drill with neighbor lightning
+  ---
+  duration_ms: 0.171956
+  type: 'test'
+  ...
+# Subtest: wall charge is consumed in one stronger contact
+ok 22 - wall charge is consumed in one stronger contact
+  ---
+  duration_ms: 0.113259
+  type: 'test'
+  ...
+# Subtest: guard only grants one shield per volley
+ok 23 - guard only grants one shield per volley
+  ---
+  duration_ms: 0.18143
+  type: 'test'
+  ...
+# Subtest: hunter kill activates a per-volley damage boost
+ok 24 - hunter kill activates a per-volley damage boost
+  ---
+  duration_ms: 0.10716
+  type: 'test'
+  ...
+# Subtest: bomb death damages neighbors but does not double-count kills
+ok 25 - bomb death damages neighbors but does not double-count kills
+  ---
+  duration_ms: 0.17495
+  type: 'test'
+  ...
+# Subtest: firefly emits only capped child balls
+ok 26 - firefly emits only capped child balls
+  ---
+  duration_ms: 0.124406
+  type: 'test'
+  ...
+# Subtest: boss death restores a heart and gift ball bonus caps at eight
+ok 27 - boss death restores a heart and gift ball bonus caps at eight
+  ---
+  duration_ms: 0.166929
+  type: 'test'
+  ...
+# Subtest: resource caps constrain entities, events and effect queue
+ok 28 - resource caps constrain entities, events and effect queue
+  ---
+  duration_ms: 0.519493
+  type: 'test'
+  ...
+# Subtest: volley auto-recall prevents a soft lock beyond 11 seconds
+ok 29 - volley auto-recall prevents a soft lock beyond 11 seconds
+  ---
+  duration_ms: 3.036688
+  type: 'test'
+  ...
+# Subtest: ordinary leaks consume shields before hearts
+ok 30 - ordinary leaks consume shields before hearts
+  ---
+  duration_ms: 0.315981
+  type: 'test'
+  ...
+# Subtest: boss breach loses even with a shield
+ok 31 - boss breach loses even with a shield
+  ---
+  duration_ms: 0.129783
+  type: 'test'
+  ...
+# Subtest: late rush advances two cells; earlier waves one
+ok 32 - late rush advances two cells; earlier waves one
+  ---
+  duration_ms: 0.155852
+  type: 'test'
+  ...
+# Subtest: rush announcement is emitted exactly on entering wave 13
+ok 33 - rush announcement is emitted exactly on entering wave 13
+  ---
+  duration_ms: 0.192487
+  type: 'test'
+  ...
+# Subtest: campaign win requires last-wave cleanup; endless does not auto-win
+ok 34 - campaign win requires last-wave cleanup; endless does not auto-win
+  ---
+  duration_ms: 0.125376
+  type: 'test'
+  ...
+# Subtest: last-wave cleanup does not spawn new enemies
+ok 35 - last-wave cleanup does not spawn new enemies
+  ---
+  duration_ms: 0.081712
+  type: 'test'
+  ...
+# Subtest: offers contain three distinct choices with a new behavior available
+ok 36 - offers contain three distinct choices with a new behavior available
+  ---
+  duration_ms: 1.085745
+  type: 'test'
+  ...
+# Subtest: nearly exhausted and exhausted upgrade pools still offer three choices
+ok 37 - nearly exhausted and exhausted upgrade pools still offer three choices
+  ---
+  duration_ms: 0.191665
+  type: 'test'
+  ...
+# Subtest: reward cannot be selected twice and invalid ids are rejected
+ok 38 - reward cannot be selected twice and invalid ids are rejected
+  ---
+  duration_ms: 1.400133
+  type: 'test'
+  ...
+# Subtest: one reroll per run and skipping heals rather than forcing a build
+ok 39 - one reroll per run and skipping heals rather than forcing a build
+  ---
+  duration_ms: 1.233535
+  type: 'test'
+  ...
+# Subtest: all four synergies are detected only with both components
+ok 40 - all four synergies are detected only with both components
+  ---
+  duration_ms: 0.104415
+  type: 'test'
+  ...
+# Subtest: daily mode has a fixed starter and valid mode fallback
+ok 41 - daily mode has a fixed starter and valid mode fallback
+  ---
+  duration_ms: 0.129593
+  type: 'test'
+  ...
+# Subtest: aim checkpoint replay is deterministic after restore
+ok 42 - aim checkpoint replay is deterministic after restore
+  ---
+  duration_ms: 2.539108
+  type: 'test'
+  ...
+# Subtest: reward checkpoint restores choices and follows the same future map
+ok 43 - reward checkpoint restores choices and follows the same future map
+  ---
+  duration_ms: 1.597887
+  type: 'test'
+  ...
+# Subtest: flight and end states are intentionally not checkpointable
+ok 44 - flight and end states are intentionally not checkpointable
+  ---
+  duration_ms: 0.106658
+  type: 'test'
+  ...
+# Subtest: corrupt checkpoints reject invalid scalars and enemy data
+ok 45 - corrupt checkpoints reject invalid scalars and enemy data
+  ---
+  duration_ms: 0.885978
+  type: 'test'
+  ...
+# Subtest: prototype keys are not valid upgrades or discoveries
+ok 46 - prototype keys are not valid upgrades or discoveries
+  ---
+  duration_ms: 0.408277
+  type: 'test'
+  ...
+# Subtest: snapshot has deep-copy isolation
+ok 47 - snapshot has deep-copy isolation
+  ---
+  duration_ms: 0.124686
+  type: 'test'
+  ...
+# Subtest: LocalStorage-compatible backend saves, reloads and resets
+ok 48 - LocalStorage-compatible backend saves, reloads and resets
+  ---
+  duration_ms: 0.432303
+  type: 'test'
+  ...
+# Subtest: blocked/quota storage fails gracefully with in-session memory fallback
+ok 49 - blocked/quota storage fails gracefully with in-session memory fallback
+  ---
+  duration_ms: 0.185066
+  type: 'test'
+  ...
+# Subtest: corrupt JSON and oversized storage do not crash startup
+ok 50 - corrupt JSON and oversized storage do not crash startup
+  ---
+  duration_ms: 0.140088
+  type: 'test'
+  ...
+# Subtest: profile sanitizes arrays, modes, settings, numbers and chosen cat
+ok 51 - profile sanitizes arrays, modes, settings, numbers and chosen cat
+  ---
+  duration_ms: 0.216903
+  type: 'test'
+  ...
+# Subtest: run awards stamps, discovers recipes and unlocks cats and endless
+ok 52 - run awards stamps, discovers recipes and unlocks cats and endless
+  ---
+  duration_ms: 0.284403
+  type: 'test'
+  ...
+# Subtest: abandoning without kills cannot farm unlock stamps
+ok 53 - abandoning without kills cannot farm unlock stamps
+  ---
+  duration_ms: 0.29556
+  type: 'test'
+  ...
+# Subtest: local leaderboard segregates daily dates and modes
+ok 54 - local leaderboard segregates daily dates and modes
+  ---
+  duration_ms: 0.137424
+  type: 'test'
+  ...
+# Subtest: analytics are local-only and bounded to 256 events
+ok 55 - analytics are local-only and bounded to 256 events
+  ---
+  duration_ms: 1.065165
+  type: 'test'
+  ...
+# Subtest: platform adapter does not pretend to submit scores
+ok 56 - platform adapter does not pretend to submit scores
+  ---
+  duration_ms: 0.146889
+  type: 'test'
+  ...
+# Subtest: sound settings do not create an AudioContext before gesture
+ok 57 - sound settings do not create an AudioContext before gesture
+  ---
+  duration_ms: 0.254248
+  type: 'test'
+  ...
+# Subtest: result title reflects mechanics and the one-heart finish
+ok 58 - result title reflects mechanics and the one-heart finish
+  ---
+  duration_ms: 0.101531
+  type: 'test'
+  ...
+# Subtest: 200 restarts reset scores, effects, entities and seed deterministically
+ok 59 - 200 restarts reset scores, effects, entities and seed deterministically
+  ---
+  duration_ms: 2.793837
+  type: 'test'
+  ...
+# Subtest: normal, daily, extreme seeds and endless runs reach valid bounded states
+ok 60 - normal, daily, extreme seeds and endless runs reach valid bounded states
+  ---
+  duration_ms: 1463.573963
+  type: 'test'
+  ...
+# Subtest: all-upgrades stress remains bounded for 30 volleys
+ok 61 - all-upgrades stress remains bounded for 30 volleys
+  ---
+  duration_ms: 12.727062
+  type: 'test'
+  ...
+# Subtest: production artifact has all resources inlined and no CDN dependency
+ok 62 - production artifact has all resources inlined and no CDN dependency
+  ---
+  duration_ms: 1.21661
+  type: 'test'
+  ...
+# Subtest: corrupt JSON is not misreported as denied persistence, and recovered writes clear quota warning
+ok 63 - corrupt JSON is not misreported as denied persistence, and recovered writes clear quota warning
+  ---
+  duration_ms: 0.171495
+  type: 'test'
+  ...
+1..63
+# tests 63
+# suites 0
+# pass 63
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1601.242432

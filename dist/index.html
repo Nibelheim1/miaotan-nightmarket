@@ -1,0 +1,1233 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111522">
+<meta name="description" content="喵弹夜市：单指瞄准、弹射清场、三选一改装。让猫猫守住整条夜市。离线可玩，无广告。">
+<title>喵弹夜市 · Midnight Bounce Club</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cmVjdCB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgcng9IjI4IiBmaWxsPSIjMTkyNDM4Ii8+PHBhdGggZD0iTTI1IDU1IDIyIDIyIDQ5IDM3YzEwLTQgMjAtNCAzMCAwbDI3LTE1LTMgMzNjMTggNDItMTEgNjAtMzkgNjBTNyA5NiAyNSA1NSIgZmlsbD0iIzkyZTNjMCIgc3Ryb2tlPSIjMTAxODI1IiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48ZWxsaXBzZSBjeD0iNjQiIGN5PSI4MSIgcng9IjMwIiByeT0iMjMiIGZpbGw9IiNmZmY0ZGYiLz48Y2lyY2xlIGN4PSI0NCIgY3k9IjY2IiByPSI0IiBmaWxsPSIjMWMyODM5Ii8+PGNpcmNsZSBjeD0iODQiIGN5PSI2NiIgcj0iNCIgZmlsbD0iIzFjMjgzOSIvPjxwYXRoIGQ9Im01OSA3OSA1IDQgNS00bS01IDR2NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMWMyODM5IiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjI2IiByPSIxMSIgZmlsbD0iI2ZmZTJhMSIgc3Ryb2tlPSIjMTcyMjM2IiBzdHJva2Utd2lkdGg9IjQiLz48L3N2Zz4K">
+<style>
+:root{--bg:#111522;--panel:#1d2335;--mint:#92e3c0;--pink:#ff7898;--gold:#ffe2a1;--purple:#c1a0ff;--blue:#8bcff0;--cream:#fff4df;--muted:#9da7bf;--vh:100dvh;color-scheme:dark;font-family:ui-rounded,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;font-synthesis:none;font-weight:450}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;overscroll-behavior:none;background:var(--bg);color:var(--cream)}body{touch-action:manipulation;-webkit-tap-highlight-color:transparent}button,input{font:inherit}button{cursor:pointer;color:inherit;border:0;background:none;touch-action:manipulation}button:disabled{cursor:not-allowed;opacity:.47}button:focus-visible,canvas:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}button:active:not(:disabled){transform:translateY(2px)}[hidden]{display:none!important}svg{vertical-align:middle;flex-shrink:0}button svg{pointer-events:none}.stage{height:var(--vh);display:flex;align-items:center;justify-content:center;gap:clamp(60px,8vw,150px);padding:24px;background:radial-gradient(ellipse at 80% 25%,#20302e55,transparent 55%),radial-gradient(ellipse at 15% 80%,#58344e35,transparent 50%)}.desktop-intro{position:relative;max-width:480px;width:40%;padding:30px 0 60px}.edition{font-size:11px;letter-spacing:2.5px;color:var(--muted);display:flex;align-items:center;gap:10px}.tiny-dot{width:7px;height:7px;background:var(--mint);border-radius:50%;box-shadow:0 0 15px #92e3c060}.desktop-intro h1{font-size:clamp(40px,4.5vw,68px);letter-spacing:-3px;line-height:1.2;margin:44px 0 26px;font-weight:900}.desktop-intro h1 span{color:var(--mint)}.intro-lead{font-size:17px;line-height:1.85;color:var(--muted);margin-bottom:34px}.intro-rule{display:flex;align-items:center;gap:17px;margin:10px 0}.intro-rule span{font:12px ui-monospace,monospace;color:var(--mint);border:1px solid #3a4b47;padding:6px 8px;border-radius:6px}.intro-rule p{font-size:14px;margin:0;color:#cbd1de}.intro-footer{border-top:1px solid #303a4a;margin-top:42px;padding-top:23px;display:flex;gap:25px;font-size:12px;color:#7d8a9e}.corner-stamp{position:absolute;right:16px;bottom:16px;transform:rotate(-10deg);border:2px solid #ff789870;border-radius:10px;color:#ff789890;padding:8px 16px;font-size:13px;letter-spacing:2px}.corner-stamp strong{font-size:24px}.phone{position:relative;flex-shrink:0;width:430px;height:min(870px,calc(var(--vh) - 48px));background:#151b2a;border:1px solid #344053;border-radius:32px;box-shadow:0 30px 100px #0008,0 0 0 8px #0e1422;overflow:hidden;isolation:isolate}.home,.game{height:100%;width:100%}.home{display:flex;flex-direction:column}.home-top{height:60px;min-height:60px;display:flex;gap:8px;align-items:center;padding:15px 22px 10px;font-size:12px;letter-spacing:1px}.brand-mark{color:var(--mint)}.home-top .icon-button{margin-left:auto}.icon-button{width:39px;height:39px;display:inline-flex;align-items:center;justify-content:center;border-radius:12px;background:#ffffff08;color:var(--muted);flex-shrink:0}.icon-button:hover{background:#ffffff13;color:var(--cream)}.home-body{min-height:0;overflow:auto;padding:6px 26px 12px;scrollbar-width:thin;overscroll-behavior:contain}.overline{font-size:8px;color:#7b88a4;text-align:center;letter-spacing:2.3px;margin-top:8px}.game-title{position:relative;text-align:center;font-size:56px;letter-spacing:-4px;font-weight:950;line-height:1;margin:18px 0 0;white-space:nowrap}.game-title span{color:var(--mint);margin-left:2px}.game-title i{font-size:10px;line-height:1.5;letter-spacing:1px;font-style:normal;position:absolute;right:3px;top:-9px;transform:rotate(10deg);background:var(--pink);color:#322136;padding:3px 5px;border-radius:3px}.hero-art{height:clamp(140px,23vh,219px);max-height:219px;position:relative;margin:3px -2px 0;display:flex;justify-content:center;background:radial-gradient(ellipse at 50% 60%,#92e3c019,transparent 67%)}.hero-art svg{height:100%;width:100%}.home-tagline{text-align:center;font-size:12px;line-height:1.7;color:var(--muted);margin:5px -5px 17px}.home-tagline b{color:var(--cream);font-weight:600}.cat-picker{display:flex;gap:8px}.cat-option{border:1px solid #3b4457;border-radius:13px;min-height:60px;flex:1;font-size:12px;display:flex;flex-direction:column;justify-content:center;gap:5px;align-items:center;background:#ffffff03;position:relative}.cat-option.selected{background:#92e3c010;border-color:var(--mint);box-shadow:inset 0 0 0 1px #92e3c025}.cat-option small{font-size:10px;color:var(--muted)}.cat-option.locked{color:#9da7bf}.cat-info{font-size:10px;line-height:1.6;color:#a6b0c5;min-height:34px;padding-top:9px;text-align:center}.button{border-radius:14px;min-height:48px;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 15px;font-size:14px;font-weight:700;border:1px solid #364158}.primary{background:var(--mint);color:#1a3030;border-color:#a4f0d0;box-shadow:0 4px 0 #527d69}.primary:hover{filter:brightness(1.045)}.start-button{width:100%;justify-content:space-between;font-size:19px;min-height:58px;margin:3px 0 14px;letter-spacing:.3px}.start-button span{font-size:11px;font-weight:550}.home-secondary{display:grid;grid-template-columns:1fr 1fr;gap:9px}.secondary{background:#242c40;font-size:12px;color:#d5daea}.secondary svg{width:17px}.daily-note{color:#7f8ca5;font-size:10px;text-align:center;padding:11px 0 0}.continue-button{width:100%;background:#ffe2a112;color:var(--gold);border-color:#78613b;margin:4px 0 11px;justify-content:space-between;font-size:13px;min-height:42px}.continue-button span{font-size:10px;font-weight:450}.home-footer{min-height:67px;margin-top:auto;border-top:1px solid #293448;display:grid;grid-template-columns:repeat(3,1fr);padding:8px 14px 11px}.home-footer button{display:flex;align-items:center;flex-direction:column;gap:6px;font-size:10px;color:#a9b1c5;min-height:43px}.home-footer svg{width:19px;height:19px}.game{display:flex;flex-direction:column;padding-top:8px}.game-top{height:62px;flex-shrink:0;padding:8px 17px 2px;display:flex;align-items:center;gap:6px}.run-name{display:flex;flex-direction:column;gap:2px;min-width:111px}.run-name span{font-size:10px;letter-spacing:.6px;color:var(--muted)}.run-name b{font-size:25px;line-height:1.1;letter-spacing:-.5px;color:var(--mint)}.run-name small{font-size:12px;color:#6d7b94;font-weight:500}.score-box{margin-left:auto;text-align:right;margin-right:9px;display:flex;flex-direction:column;gap:3px;min-width:62px}.score-box span{font-size:9px;color:var(--muted)}.score-box b{font-size:20px;font-variant-numeric:tabular-nums;font-weight:850}.game-top .icon-button{width:34px;height:34px}.game-top .icon-button svg{width:19px}.status-row{height:27px;flex-shrink:0;display:flex;align-items:center;padding:0 19px;gap:7px}#hearts{display:flex;align-items:center;gap:3px;color:var(--pink)}#hearts svg{width:15px;height:15px}#hearts svg.empty{opacity:.2}#shield-label{font-size:10px;color:var(--mint);display:flex;align-items:center;gap:3px}#combo-label{margin-left:auto;font-size:11px;color:var(--gold);font-weight:700}.wave-track{height:13px;flex-shrink:0;display:flex;gap:3px;padding:2px 20px 5px}.wave-pip{flex:1;height:4px;border-radius:3px;background:#333c50}.wave-pip.done{background:#92e3c090}.wave-pip.current{background:var(--mint);box-shadow:0 0 7px #92e3c060}.wave-pip.boss{background:#ff789835}.wave-pip.boss.done,.wave-pip.boss.current{background:var(--pink)}.board-holder{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;margin:0 8px;overflow:hidden}canvas{display:block;touch-action:none;user-select:none;-webkit-user-select:none}.loadout{display:flex;gap:6px;align-items:center;min-height:40px;flex-shrink:0;padding:3px 19px;overflow-x:auto;scrollbar-width:none}.loadout::-webkit-scrollbar{display:none}.loadout-chip{border:1px solid #3c495e;background:#222c40;border-radius:9px;min-width:34px;height:31px;display:flex;align-items:center;justify-content:center;gap:2px;padding:0 7px;color:var(--mint)}.loadout-chip svg{width:16px;height:16px}.loadout-chip small{font-size:9px}.loadout-note{font-size:10px;white-space:nowrap;color:#7b89a2}.game-footer{padding:6px 20px 16px;display:flex;gap:8px;align-items:center;justify-content:space-between;min-height:65px;flex-shrink:0}.game-footer>div{display:flex;flex-direction:column;gap:5px}.game-footer strong{font-size:13px;color:var(--cream)}.game-footer span{font-size:10px;color:var(--muted)}.speed-button{background:#28334a;border:1px solid #3f4b63;border-radius:10px;padding:10px 12px;font-size:11px;white-space:nowrap;min-height:39px}.speed-button.active{border-color:#c0a0ff;color:var(--purple)}.modal-layer{position:absolute;inset:0;z-index:10;background:#070e1dd9;backdrop-filter:blur(7px);display:flex;justify-content:center;align-items:center;padding:19px}.modal{width:100%;max-height:100%;overflow:auto;overscroll-behavior:contain;padding:24px 21px 20px;border:1px solid #4b586e;border-radius:24px;background:linear-gradient(145deg,#273147,#1c2438);box-shadow:0 18px 70px #0007;scrollbar-width:thin;outline:none}.modal-overline{font-size:10px;letter-spacing:1.7px;color:var(--mint);margin:0 0 9px;text-align:center}.modal h2{font-size:27px;margin:0 0 8px;line-height:1.35;letter-spacing:-.5px;text-align:center;font-weight:850}.modal .sub{font-size:12px;line-height:1.75;color:#b3bfd6;margin:0 0 18px;text-align:center}.modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}.modal-head h2{text-align:left;font-size:23px;margin:0}.modal .full{width:100%;margin-top:10px}.reward-list{display:flex;flex-direction:column;gap:9px;margin:17px 0}.upgrade-card{background:#141d30;border:1px solid #3d4d69;border-radius:14px;padding:13px 12px;display:flex;gap:11px;align-items:center;text-align:left;min-height:91px;width:100%}.upgrade-card:hover{background:#29344b;border-color:#92e3c0}.upgrade-icon{display:flex;align-items:center;justify-content:center;flex-shrink:0;width:43px;height:48px;border-radius:11px;background:#ffffff08}.upgrade-body{flex:1;min-width:0}.upgrade-card h3{font-size:14px;line-height:1.35;margin:0 0 6px;font-weight:800;display:flex;justify-content:space-between;gap:6px}.upgrade-card h3 em{font-size:9px;white-space:nowrap;font-style:normal;font-weight:500;padding-top:2px;color:var(--muted)}.upgrade-card p{font-size:11px;line-height:1.65;margin:0;color:#bdc8de}.synergy-hint{display:block;font-size:10px;color:var(--gold);margin-top:5px}.reward-actions{display:flex;gap:8px}.reward-actions button{flex:1;font-size:11px;min-height:40px;padding:8px;border:1px solid #44516b;border-radius:10px;color:#bec9df}.pause-list{display:flex;flex-direction:column;gap:9px}.pause-list .button{font-size:13px}.pause-tip{font-size:11px;line-height:1.8;color:#94a3bf;margin:16px 0 0;text-align:center}.score-result{text-align:center;font-size:57px;line-height:1.2;font-weight:900;color:var(--gold);letter-spacing:-2px;margin:17px 0 3px;font-variant-numeric:tabular-nums}.score-caption{text-align:center;color:#8797b2;font-size:10px}.result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:23px 0 17px;text-align:center}.result-stats b{display:block;font-size:22px;line-height:1.8;color:var(--cream)}.result-stats small{font-size:10px;color:#9aa9c2}.result-build{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;margin:17px 0}.result-build span{font-size:10px;line-height:1.6;border-radius:6px;background:#ffffff07;border:1px solid #46526a;padding:4px 7px}.earned{border:1px dashed #ffe2a14f;background:#ffe2a107;border-radius:12px;padding:12px;text-align:center;color:var(--gold);font-size:11px;line-height:1.9;margin:14px 0}.text-button{font-size:11px;color:#9eaac4;padding:12px;min-height:38px}.center{text-align:center}.modal-footer{display:flex;justify-content:center;gap:10px}.settings-row{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #3a465c;min-height:53px;gap:15px;font-size:13px}.switch{width:47px;height:29px;min-height:29px;border-radius:18px;background:#536076;position:relative;border:2px solid transparent}.switch::after{content:"";width:19px;height:19px;border-radius:50%;background:var(--cream);position:absolute;left:3px;top:3px;transition:transform .16s}.switch.on{background:#60947e}.switch.on::after{transform:translateX(18px)}input[type=range]{accent-color:var(--mint);width:140px;min-height:40px}.legal-note{font-size:10px;line-height:1.9;color:#8f9eb9;margin:15px 0}.record-row{display:grid;grid-template-columns:20px 1fr auto;gap:8px;border-bottom:1px solid #3d4960;padding:13px 0;align-items:center;font-size:12px}.record-row .rank{font-weight:900;color:var(--mint)}.record-row small{display:block;color:#91a0bd;font-size:9px;margin-top:4px}.record-row b{color:var(--gold);font-size:16px}.empty-state{padding:25px 0;text-align:center;color:#a4b1cc;font-size:13px;line-height:1.9}.collection-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.collection-item{padding:12px 9px;border-radius:12px;background:#172035;border:1px solid #3e4960;font-size:11px;line-height:1.6}.collection-item b{display:block;margin:6px 0;color:var(--cream)}.collection-item p{font-size:10px;color:#a0afca;margin:0}.collection-item.unseen{opacity:.52}.achievement{margin:8px 0;background:#ffe2a107;border:1px solid #ffe2a12b;padding:10px;border-radius:11px;color:var(--gold);font-size:11px}.share-image{width:100%;display:block;border-radius:10px;max-height:52vh;object-fit:contain;background:#111a2c}.toast{pointer-events:none;position:absolute;left:24px;right:24px;bottom:94px;z-index:25;padding:13px 15px;border-radius:13px;background:#fff4df;color:#243044;font-size:12px;line-height:1.55;font-weight:700;text-align:center;box-shadow:0 8px 30px #0007;opacity:0;transform:translateY(8px);transition:opacity .18s,transform .18s}.toast.visible{opacity:1;transform:translateY(0)}.storage-warning{position:absolute;bottom:0;left:0;right:0;z-index:20;background:#704747;color:white;font-size:10px;text-align:center;padding:4px}.help-section{font-size:12px;line-height:1.9;color:#c6d0e3;margin-bottom:13px}.help-section b{color:var(--gold)}.help-section .enemy-legend{display:block;padding:4px 0}.fatal{position:fixed;inset:20%;padding:30px;background:#3f3141;color:white;z-index:50;font-size:16px;line-height:1.9}.mint{color:var(--mint)}.pink{color:var(--pink)}.gold{color:var(--gold)}.purple{color:var(--purple)}.blue{color:var(--blue)}
+@media(max-width:850px){.desktop-intro{display:none}.stage{gap:0;padding:0}.phone{width:min(100vw,480px);height:var(--vh);max-height:none;border-radius:0;border:0;box-shadow:none;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}.home-top{padding-top:10px;height:51px;min-height:51px}.home-body{padding-top:2px}.home-footer{min-height:60px;padding-bottom:8px}.game{padding-top:2px}.game-footer{padding-bottom:10px}.game-top{height:59px}.hero-art{height:clamp(145px,24vh,225px)}.modal-layer{padding:17px;padding-top:max(17px,env(safe-area-inset-top));padding-bottom:max(17px,env(safe-area-inset-bottom))}}
+@media(max-height:700px){.home-top{height:43px;min-height:43px}.overline{margin-top:0}.game-title{font-size:46px;margin-top:12px}.hero-art{height:150px}.home-tagline{margin:0 0 11px;font-size:11px}.home-body{padding-left:22px;padding-right:22px}.cat-option{min-height:51px}.start-button{min-height:48px;font-size:17px;margin-bottom:11px}.cat-info{min-height:28px;padding-top:6px}.home-secondary .button{min-height:42px;padding:9px}.daily-note{padding-top:8px}.home-footer{min-height:52px}.home-footer button{gap:3px;min-height:37px}.home-footer svg{width:17px;height:17px}.home-footer{padding-top:6px;padding-bottom:6px}.game-top{height:52px}.status-row{height:23px}.wave-track{height:10px}.game-footer{min-height:57px}.loadout{min-height:34px}.modal{padding:19px 16px}.modal h2{font-size:23px}.upgrade-card{min-height:81px;padding:10px}.upgrade-card p{font-size:10px}.reward-list{gap:8px;margin:12px 0}.modal .sub{margin-bottom:10px}.score-result{font-size:48px;margin-top:10px}.result-stats{margin:15px 0 12px}.earned{margin:10px 0;padding:8px}.modal-overline{margin-bottom:5px}.result-build{margin:11px 0}}
+@media(max-width:355px){.home-body{padding-left:17px;padding-right:17px}.game-title{font-size:44px}.hero-art{height:135px}.overline{font-size:7px;letter-spacing:1.7px}.home-tagline{font-size:10px}.cat-option{font-size:11px;min-height:49px}.cat-info{font-size:9px}.daily-note{font-size:9px}.home-top{font-size:11px}.game-top{padding-left:14px;padding-right:14px}.run-name{min-width:87px}.score-box b{font-size:17px}.game-footer{padding-left:16px;padding-right:16px}.game-footer span{font-size:9px}.modal-layer{padding:12px}.modal{padding:17px 13px}.upgrade-card{gap:8px}.upgrade-icon{width:33px}.upgrade-card h3{font-size:13px}.upgrade-card p{font-size:10px}.result-stats b{font-size:19px}}
+@media(orientation:landscape) and (max-height:500px){.phone{width:420px}.home-body{overflow:auto}.hero-art{height:125px}.modal{max-width:370px}.game-top{height:44px}.status-row{height:20px}.wave-track{height:8px}.loadout{min-height:28px}.loadout-chip{height:24px}.game-footer{min-height:47px;padding-top:2px;padding-bottom:5px}.game-footer strong{font-size:11px}.game-footer span{font-size:9px}.game-footer>div{gap:2px}.speed-button{min-height:30px;padding:7px}.board-holder{margin:0}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+.storage-blocked .home,.storage-blocked .game{height:calc(100% - 25px)}.storage-warning{min-height:25px;display:flex;align-items:center;justify-content:center;padding:4px 8px}
+
+</style>
+</head>
+<body>
+<main class="stage">
+  <aside class="desktop-intro" aria-label="游戏介绍">
+    <div class="edition"><span class="tiny-dot"></span> ORIGINAL WEB GAME · VOL. 01</div>
+    <h1>再弹一下，<br><span>就收摊。</span></h1>
+    <p class="intro-lead">夜市要关门了，<br>捣蛋鬼可不这么想。</p>
+    <div class="intro-rule"><span>01</span><p>单指瞄准，借墙绕到背后。</p></div>
+    <div class="intro-rule"><span>02</span><p>雷链、分裂、爆破，自己配一局。</p></div>
+    <div class="intro-rule"><span>03</span><p>守住夜市，把名场面带走。</p></div>
+    <div class="intro-footer"><span>无广告</span><span>无需登录</span><span>离线可玩</span></div>
+    <div class="corner-stamp">OPEN<br><strong>23:59</strong></div>
+  </aside>
+  <section class="phone" aria-label="喵弹夜市游戏">
+    <div class="home" id="home">
+      <header class="home-top"><span class="brand-mark" id="brand-paw"></span><span>午夜弹珠俱乐部</span><button class="icon-button" id="home-sound" aria-label="关闭声音"></button></header>
+      <div class="home-body">
+        <div class="overline">ONE MORE BOUNCE. ONE MORE NIGHT.</div>
+        <h2 class="game-title">喵弹<span>夜市</span><i>开摊啦</i></h2>
+        <div class="hero-art" id="hero-art"></div>
+        <p class="home-tagline">弹进怪物背后，<b>整条街一起开花。</b></p>
+        <div class="cat-picker" id="cat-picker" aria-label="选择店长"></div>
+        <div class="cat-info" id="cat-info"></div>
+        <button id="continue" class="button continue-button" hidden>继续上局 <span>回到本轮发射前</span></button>
+        <button id="start" class="button primary start-button">立即开摊 <span>18 波保卫战 →</span></button>
+        <div class="home-secondary"><button id="daily" class="button secondary"></button><button id="endless" class="button secondary"></button></div>
+        <div class="daily-note" id="daily-note"></div>
+      </div>
+      <footer class="home-footer"><button id="collection"></button><button id="records"></button><button id="settings"></button></footer>
+    </div>
+    <div class="game" id="game" hidden>
+      <header class="game-top">
+        <div class="run-name"><span id="mode-label">夜市保卫战</span><b id="wave-label">01 <small>/ 18</small></b></div>
+        <div class="score-box"><span>营业积分</span><b id="score-label">0</b></div>
+        <button class="icon-button" id="sound" aria-label="关闭声音"></button><button class="icon-button" id="pause" aria-label="暂停游戏"></button>
+      </header>
+      <div class="status-row"><div id="hearts" aria-label="剩余生命"></div><div id="shield-label"></div><div id="combo-label">瞄准，再松手</div></div>
+      <div class="wave-track" id="wave-track" aria-label="关卡进度"></div>
+      <div class="board-holder" id="board-holder"><canvas id="board" width="420" height="580" tabindex="0" aria-label="游戏区域：按住瞄准，松手发射。也可用左右方向键瞄准、空格发射。"></canvas></div>
+      <div class="loadout" id="loadout" aria-label="本局改装"></div>
+      <footer class="game-footer"><div><strong id="ball-label">8 颗弹珠</strong><span id="action-hint">借墙反弹，打到背面更赚</span></div><button class="speed-button" id="speed" aria-label="切换弹珠演出速度">演出 ×1</button></footer>
+    </div>
+    <div class="modal-layer" id="modal-layer" hidden><section class="modal" id="modal" role="dialog" aria-modal="true" aria-label="游戏菜单" tabindex="-1"></section></div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="storage-warning" id="storage-warning" hidden>浏览器未允许存档；本次仍可正常游玩。</div>
+  </section>
+</main>
+<noscript><p class="fatal">此游戏需要启用 JavaScript。所有游戏资源都在本地，不需要第三方服务。</p></noscript>
+<script>
+'use strict';
+(()=>{
+// src/data/config.js
+const module_0 = (() => {
+/** All balance and performance budgets are centralized here. No device-dependent physics. */
+const CONFIG = Object.freeze({
+  width: 420, height: 580, left: 15, right: 405, top: 28,
+  gridLeft: 28, gridTop: 51, cell: 52, block: 46, columns: 7,
+  danger: 487, launchY: 536, ballRadius: 5, ballSpeed: 640,
+  fixedStep: 1 / 120, volleyLimit: 11, launchInterval: .066,
+  maxBalls: 112, maxSpawnPerVolley: 180, maxEnemies: 58,
+  maxParticles: 220, maxEvents: 512, maxEffectOps: 160,
+  maxHearts: 5, startingHearts: 4, campaignWaves: 18,
+  initialBalls: 8, maxBaseBalls: 38, rushWave: 13, endlessRampWaves: 12, endlessRampPower: 1.5,
+  baseHP: 2.0, hpSlope: 4.0, bossHPFactor: 20,
+  storageVersion: 1, gameVersion: '1.0.0'
+});
+const PALETTE = Object.freeze({
+  bg: '#111522', panel: '#1d2335', mint: '#92e3c0', pink: '#ff7898',
+  gold: '#ffe2a1', purple: '#c1a0ff', blue: '#8bcff0', cream: '#fff4df', muted: '#9da7bf'
+});
+const CATS = Object.freeze([
+  { id: 'mint', name: '薄荷', role: '反弹高手', description: '自带「借墙蓄力」：撞墙后下一击更重。', color: '#92e3c0', upgrade: 'wall', cost: 0 },
+  { id: 'peach', name: '桃桃', role: '爆破专家', description: '自带「开罐爆破」：击破怪物炸到邻居。', color: '#ff7898', upgrade: 'blast', cost: 8 },
+  { id: 'taro', name: '芋圆', role: '雷电店长', description: '自带「跳跳雷链」：连续命中传导闪电。', color: '#c1a0ff', upgrade: 'spark', cost: 20 }
+]);
+const ENEMY_NAMES = Object.freeze({ plain: '麻薯怪', bomb: '爆米花怪', armor: '铁皮罐头', gift: '招财鱼罐', boss: '夜市捣蛋王' });
+
+return { CONFIG, PALETTE, CATS, ENEMY_NAMES };
+})();
+
+// src/data/upgrades.js
+const module_1 = (() => {
+/** Levels alter rules/cadence; no endless percentage-stat filler. */
+const UPGRADES = Object.freeze([
+  { id: 'spark', name: '跳跳雷链', icon: 'bolt', color: 'purple', tag: '传导', max: 3,
+    descriptions: ['每颗弹珠每命中 3 次，闪电跳向附近 2 个敌人。', '闪电跳向 3 个敌人；传导范围变大。', '每命中 2 次就释放闪电，跳向 4 个敌人。'] },
+  { id: 'blast', name: '开罐爆破', icon: 'boom', color: 'pink', tag: '连锁', max: 3,
+    descriptions: ['每个被击破的敌人都会爆炸，波及邻居。', '爆炸范围扩大，伤害提高。', '大范围爆破：一罐带走一片。'] },
+  { id: 'split', name: '猫爪分裂', icon: 'split', color: 'mint', tag: '增殖', max: 3,
+    descriptions: ['每颗主弹首次命中，分出 2 颗小弹珠。', '分裂为 3 颗小弹珠。', '分裂为 4 颗小弹珠。子弹不会再次分裂。'] },
+  { id: 'pierce', name: '糯米穿心', icon: 'arrow', color: 'blue', tag: '穿透', max: 3,
+    descriptions: ['每颗主弹的前 1 次命中直接穿透；有分裂时，小弹也穿透一次。', '前 2 次命中穿透；有分裂时，小弹也能穿透一次。', '前 3 次命中穿透，更容易钻进背面。'] },
+  { id: 'wall', name: '借墙蓄力', icon: 'bounce', color: 'mint', tag: '角度', max: 3,
+    descriptions: ['撞侧墙后，下一次命中造成双倍伤害。', '可连续蓄力 2 次；每次蓄力增加一份伤害。', '可连续蓄力 3 次。贴墙折射更有威力。'] },
+  { id: 'return', name: '回头客', icon: 'return', color: 'gold', tag: '续航', max: 2,
+    descriptions: ['每颗主弹落到底部时，额外弹回去 1 次。', '每颗主弹可从底部弹回去 2 次。'] },
+  { id: 'ice', name: '冰糖脆壳', icon: 'snow', color: 'blue', tag: '破冰', max: 3,
+    descriptions: ['第一击裹上冰糖，下一次弹珠或雷电击中时碎裂，伤害翻倍。', '冰糖碎裂造成 3 倍伤害。', '冰糖碎裂造成 4 倍伤害。'] },
+  { id: 'laser', name: '清巷热线', icon: 'laser', color: 'pink', tag: '清行', max: 3,
+    descriptions: ['本轮每累计 12 次弹珠命中，横扫当前一整行。', '每 9 次命中横扫一行。', '每 6 次命中横扫一行。'] },
+  { id: 'firefly', name: '飞鱼烟花', icon: 'fish', color: 'gold', tag: '追击', max: 3,
+    descriptions: ['每击破 3 个敌人，向两侧放出小弹珠。', '每击破 2 个敌人，就放出追击弹珠。', '每次击破都放出追击弹珠。'] },
+  { id: 'guard', name: '喵爪护盾', icon: 'shield', color: 'mint', tag: '防守', max: 3,
+    descriptions: ['单轮达到 35 次连击，获得 1 层护盾。本轮限一次。', '达到 25 次连击就获得护盾。', '达到 18 次连击就获得护盾；可储存 3 层。'] },
+  { id: 'hunter', name: '弱点铃铛', icon: 'target', color: 'gold', tag: '集火', max: 3,
+    descriptions: ['每轮标记最下方的敌人；击破标记后，余下弹珠本轮伤害 +1。', '击破后本轮伤害 +2。', '击破后本轮伤害 +3。先解决威胁，再清场。'] },
+  { id: 'drill', name: '罐头开锁器', icon: 'key', color: 'purple', tag: '破甲', max: 2,
+    descriptions: ['击中铁皮罐头立即卸甲，向附近敌人发射一次闪电。', '对捣蛋王首次命中也触发卸甲闪电；普通卸甲会命中更多邻居。'] }
+]);
+const UPGRADE_BY_ID = Object.freeze(Object.assign(Object.create(null), Object.fromEntries(UPGRADES.map(u => [u.id, u]))));
+const SYNERGIES = Object.freeze([
+  { id: 'storm', name: '雷打冰糖', needs: ['spark', 'ice'], icon: 'snow', text: '雷电也能敲碎冰糖脆壳。' },
+  { id: 'rain', name: '猫爪暴雨', needs: ['split', 'pierce'], icon: 'split', text: '分裂的小弹珠继承一次穿透。' },
+  { id: 'street', name: '全街开花', needs: ['blast', 'laser'], icon: 'boom', text: '横扫击破也触发爆破，连锁清行。' },
+  { id: 'night', name: '不打烊机器', needs: ['wall', 'return'], icon: 'return', text: '回弹再次借墙蓄力，一颗弹珠反复做生意。' }
+]);
+function activeSynergies(build) { return SYNERGIES.filter(s => s.needs.every(id => build[id] > 0)); }
+
+return { UPGRADES, UPGRADE_BY_ID, SYNERGIES, activeSynergies };
+})();
+
+// src/core/random.js
+const module_2 = (() => {
+/** Mulberry32 with explicit state for deterministic daily challenges and resumable runs. */
+class Random {
+  constructor(seed = 1) { this.state = seed >>> 0; }
+  next() {
+    this.state = (this.state + 0x6D2B79F5) >>> 0;
+    let t = this.state;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  }
+  int(n) { return Math.floor(this.next() * n); }
+  shuffle(array) { const a = [...array]; for (let i = a.length - 1; i > 0; i--) { const j = this.int(i + 1); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+}
+function hashSeed(text) { let h = 2166136261; for (const c of String(text)) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; }
+function dailyKey(date = new Date()) { return new Date(date.getTime() + 8 * 3600000).toISOString().slice(0, 10); }
+function clamp(value, min, max) { return Math.min(max, Math.max(min, value)); }
+function finite(value) { return typeof value === 'number' && Number.isFinite(value); }
+
+return { Random, hashSeed, dailyKey, clamp, finite };
+})();
+
+// src/game/engine.js
+const module_3 = (() => {
+const { CONFIG, CATS } = module_0;
+const { UPGRADES, UPGRADE_BY_ID, activeSynergies } = module_1;
+const { Random, clamp, finite } = module_2;
+/** Pure deterministic simulation. No DOM, sound, clock, network or persistence access. */
+class Engine {
+  constructor({ seed = 1, mode = 'normal', cat = 'mint', daily = '' } = {}) {
+    this.seed = seed >>> 0; this.rng = new Random(this.seed);
+    this.mode = ['normal', 'daily', 'endless'].includes(mode) ? mode : 'normal';
+    this.cat = CATS.some(c => c.id === cat) ? cat : 'mint';
+    if (this.mode === 'daily') this.cat = 'mint';
+    this.daily = String(daily).slice(0, 10); this.wave = 1; this.shots = 0;
+    this.hearts = CONFIG.startingHearts; this.shields = 0; this.score = 0;
+    this.kills = 0; this.bosses = 0; this.maxCombo = 0; this.combo = 0;
+    this.playerX = CONFIG.width / 2; this.nextX = null; this.ballBonus = 0;
+    this.build = {}; this.build[CATS.find(c => c.id === this.cat).upgrade] = 1;
+    this.enemies = []; this.balls = []; this.events = []; this.offers = [];
+    this.phase = 'aim'; this.time = 0; this.shotTime = 0; this.elapsed = 0;
+    this.nextId = 1; this.ballId = 1; this.pending = 0; this.spawned = 0;
+    this.rerolls = 1; this.rewardCount = 0; this.victory = false; this.endReason = '';
+    this.ops = 0; this.queue = []; this.fireflyCount = 0; this.hunterBuff = 0;
+    this.markedId = null; this.guardUsed = false; this.launchClock = 0;
+    this.direction = { x: 0, y: -1 }; this.initialBoard(); this.markTarget();
+  }
+  get ballCount() { return Math.min(CONFIG.maxBaseBalls, CONFIG.initialBalls + this.wave - 1 + this.ballBonus); }
+  get damage() { return 1 + Math.floor((this.wave - 1) / 6) + this.hunterBuff; }
+  emit(type, data = {}) { if (this.events.length < CONFIG.maxEvents) this.events.push({ type, ...data }); }
+  drainEvents() { const e = this.events; this.events = []; return e; }
+  addEnemy(col, row, hp, type = 'plain', width = CONFIG.block) {
+    if (this.enemies.length >= CONFIG.maxEnemies) return;
+    const enemy = { id: this.nextId++, x: CONFIG.gridLeft + col * CONFIG.cell,
+      y: CONFIG.gridTop + row * CONFIG.cell, w: width, h: CONFIG.block,
+      hp, maxHp: hp, type, ice: false, armor: type === 'armor', tapped: false, hit: -100 };
+    this.enemies.push(enemy); return enemy;
+  }
+  initialBoard() {
+    // A readable, designed opening — not fake pre-rendered gameplay.
+    this.addEnemy(1, 2, 2); this.addEnemy(2, 2, 2, 'gift');
+    this.addEnemy(3, 2, 3, 'bomb'); this.addEnemy(4, 2, 2); this.addEnemy(5, 2, 2);
+    this.addEnemy(2, 1, 2); this.addEnemy(4, 1, 2);
+  }
+  markTarget() {
+    const live = this.enemies.filter(e => e.hp > 0).sort((a, b) => (b.y - a.y) || (a.hp - b.hp));
+    this.markedId = this.build.hunter ? live[0]?.id ?? null : null;
+  }
+  spawnRow() {
+    const pressure = this.mode === 'endless' ? (1 + Math.max(0, this.wave - CONFIG.campaignWaves) / CONFIG.endlessRampWaves) ** CONFIG.endlessRampPower : 1;
+    const hpBase = Math.round((CONFIG.baseHP + this.wave * CONFIG.hpSlope) * pressure);
+    let cols = this.rng.shuffle([0, 1, 2, 3, 4, 5, 6]);
+    if (this.wave % 6 === 0) {
+      this.addEnemy(2, 0, Math.round(this.wave * CONFIG.bossHPFactor * pressure), 'boss', CONFIG.block + CONFIG.cell);
+      cols = cols.filter(c => c !== 2 && c !== 3);
+      this.emit('boss', { wave: this.wave });
+    }
+    const n = this.wave < 6 ? 3 : (this.wave < 13 ? 4 : 5);
+    for (const col of cols.slice(0, this.wave % 6 === 0 ? 2 : n)) {
+      const p = this.rng.next();
+      let type = p < .17 ? 'bomb' : p < .29 ? 'gift' : p < .43 && this.wave >= 4 ? 'armor' : 'plain';
+      let hp = Math.max(2, Math.round(hpBase * (.75 + this.rng.next() * .45)));
+      if (type === 'bomb') hp = Math.max(2, Math.ceil(hp * .65));
+      this.addEnemy(col, 0, hp, type);
+    }
+    // Bad-luck protection: no more than 3 consecutive rows without a bomb.
+    if (this.wave % 3 === 0 && !this.enemies.some(e => e.type === 'bomb' && e.y === CONFIG.gridTop)) {
+      const row = this.enemies.find(e => e.y === CONFIG.gridTop && e.type === 'plain');
+      if (row) { row.type = 'bomb'; row.hp = row.maxHp = Math.ceil(row.hp * .7); }
+    }
+  }
+  aimAt(x, y) {
+    if (!finite(x) || !finite(y)) return null;
+    const dx = x - this.playerX, dy = Math.min(-38, y - CONFIG.launchY);
+    let angle = Math.atan2(dx, -dy); angle = clamp(angle, -1.30, 1.30);
+    return { x: Math.sin(angle), y: -Math.cos(angle) };
+  }
+  shoot(x, y) {
+    if (this.phase !== 'aim') return false;
+    const direction = this.aimAt(x, y); if (!direction) return false;
+    this.direction = direction; this.phase = 'flight'; this.shots++;
+    this.pending = this.ballCount; this.spawned = 0; this.balls = [];
+    this.shotTime = 0; this.launchClock = 0; this.combo = 0;
+    this.nextX = null; this.guardUsed = false; this.hunterBuff = 0; this.fireflyCount = 0;
+    this.emit('shot', { count: this.pending }); return true;
+  }
+  createBall(x, y, vx, vy, child = false) {
+    if (this.balls.length >= CONFIG.maxBalls || this.spawned >= CONFIG.maxSpawnPerVolley) return null;
+    const speed = Math.hypot(vx, vy) || CONFIG.ballSpeed;
+    const ball = { id: this.ballId++, x, y, px: x, py: y,
+      vx: vx / speed * CONFIG.ballSpeed, vy: vy / speed * CONFIG.ballSpeed,
+      r: child ? 3.4 : CONFIG.ballRadius, child, hits: 0,
+      split: child, pierces: child ? (this.build.pierce && this.build.split ? 1 : 0) : (this.build.pierce || 0),
+      returns: child ? 0 : this.build.return || 0, charge: 0, lastId: 0, lastTime: -1, alive: true };
+    this.spawned++; this.balls.push(ball); return ball;
+  }
+  step(dt = CONFIG.fixedStep) {
+    if (this.phase !== 'flight' || !finite(dt) || dt <= 0) return;
+    // A caller may supply 1/60 s, but collision travel remains bounded to 5.34 px.
+    const n = Math.ceil(Math.min(dt, .1) / CONFIG.fixedStep);
+    for (let k = 0; k < n && this.phase === 'flight'; k++) this.tick(Math.min(dt, .1) / n);
+  }
+  tick(dt) {
+    this.time += dt; this.elapsed += dt; this.shotTime += dt; this.launchClock -= dt; this.ops = 0;
+    while (this.pending > 0 && this.launchClock <= 0) {
+      this.createBall(this.playerX, CONFIG.launchY, this.direction.x * CONFIG.ballSpeed, this.direction.y * CONFIG.ballSpeed);
+      this.pending--; this.launchClock += CONFIG.launchInterval;
+    }
+    const count = this.balls.length;
+    for (let i = 0; i < count; i++) {
+      const b = this.balls[i]; if (!b.alive) continue;
+      b.px = b.x; b.py = b.y; b.x += b.vx * dt; b.y += b.vy * dt;
+      if (b.x < CONFIG.left + b.r) { b.x = CONFIG.left + b.r; b.vx = Math.abs(b.vx); this.wallHit(b); }
+      if (b.x > CONFIG.right - b.r) { b.x = CONFIG.right - b.r; b.vx = -Math.abs(b.vx); this.wallHit(b); }
+      if (b.y < CONFIG.top + b.r) { b.y = CONFIG.top + b.r; b.vy = Math.abs(b.vy); }
+      if (b.y >= CONFIG.launchY && b.vy > 0) {
+        if (b.returns > 0) { b.returns--; b.y = CONFIG.launchY - 1; b.vy = -Math.abs(b.vy); this.emit('return', { x: b.x, y: b.y }); }
+        else { b.alive = false; if (this.nextX === null) this.nextX = clamp(b.x, 32, 388); continue; }
+      }
+      for (const e of this.enemies) {
+        if (e.hp <= 0 || (e.id === b.lastId && this.time - b.lastTime < .05)) continue;
+        const cx = clamp(b.x, e.x, e.x + e.w), cy = clamp(b.y, e.y, e.y + e.h);
+        let nx = b.x - cx, ny = b.y - cy;
+        const d2 = nx * nx + ny * ny;
+        if (d2 > b.r * b.r) continue;
+        if (b.pierces > 0) { b.pierces--; b.lastId = e.id; b.lastTime = this.time + .085; this.ballHit(b, e); break; }
+        if (d2 > .00001) { const d = Math.sqrt(d2); nx /= d; ny /= d; b.x = cx + nx * (b.r + .08); b.y = cy + ny * (b.r + .08); }
+        else {
+          // A centre inside a rectangle is ejected through its nearest face.
+          const faces = [Math.abs(b.x - e.x), Math.abs(b.x - e.x - e.w), Math.abs(b.y - e.y), Math.abs(b.y - e.y - e.h)];
+          const face = faces.indexOf(Math.min(...faces)); nx = face === 0 ? -1 : face === 1 ? 1 : 0; ny = face === 2 ? -1 : face === 3 ? 1 : 0;
+          if (nx) b.x = (nx < 0 ? e.x - b.r : e.x + e.w + b.r); else b.y = (ny < 0 ? e.y - b.r : e.y + e.h + b.r);
+        }
+        const dot = b.vx * nx + b.vy * ny;
+        if (dot < 0) { b.vx -= 2 * dot * nx; b.vy -= 2 * dot * ny; }
+        b.lastId = e.id; b.lastTime = this.time; this.ballHit(b, e); break;
+      }
+      // Eliminate near-horizontal soft-locks while preserving aim decisions.
+      if (Math.abs(b.vy) < 65) { b.vy = (b.vy < 0 ? -1 : 1) * 65; b.vx = Math.sign(b.vx || 1) * Math.sqrt(CONFIG.ballSpeed ** 2 - 65 ** 2); }
+    }
+    this.balls = this.balls.filter(b => b.alive);
+    this.enemies = this.enemies.filter(e => e.hp > 0);
+    if (this.enemies.length === 0) { this.balls = []; this.pending = 0; }
+    if (this.shotTime >= CONFIG.volleyLimit) {
+      this.emit('recall'); this.balls = []; this.pending = 0;
+    }
+    if (this.balls.length === 0 && this.pending === 0) this.finishShot();
+  }
+  wallHit(b) { if (this.build.wall) { b.charge = Math.min(this.build.wall, b.charge + 1); this.emit('wall', { x: b.x, y: b.y }); } }
+  ballHit(b, e) {
+    b.hits++; this.combo++; this.maxCombo = Math.max(this.maxCombo, this.combo);
+    let amount = this.damage * (b.child ? .65 : 1) * (1 + b.charge); b.charge = 0;
+    if (e.armor) {
+      if (this.build.drill) { e.armor = false; this.chain(e, 2 + this.build.drill, this.damage); }
+      else { amount = Math.max(.5, amount * .55); if (b.hits > 1) e.armor = false; }
+    }
+    if (e.type === 'boss' && this.build.drill >= 2 && !e.tapped) { this.chain(e, 4, this.damage * 2); e.tapped = true; }
+    if (this.build.ice) {
+      if (e.ice) { amount *= 1 + this.build.ice; e.ice = false; this.emit('ice', { x: e.x + e.w / 2, y: e.y + e.h / 2 }); }
+      else e.ice = true;
+    }
+    this.deal(e, amount, 'ball');
+    if (this.build.split && !b.split) {
+      b.split = true;
+      const n = 1 + this.build.split;
+      for (let i = 0; i < n; i++) {
+        const a = -.7 + 1.4 * (i + .5) / n, ca = Math.cos(a), sa = Math.sin(a);
+        const child = this.createBall(b.x, b.y, b.vx * ca - b.vy * sa, b.vx * sa + b.vy * ca, true);
+        if (child) { child.lastId = e.id; child.lastTime = this.time + .08; }
+      }
+      this.emit('split', { x: b.x, y: b.y });
+    }
+    if (this.build.spark && b.hits % (this.build.spark === 3 ? 2 : 3) === 0) this.chain(e, 1 + this.build.spark, this.damage);
+    if (this.build.laser && this.combo % [0, 12, 9, 6][this.build.laser] === 0) {
+      this.emit('laser', { y: e.y + e.h / 2 });
+      for (const target of this.enemies) if (target.hp > 0 && Math.abs(target.y - e.y) < 25) this.deal(target, this.damage * 1.6, 'laser');
+    }
+    if (this.build.guard && !this.guardUsed && this.combo >= [0, 35, 25, 18][this.build.guard]) {
+      this.guardUsed = true; this.shields = Math.min(this.build.guard === 3 ? 3 : 2, this.shields + 1); this.emit('shield');
+    }
+    if (this.combo === 10 || this.combo === 25 || this.combo % 50 === 0) this.emit('combo', { count: this.combo });
+    this.flushDamage();
+  }
+  chain(origin, count, amount) {
+    const ox = origin.x + origin.w / 2, oy = origin.y + origin.h / 2;
+    const nearest = this.enemies.filter(e => e.hp > 0 && e.id !== origin.id)
+      .map(e => ({ e, d: Math.hypot(e.x + e.w / 2 - ox, e.y + e.h / 2 - oy) }))
+      .filter(o => o.d < 118 + 24 * (this.build.spark || 1)).sort((a, b) => a.d - b.d).slice(0, count);
+    for (const { e } of nearest) {
+      let damage = amount;
+      if (e.ice) { damage *= 1 + (this.build.ice || 1); e.ice = false; }
+      this.emit('chain', { x1: ox, y1: oy, x2: e.x + e.w / 2, y2: e.y + e.h / 2 });
+      this.deal(e, damage, 'chain');
+    }
+  }
+  deal(e, amount, source) { if (e.hp > 0 && this.queue.length < CONFIG.maxEffectOps) this.queue.push({ e, amount, source }); }
+  flushDamage() {
+    while (this.queue.length && this.ops++ < CONFIG.maxEffectOps) {
+      const { e, amount, source } = this.queue.shift(); if (e.hp <= 0) continue;
+      e.hp -= Math.max(.1, amount); e.hit = this.time;
+      this.score += Math.max(1, Math.round(Math.min(e.maxHp, amount) * 4));
+      this.emit('hit', { id: e.id, x: e.x + e.w / 2, y: e.y + e.h / 2, damage: amount, source });
+      if (e.hp <= 0) this.destroyEnemy(e);
+    }
+    this.queue.length = 0;
+  }
+  destroyEnemy(e) {
+    this.kills++; this.fireflyCount++; this.score += e.type === 'boss' ? 600 : 35 + this.wave * 4;
+    const x = e.x + e.w / 2, y = e.y + e.h / 2;
+    this.emit('kill', { x, y, kind: e.type });
+    if (e.id === this.markedId) { this.hunterBuff = this.build.hunter || 0; this.emit('hunter'); }
+    if (e.type === 'gift') { this.ballBonus = Math.min(8, this.ballBonus + 1); this.emit('gift', { x, y }); }
+    if (e.type === 'boss') { this.bosses++; this.hearts = Math.min(CONFIG.maxHearts, this.hearts + 1); this.score += 100 * this.wave; this.emit('bossKill', { x, y }); }
+    if (e.type === 'bomb' || this.build.blast) {
+      const radius = e.type === 'bomb' ? 98 : 64 + 10 * this.build.blast;
+      const damage = e.type === 'bomb' ? this.damage * 3 + this.wave : this.damage * (1 + this.build.blast);
+      this.emit('boom', { x, y, radius });
+      for (const other of this.enemies) if (other.hp > 0 && Math.hypot(other.x + other.w / 2 - x, other.y + other.h / 2 - y) <= radius) this.deal(other, damage, 'boom');
+    }
+    if (this.build.firefly && this.fireflyCount % (4 - this.build.firefly) === 0) {
+      for (const vx of [-CONFIG.ballSpeed, CONFIG.ballSpeed]) this.createBall(x, y, vx, -110, true);
+    }
+  }
+  finishShot() {
+    this.playerX = this.nextX ?? this.playerX;
+    this.score += this.combo >= 10 ? this.combo * 3 : 0;
+    this.emit('volleyEnd', { combo: this.combo });
+    if (this.mode !== 'endless' && this.wave >= CONFIG.campaignWaves && !this.enemies.length) { this.end(true, '夜市守住了'); return; }
+    if (this.wave === 1 || (this.wave - 1) % 3 === 0) {
+      this.phase = 'reward'; this.rewardCount++; this.offers = this.rollOffers(); this.emit('reward');
+    } else this.nextWave();
+  }
+  rollOffers() {
+    const available = UPGRADES.filter(u => (this.build[u.id] || 0) < u.max);
+    if (!available.length) return ['repair', 'balls', 'shield'];
+    const shuffled = this.rng.shuffle(available);
+    // One new behavior among choices whenever the pool still has an unowned behavior.
+    const fresh = shuffled.find(u => !this.build[u.id]);
+    const chosen = shuffled.slice(0, 3);
+    if (fresh && !chosen.some(u => !this.build[u.id])) chosen[2] = fresh;
+    const ids = chosen.map(u => u.id);
+    for (const id of ['repair', 'balls', 'shield']) if (ids.length < 3) ids.push(id);
+    return ids;
+  }
+  reroll() { if (this.phase !== 'reward' || this.rerolls <= 0) return false; this.rerolls--; this.offers = this.rollOffers(); return true; }
+  chooseUpgrade(id) {
+    if (this.phase !== 'reward' || !this.offers.includes(id)) return false;
+    const previous = activeSynergies(this.build).map(s => s.id);
+    if (id === 'repair') this.hearts = Math.min(CONFIG.maxHearts, this.hearts + 1);
+    else if (id === 'balls') this.ballBonus = Math.min(8, this.ballBonus + 1);
+    else if (id === 'shield') this.shields = Math.min(this.build.guard === 3 ? 3 : 2, this.shields + 1);
+    else if (UPGRADE_BY_ID[id]) this.build[id] = Math.min(UPGRADE_BY_ID[id].max, (this.build[id] || 0) + 1);
+    else return false;
+    this.emit('upgrade', { id, level: this.build[id] || 1 });
+    for (const s of activeSynergies(this.build)) if (!previous.includes(s.id)) this.emit('synergy', { name: s.name });
+    this.offers = []; this.nextWave(); return true;
+  }
+  skipUpgrade() { if (this.phase !== 'reward') return false; this.hearts = Math.min(CONFIG.maxHearts, this.hearts + 1); this.emit('upgrade', { id: 'repair', level: 1 }); this.offers = []; this.nextWave(); return true; }
+  nextWave() {
+    for (const e of this.enemies) {
+      e.y += CONFIG.cell * (this.wave >= CONFIG.rushWave ? 2 : 1);
+      if (e.y + e.h >= CONFIG.danger) {
+        e.hp = 0;
+        if (e.type === 'boss') { this.hearts = 0; this.emit('damage', { boss: true }); }
+        else if (this.shields > 0) { this.shields--; this.emit('block'); }
+        else { this.hearts--; this.emit('damage', { boss: false }); }
+      }
+    }
+    this.enemies = this.enemies.filter(e => e.hp > 0);
+    if (this.hearts <= 0) { this.hearts = 0; this.end(false, '夜市被捣蛋鬼挤满了'); return; }
+    this.wave++;
+    if (this.wave === CONFIG.rushWave) this.emit('rush');
+    if (this.mode === 'endless' || this.wave <= CONFIG.campaignWaves) this.spawnRow();
+    if (!this.enemies.length && this.mode !== 'endless') { this.end(true, '夜市守住了'); return; }
+    this.phase = 'aim'; this.hunterBuff = 0; this.markTarget(); this.emit('wave', { wave: this.wave });
+  }
+  end(victory, reason) { this.phase = 'end'; this.victory = victory; this.endReason = reason; this.balls = []; this.pending = 0; this.emit('end', { victory, reason }); }
+  snapshot() {
+    if (!['aim', 'reward'].includes(this.phase)) return null;
+    return JSON.parse(JSON.stringify({ version: 1, seed: this.seed, rng: this.rng.state,
+      mode: this.mode, cat: this.cat, daily: this.daily, wave: this.wave, shots: this.shots,
+      hearts: this.hearts, shields: this.shields, score: this.score, kills: this.kills, bosses: this.bosses,
+      maxCombo: this.maxCombo, playerX: this.playerX, ballBonus: this.ballBonus, build: this.build,
+      enemies: this.enemies, phase: this.phase, offers: this.offers, nextId: this.nextId,
+      rerolls: this.rerolls, elapsed: this.elapsed, rewardCount: this.rewardCount }));
+  }
+  static restore(s) {
+    if (!s || s.version !== 1 || !['aim', 'reward'].includes(s.phase) || !Array.isArray(s.enemies) || s.enemies.length > CONFIG.maxEnemies) throw Error('Invalid checkpoint');
+    const ranges = { seed: [0, 4294967295], rng: [0, 4294967295], wave: [1, 10000], shots: [0, 20000], hearts: [1, 5], shields: [0, 3], score: [0, 1e12], kills: [0, 1e8], bosses: [0, 1e5], maxCombo: [0, 1e6], playerX: [15, 405], ballBonus: [0, 8], nextId: [1, 1e8], rerolls: [0, 1], elapsed: [0, 1e9], rewardCount: [0, 10000] };
+    for (const [key, [low, high]] of Object.entries(ranges)) if (!finite(s[key]) || s[key] < low || s[key] > high || (!['elapsed', 'playerX'].includes(key) && !Number.isInteger(s[key]))) throw Error(`Invalid checkpoint field: ${key}`);
+    if (!['normal', 'daily', 'endless'].includes(s.mode) || !CATS.some(c => c.id === s.cat)) throw Error('Invalid mode');
+    if (!s.build || typeof s.build !== 'object' || Array.isArray(s.build)) throw Error('Invalid build');
+    for (const [id, level] of Object.entries(s.build)) if (!UPGRADE_BY_ID[id] || !Number.isInteger(level) || level < 1 || level > UPGRADE_BY_ID[id].max) throw Error('Invalid upgrade');
+    if (!Array.isArray(s.offers) || s.offers.length > 3 || s.offers.some(id => !UPGRADE_BY_ID[id] && !['repair', 'balls', 'shield'].includes(id)) || (s.phase === 'reward' && s.offers.length === 0)) throw Error('Invalid offers');
+    const ids = new Set();
+    for (const e of s.enemies) {
+      if (!e || !Number.isInteger(e.id) || e.id < 1 || e.id >= s.nextId || ids.has(e.id)) throw Error('Invalid enemy ID'); ids.add(e.id);
+      for (const key of ['x', 'y', 'w', 'h', 'hp', 'maxHp']) if (!finite(e[key])) throw Error('Invalid enemy');
+      if (e.x < 15 || e.x + e.w > 405 || e.y < 28 || e.y + e.h >= CONFIG.danger || e.w < 10 || e.w > 100 || e.h !== CONFIG.block || e.hp <= 0 || e.hp > e.maxHp || e.maxHp > 1e8) throw Error('Out of bounds enemy');
+      if (!['plain', 'bomb', 'armor', 'gift', 'boss'].includes(e.type)) throw Error('Invalid enemy type');
+    }
+    const g = new Engine({ seed: s.seed, mode: s.mode, cat: s.cat, daily: s.daily });
+    for (const key of Object.keys(ranges)) if (key !== 'rng') g[key] = s[key];
+    g.rng.state = s.rng >>> 0; g.phase = s.phase; g.build = { ...s.build }; g.offers = [...s.offers];
+    g.enemies = s.enemies.map(e => ({ id: e.id, x: e.x, y: e.y, w: e.w, h: e.h, hp: e.hp, maxHp: e.maxHp,
+      type: e.type, ice: !!e.ice, armor: !!e.armor, tapped: !!e.tapped, hit: -100 }));
+    g.markTarget(); g.events = []; return g;
+  }
+}
+
+return { Engine };
+})();
+
+// src/game/render.js
+const module_4 = (() => {
+const { CONFIG, PALETTE, CATS } = module_0;
+const { clamp } = module_2;
+function round(ctx, x, y, w, h, r = 10) {
+  ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+}
+function line(ctx, points) { ctx.beginPath(); points.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.stroke(); }
+class Renderer {
+  constructor(canvas) {
+    this.canvas = canvas; this.ctx = canvas.getContext('2d', { alpha: false });
+    if (!this.ctx) throw Error('此浏览器无法创建 Canvas 2D。请使用较新版本浏览器。');
+    this.effects = []; this.particles = []; this.texts = []; this.clock = 0; this.shake = 0;
+    this.reducedMotion = false; this.dpr = 1; this.frameTimes = [];
+  }
+  resize(width, height, dpr = 1) {
+    const ratio = Math.min(width / CONFIG.width, height / CONFIG.height);
+    const w = Math.max(1, Math.floor(CONFIG.width * ratio)), h = Math.max(1, Math.floor(CONFIG.height * ratio));
+    this.dpr = Math.min(dpr, 2); this.canvas.style.width = `${w}px`; this.canvas.style.height = `${h}px`;
+    this.canvas.width = Math.round(w * this.dpr); this.canvas.height = Math.round(h * this.dpr);
+  }
+  clearEffects() { this.effects = []; this.particles = []; this.texts = []; this.shake = 0; }
+  burst(x, y, color, n = 12) {
+    for (let i = 0; i < n && this.particles.length < CONFIG.maxParticles; i++) {
+      const a = Math.random() * Math.PI * 2, speed = 40 + Math.random() * 150;
+      this.particles.push({ x, y, vx: Math.cos(a) * speed, vy: Math.sin(a) * speed - 35, life: .45 + Math.random() * .3, total: .8, size: 2 + Math.random() * 4, color });
+    }
+  }
+  consume(events) {
+    for (const e of events) {
+      if (e.type === 'kill') this.burst(e.x, e.y, e.kind === 'bomb' ? PALETTE.gold : PALETTE.mint, e.kind === 'boss' ? 35 : 10);
+      if (e.type === 'boom') { this.effects.push({ ...e, life: .4, total: .4 }); this.shake = Math.max(this.shake, 3); this.burst(e.x, e.y, PALETTE.gold, 14); }
+      if (e.type === 'chain') this.effects.push({ ...e, life: .2, total: .2 });
+      if (e.type === 'laser') { this.effects.push({ ...e, life: .26, total: .26 }); this.shake = 2; }
+      if (e.type === 'ice') this.burst(e.x, e.y, PALETTE.blue, 9);
+      if (e.type === 'split') this.burst(e.x, e.y, PALETTE.purple, 4);
+      if (e.type === 'gift') this.texts.push({ x: e.x, y: e.y, text: '+1 弹珠', color: PALETTE.gold, life: 1.1, total: 1.1 });
+      if (e.type === 'bossKill') { this.shake = 8; this.texts.push({ x: 210, y: 210, text: '大王退散！+1 ♥', color: PALETTE.gold, life: 1.8, total: 1.8 }); }
+      if (e.type === 'damage') this.shake = 9;
+      if (e.type === 'hit' && e.damage >= 5 && this.texts.length < 20) this.texts.push({ x: e.x, y: e.y, text: `${Math.ceil(e.damage)}`, color: PALETTE.cream, life: .48, total: .48 });
+    }
+    if (this.effects.length > 64) this.effects.splice(0, this.effects.length - 64);
+    if (this.texts.length > 24) this.texts.splice(0, this.texts.length - 24);
+  }
+  draw(dt, game, aim, aiming = false, paused = false) {
+    this.clock += dt;
+    const c = this.ctx, W = CONFIG.width, H = CONFIG.height;
+    c.setTransform(this.canvas.width / W, 0, 0, this.canvas.height / H, 0, 0);
+    c.fillStyle = PALETTE.bg; c.fillRect(0, 0, W, H);
+    c.save();
+    if (!this.reducedMotion && this.shake > .2) c.translate(Math.sin(this.clock * 63) * this.shake, Math.cos(this.clock * 87) * this.shake * .6);
+    this.shake *= Math.exp(-dt * 10);
+    this.background(c, game);
+    for (const enemy of game.enemies) if (enemy.hp > 0) this.enemy(c, enemy, game);
+    if (game.phase === 'aim' && aim && !paused) this.trajectory(c, game, aim, aiming);
+    for (const ball of game.balls) {
+      const color = ball.charge ? PALETTE.gold : ball.child ? PALETTE.purple : PALETTE.cream;
+      c.strokeStyle = color; c.globalAlpha = .18; c.lineWidth = ball.r * 1.7;
+      line(c, [[ball.x - ball.vx * .028, ball.y - ball.vy * .028], [ball.x, ball.y]]);
+      c.globalAlpha = 1; c.fillStyle = color; c.beginPath(); c.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2); c.fill();
+      if (ball.charge) { c.strokeStyle = color; c.lineWidth = 1; c.beginPath(); c.arc(ball.x, ball.y, ball.r + 3, 0, Math.PI * 2); c.stroke(); }
+    }
+    this.shooter(c, game, aim);
+    this.drawEffects(c, dt);
+    c.restore(); c.globalAlpha = 1;
+  }
+  background(c, game) {
+    const gradient = c.createLinearGradient(0, 22, 0, 488); gradient.addColorStop(0, '#182238'); gradient.addColorStop(1, '#131c2a');
+    c.fillStyle = gradient; round(c, 9, 20, 402, 477, 15); c.fill();
+    c.strokeStyle = '#344154'; c.lineWidth = 2; c.stroke();
+    c.fillStyle = '#334258';
+    for (let x = 28; x < 401; x += 26) for (let y = 46; y < 478; y += 26) { c.globalAlpha = .43; c.beginPath(); c.arc(x, y, 1, 0, 7); c.fill(); } c.globalAlpha = 1;
+    // Small shop lamps and handcrafted bunting establish an original night-market setting.
+    c.strokeStyle = '#556076'; c.lineWidth = 1; line(c, [[24, 6], [210, 17], [397, 6]]);
+    for (let i = 0; i < 9; i++) {
+      const x = 30 + i * 45, y = 8 + (1 - Math.abs(i - 4) / 4) * 9;
+      c.fillStyle = [PALETTE.mint, PALETTE.pink, PALETTE.gold][i % 3];
+      c.beginPath(); c.arc(x, y + 2, 4.5, 0, Math.PI * 2); c.fill();
+    }
+    c.strokeStyle = game.enemies.some(e => e.y + e.h > 396) ? PALETTE.pink : '#bd6981';
+    c.globalAlpha = .75; c.setLineDash([7, 7]); c.lineWidth = 1.5; line(c, [[22, CONFIG.danger], [398, CONFIG.danger]]); c.setLineDash([]); c.globalAlpha = 1;
+    c.fillStyle = '#192333'; round(c, 16, 503, 388, 67, 14); c.fill();
+    c.font = '10px system-ui, sans-serif'; c.textAlign = 'left'; c.fillStyle = '#8795ae'; c.fillText('夜市防线', 27, 483);
+    c.textAlign = 'right'; c.fillText('捣蛋王越线将直接结束', 392, 483);
+    for (let i = 0; i < 14; i++) { c.fillStyle = i % 2 ? '#344759' : '#26364c'; c.fillRect(16 + i * 27.7, 562, 26.6, 8); }
+    c.font = 'bold 10px system-ui, sans-serif'; c.fillStyle = PALETTE.muted; c.textAlign = 'left'; if (game.playerX > 155) { c.fillText('MIDNIGHT', 30, 529); c.fillText('BOUNCE CLUB', 30, 543); }
+    c.textAlign = 'right'; c.fillStyle = PALETTE.gold; if (game.playerX < 335) c.fillText(`第 ${String(game.wave).padStart(2, '0')} 班`, 389, 536);
+  }
+  enemy(c, e, game) {
+    const color = e.type === 'boss' ? PALETTE.pink : e.type === 'bomb' ? PALETTE.gold : e.type === 'armor' ? '#a5bad3' : e.type === 'gift' ? PALETTE.mint : [PALETTE.purple, PALETTE.blue, '#e6acd9'][e.id % 3];
+    const x = e.x, y = e.y, w = e.w, h = e.h, cx = x + w / 2;
+    c.fillStyle = '#060a13'; round(c, x, y + 4, w, h, e.type === 'boss' ? 13 : 10); c.fill();
+    if (e.type === 'boss') {
+      c.fillStyle = color; c.beginPath(); c.moveTo(x + 8, y + 7); c.lineTo(x + 2, y - 9); c.lineTo(x + 24, y + 2); c.fill();
+      c.beginPath(); c.moveTo(x + w - 8, y + 7); c.lineTo(x + w - 2, y - 9); c.lineTo(x + w - 24, y + 2); c.fill();
+    }
+    c.fillStyle = color; round(c, x, y, w, h, e.type === 'armor' ? 6 : 11); c.fill();
+    c.fillStyle = '#ffffff'; c.globalAlpha = .18; round(c, x + 3, y + 3, w - 6, 9, 5); c.fill(); c.globalAlpha = 1;
+    if (e.ice) { c.strokeStyle = '#c9f4ff'; c.lineWidth = 3; round(c, x - 1, y - 1, w + 2, h + 2, 10); c.stroke(); }
+    if (game.time - e.hit < .065 && game.time > 0) { c.globalAlpha = .55 * (1 - (game.time - e.hit) / .065); c.fillStyle = '#fff'; round(c, x, y, w, h, 10); c.fill(); c.globalAlpha = 1; }
+    c.strokeStyle = '#202334'; c.lineWidth = 2; c.lineCap = 'round';
+    if (e.type === 'bomb') {
+      c.fillStyle = '#27283a'; c.beginPath(); c.arc(cx, y + 11, 5, 0, 7); c.fill(); line(c, [[cx + 3, y + 7], [cx + 6, y + 3]]);
+      c.fillStyle = '#ff6b78'; c.beginPath(); c.arc(cx + 7, y + 2, 2.6, 0, 7); c.fill();
+    } else if (e.type === 'gift') {
+      c.fillStyle = '#234638'; c.beginPath(); c.ellipse(cx - 2, y + 10, 7, 4, 0, 0, 7); c.fill(); c.beginPath(); c.moveTo(cx + 3, y + 10); c.lineTo(cx + 10, y + 5); c.lineTo(cx + 10, y + 15); c.fill();
+    } else {
+      const eyeX = e.type === 'boss' ? 16 : 8;
+      c.fillStyle = '#252539'; c.beginPath(); c.ellipse(cx - eyeX, y + 11, 2, 3, 0, 0, 7); c.ellipse(cx + eyeX, y + 11, 2, 3, 0, 0, 7); c.fill();
+      if (e.type === 'boss') { line(c, [[cx - 24, y + 4], [cx - 12, y + 7]]); line(c, [[cx + 24, y + 4], [cx + 12, y + 7]]); }
+    }
+    c.font = `800 ${e.hp > 999 ? 15 : e.type === 'boss' ? 22 : 19}px system-ui, sans-serif`; c.textAlign = 'center'; c.fillStyle = '#252539'; c.fillText(Math.ceil(e.hp).toString(), cx, y + 34);
+    c.globalAlpha = .3; c.fillStyle = '#21253b'; round(c, x + 7, y + h - 6, w - 14, 2, 1); c.fill(); c.globalAlpha = 1;
+    c.fillStyle = '#32374e'; round(c, x + 7, y + h - 6, Math.max(2, (w - 14) * Math.max(0, e.hp / e.maxHp)), 2, 1); c.fill();
+    if (e.armor) { c.strokeStyle = '#637791'; c.lineWidth = 2; c.strokeRect(x + 3, y + 3, w - 6, h - 6); }
+    if (e.id === game.markedId) { c.strokeStyle = PALETTE.gold; c.lineWidth = 1.5; c.setLineDash([4, 4]); c.strokeRect(x - 4, y - 4, w + 8, h + 8); c.setLineDash([]); }
+  }
+  trajectory(c, game, aim, active) {
+    const dir = game.aimAt(aim.x, aim.y); if (!dir) return;
+    let x = game.playerX, y = CONFIG.launchY - 6, vx = dir.x, vy = dir.y, stop = false;
+    c.fillStyle = active ? PALETTE.gold : PALETTE.mint;
+    for (let i = 0; i < 100 && !stop; i++) {
+      x += vx * 10; y += vy * 10;
+      if (x < 20) { x = 40 - x; vx *= -1; } if (x > 400) { x = 800 - x; vx *= -1; }
+      if (y < CONFIG.top + 5) { y = 2 * (CONFIG.top + 5) - y; vy *= -1; }
+      if (y > CONFIG.launchY) break;
+      const hit = game.enemies.find(e => e.hp > 0 && x >= e.x - 5 && x <= e.x + e.w + 5 && y >= e.y - 5 && y <= e.y + e.h + 5);
+      c.globalAlpha = active ? .85 : .3;
+      if (i % 2 === 0) { c.beginPath(); c.arc(x, y, active ? 2.2 : 1.7, 0, 7); c.fill(); }
+      if (hit) { stop = true; c.globalAlpha = .7; c.strokeStyle = PALETTE.gold; c.lineWidth = 1.5; c.beginPath(); c.arc(x, y, 9 + Math.sin(this.clock * 6) * 1.5, 0, 7); c.stroke(); }
+    }
+    c.globalAlpha = 1;
+    if (game.shots === 0) {
+      c.fillStyle = PALETTE.cream; c.font = '700 15px system-ui, sans-serif'; c.textAlign = 'center';
+      c.fillText('按住瞄准 · 松手发射', 210, 387);
+      c.font = '12px system-ui, sans-serif'; c.fillStyle = PALETTE.muted; c.fillText('先试试带小炸弹的那一只', 210, 407);
+    }
+  }
+  shooter(c, game, aim) {
+    const x = game.playerX, y = CONFIG.launchY, color = CATS.find(cat => cat.id === game.cat)?.color || PALETTE.mint;
+    const d = aim ? game.aimAt(aim.x, aim.y) : { x: 0, y: -1 };
+    if (game.phase === 'aim') {
+      c.save(); c.translate(x, y); c.rotate(Math.atan2(d.x, -d.y)); c.fillStyle = PALETTE.gold;
+      round(c, -7, -28, 14, 27, 5); c.fill(); c.fillStyle = '#59606e'; round(c, -5, -29, 10, 5, 2); c.fill(); c.restore();
+    }
+    c.fillStyle = color; c.strokeStyle = '#15202d'; c.lineWidth = 2;
+    c.beginPath(); c.moveTo(x - 20, y + 7); c.lineTo(x - 19, y - 12); c.lineTo(x - 6, y - 6); c.quadraticCurveTo(x, y - 9, x + 6, y - 6); c.lineTo(x + 19, y - 12); c.lineTo(x + 20, y + 7); c.bezierCurveTo(x + 21, y + 27, x - 21, y + 27, x - 20, y + 7); c.fill(); c.stroke();
+    c.fillStyle = '#fff1dc'; c.beginPath(); c.ellipse(x, y + 11, 12, 9, 0, 0, 7); c.fill();
+    c.fillStyle = '#223041'; c.beginPath(); c.arc(x - 8, y + 4, 2, 0, 7); c.arc(x + 8, y + 4, 2, 0, 7); c.fill();
+    c.strokeStyle = '#223041'; c.lineWidth = 1.5; line(c, [[x - 3, y + 10], [x, y + 12], [x + 3, y + 10]]);
+  }
+  drawEffects(c, dt) {
+    for (const p of this.particles) {
+      p.life -= dt; p.x += p.vx * dt; p.y += p.vy * dt; p.vy += 230 * dt;
+      c.globalAlpha = Math.max(0, p.life / p.total); c.fillStyle = p.color;
+      c.fillRect(p.x, p.y, p.size, p.size * .65);
+    }
+    this.particles = this.particles.filter(p => p.life > 0); c.globalAlpha = 1;
+    for (const e of this.effects) {
+      e.life -= dt; const alpha = Math.max(0, e.life / e.total); c.globalAlpha = alpha;
+      if (e.type === 'boom') { c.strokeStyle = PALETTE.gold; c.lineWidth = 4 * alpha; c.beginPath(); c.arc(e.x, e.y, e.radius * (1 - alpha * .7), 0, 7); c.stroke(); }
+      if (e.type === 'chain') {
+        c.strokeStyle = PALETTE.purple; c.lineWidth = 3; line(c, [[e.x1, e.y1], [(e.x1 + e.x2) / 2 + 8, (e.y1 + e.y2) / 2 - 9], [(e.x1 + e.x2) / 2 - 7, (e.y1 + e.y2) / 2 + 6], [e.x2, e.y2]]);
+      }
+      if (e.type === 'laser') { c.strokeStyle = PALETTE.pink; c.lineWidth = 9 * alpha; line(c, [[15, e.y], [405, e.y]]); c.strokeStyle = PALETTE.cream; c.lineWidth = 2; c.stroke(); }
+    }
+    this.effects = this.effects.filter(e => e.life > 0);
+    for (const t of this.texts) { t.life -= dt; t.y -= dt * 28; c.globalAlpha = Math.max(0, Math.min(1, t.life * 3)); c.fillStyle = t.color; c.font = '800 17px system-ui, sans-serif'; c.textAlign = 'center'; c.strokeStyle = '#162030'; c.lineWidth = 3; c.strokeText(t.text, t.x, t.y); c.fillText(t.text, t.x, t.y); }
+    this.texts = this.texts.filter(t => t.life > 0); c.globalAlpha = 1;
+  }
+}
+
+return { Renderer };
+})();
+
+// src/audio/audio.js
+const module_5 = (() => {
+/** Original procedural pentatonic music + synth foley. Audio is never started before a gesture. */
+class AudioEngine {
+  constructor() { this.context = null; this.master = null; this.enabled = true; this.music = true; this.volume = .42; this.voices = 0; this.lastHit = -10; this.note = 0; this.nextNote = 0; this.paused = false; }
+  async unlock() {
+    if (!this.enabled) return;
+    try {
+      const Audio = window.AudioContext || window.webkitAudioContext;
+      if (!Audio) return;
+      if (!this.context) { this.context = new Audio(); this.master = this.context.createGain(); this.master.gain.value = this.volume; this.master.connect(this.context.destination); }
+      if (this.context.state === 'suspended') await this.context.resume();
+    } catch { /* Silent play remains fully functional on blocked/unsupported audio. */ }
+  }
+  setEnabled(on) { this.enabled = !!on; if (this.master && this.context) this.master.gain.setTargetAtTime(on ? this.volume : 0, this.context.currentTime, .025); }
+  setVolume(n) { this.volume = Math.max(0, Math.min(1, Number(n) || 0)); if (this.master && this.context) this.master.gain.setTargetAtTime(this.enabled ? this.volume : 0, this.context.currentTime, .025); }
+  tone(freq, duration = .1, kind = 'sine', gain = .12, slide = null, delay = 0) {
+    const a = this.context; if (!a || !this.enabled || this.paused || a.state !== 'running' || this.voices >= 18) return;
+    try {
+      const osc = a.createOscillator(), envelope = a.createGain(), t = a.currentTime + delay;
+      this.voices++; osc.type = kind; osc.frequency.setValueAtTime(freq, t); if (slide) osc.frequency.exponentialRampToValueAtTime(slide, t + duration);
+      envelope.gain.setValueAtTime(0, t); envelope.gain.linearRampToValueAtTime(gain, t + .006); envelope.gain.exponentialRampToValueAtTime(.001, t + duration);
+      osc.connect(envelope); envelope.connect(this.master); osc.start(t); osc.stop(t + duration + .025);
+      osc.onended = () => { osc.disconnect(); envelope.disconnect(); this.voices = Math.max(0, this.voices - 1); };
+    } catch { this.voices = Math.max(0, this.voices - 1); }
+  }
+  effect(name, value = 0) {
+    if (name === 'hit') { const t = this.context?.currentTime || 0; if (t - this.lastHit < .035) return; this.lastHit = t; this.tone([330, 392, 440, 523, 587][value % 5], .065, 'triangle', .07); }
+    if (name === 'shot' || name === 'click') this.tone(name === 'shot' ? 470 : 630, .09, 'sine', .15, 260);
+    if (name === 'kill') this.tone(680, .09, 'triangle', .1, 1020);
+    if (name === 'boom') { this.tone(110, .22, 'triangle', .22, 34); this.tone(60, .18, 'sawtooth', .04, 30); }
+    if (name === 'upgrade' || name === 'gift' || name === 'synergy') [523, 659, 784, 1047].forEach((f, i) => this.tone(f, .2, 'sine', .09, null, i * .065));
+    if (name === 'damage') { this.tone(180, .25, 'sawtooth', .1, 65); }
+    if (name === 'win') [523, 659, 784, 1047, 1318].forEach((f, i) => this.tone(f, .42, 'triangle', .12, null, i * .12));
+    if (name === 'lose') [392, 330, 262, 196].forEach((f, i) => this.tone(f, .3, 'sine', .12, null, i * .15));
+  }
+  update() {
+    if (!this.music || !this.enabled || this.paused || !this.context || this.context.state !== 'running') return;
+    const t = this.context.currentTime;
+    if (t < this.nextNote) return;
+    const melody = [523, 0, 659, 784, 0, 659, 587, 0, 440, 0, 523, 659, 0, 587, 392, 0];
+    const f = melody[this.note % melody.length]; if (f) this.tone(f, .28, 'sine', .035);
+    if (this.note % 4 === 0) this.tone([131, 110, 98, 110][Math.floor(this.note / 4) % 4], .42, 'triangle', .04);
+    this.note++; this.nextNote = t + .25;
+  }
+  pause(on) { this.paused = on; if (this.master && this.context) this.master.gain.setTargetAtTime(on || !this.enabled ? 0 : this.volume, this.context.currentTime, .025); }
+}
+
+return { AudioEngine };
+})();
+
+// src/ui/icons.js
+const module_6 = (() => {
+const paths = {
+  paw: '<ellipse cx="12" cy="16" rx="6" ry="4.5" fill="currentColor"/><ellipse cx="4.5" cy="9" rx="2.4" ry="3.2" fill="currentColor"/><ellipse cx="10" cy="5.8" rx="2.4" ry="3.2" fill="currentColor"/><ellipse cx="16" cy="6" rx="2.4" ry="3.2" fill="currentColor"/><ellipse cx="21" cy="10" rx="2.2" ry="3" fill="currentColor"/>',
+  bolt: '<path d="M14 2 4 14h7l-1 8 10-13h-7z" fill="currentColor" stroke="none"/>',
+  boom: '<path d="m12 1 2.7 6.2L21 4l-2.6 6.4L24 13l-6.5 2L20 22l-7-3-4 5-1-7-7 1 4-6L0 7l8 1z" fill="currentColor" stroke="none"/>',
+  split: '<path d="M12 21V12M12 12 4 4m8 8 8-8M12 12V2M2 7V2h5M17 2h5v5"/>',
+  arrow: '<path d="M2 12h18M14 5l7 7-7 7M5 4v16"/>',
+  bounce: '<path d="M3 3v18M7 20 17 12 7 5m6 0H7v6M21 4v16"/>',
+  return: '<path d="M6 7h9a6 6 0 0 1 0 12H7M9 2 4 7l5 5"/>',
+  snow: '<path d="M12 2v20M3.4 7l17.2 10M3.4 17 20.6 7M9 4l3 3 3-3M9 20l3-3 3 3"/>',
+  laser: '<path d="M2 10h7l3-7 3 7h7M2 14h7l3 7 3-7h7"/>',
+  fish: '<path d="M3 12C8 3 17 4 18 12c-1 8-10 9-15 0Zm15 0 5-5v10z"/><circle cx="8" cy="11" r="1" fill="currentColor"/>',
+  shield: '<path d="M12 2 3 6v7c0 5 9 9 9 9s9-4 9-9V6z"/><path d="m7 12 3 3 7-7"/>',
+  target: '<circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/>',
+  key: '<circle cx="8" cy="8" r="5"/><path d="m12 12 10 10m-6-6 3-3m-1 5 3-3"/>',
+  heart: '<path d="M12 21C-5 10 4-2 12 6c8-8 17 4 0 15Z" fill="currentColor" stroke="none"/>',
+  pause: '<path d="M8 4v16M16 4v16" stroke-width="4"/>',
+  play: '<path d="m7 3 15 9-15 9z" fill="currentColor" stroke="none"/>',
+  sound: '<path d="M3 9h4l6-6v18l-6-6H3zM17 7a8 8 0 0 1 0 10M20 4a12 12 0 0 1 0 16"/>',
+  mute: '<path d="M3 9h4l6-6v18l-6-6H3zM17 9l6 6m0-6-6 6"/>',
+  trophy: '<path d="M7 3h10v6c0 8-10 8-10 0ZM7 5H2v3c0 4 5 4 5 4m10-7h5v3c0 4-5 4-5 4M12 15v6M7 22h10"/>',
+  star: '<path d="m12 2 3 6 7 1-5 5 1 8-6-4-6 4 1-8-5-5 7-1Z" fill="currentColor" stroke="none"/>',
+  moon: '<path d="M21 15A10 10 0 0 1 9 2a10 10 0 1 0 12 13Z"/>',
+  book: '<path d="M12 5C8 2 4 2 2 3v17c4-2 7-1 10 1 3-2 6-3 10-1V3c-4-1-7-1-10 2Zm0 0v16"/>',
+  settings: '<path d="m9 2-1 4-4 1-2 4 3 3v4l4 3 4-2 4 1 3-4-1-4 2-4-3-3h-4z"/><circle cx="12" cy="12" r="3"/>',
+  close: '<path d="m5 5 14 14M19 5 5 19"/>',
+  share: '<path d="M12 15V2m-5 5 5-5 5 5M4 12v10h16V12"/>',
+  rewind: '<path d="M4 9a9 9 0 1 1-1 7M4 2v7h7"/>',
+  check: '<path d="m4 12 5 5L21 5"/>',
+  info: '<circle cx="12" cy="12" r="10"/><path d="M12 11v7M12 6v1"/>'
+};
+function icon(name, size = 24) { return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name] || paths.paw}</svg>`; }
+function catArt(color = '#92e3c0') {
+  return `<svg viewBox="0 0 320 238" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="薄荷猫店长推着弹珠炮守护夜市">
+  <ellipse cx="168" cy="218" rx="102" ry="12" fill="#080d16" opacity=".4"/>
+  <path d="M91 169c-47 1-55-47-28-57 27-10 40 24 14 31" fill="none" stroke="${color}" stroke-width="20" stroke-linecap="round"/>
+  <path d="M94 212c-20-56-4-111 61-116 69 2 92 47 69 116Z" fill="${color}" stroke="#121725" stroke-width="6"/>
+  <path d="m102 79-5-60 49 28 36-2 41-28-2 66c24 54-9 88-62 88-54 0-90-32-57-92Z" fill="${color}" stroke="#121725" stroke-width="6" stroke-linejoin="round"/>
+  <path d="m107 34 4 40 25-22zm104 0-4 38-20-21z" fill="#ffb3ac"/>
+  <ellipse cx="158" cy="120" rx="46" ry="35" fill="#fff1d8"/>
+  <path d="m117 88 11-3m58 0 11 4" stroke="#121725" stroke-width="7" stroke-linecap="round"/>
+  <ellipse cx="129" cy="105" rx="5" ry="7" fill="#121725"/><ellipse cx="187" cy="105" rx="5" ry="7" fill="#121725"/>
+  <path d="m151 117 7 6 7-6m-7 6v6m0 0c-6 8-15 4-15 0m15 0c6 8 15 4 15 0" fill="none" stroke="#121725" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="114" cy="121" rx="8" ry="4" fill="#ff7898"/><ellipse cx="202" cy="121" rx="8" ry="4" fill="#ff7898"/>
+  <path d="m139 160 20 14 22-14-9 30h-25z" fill="#ff7898" stroke="#121725" stroke-width="4"/>
+  <g transform="translate(222 164) rotate(-33)"><rect x="-10" y="-34" width="62" height="47" rx="15" fill="#ffe2a1" stroke="#121725" stroke-width="6"/><ellipse cx="51" cy="-10" rx="10" ry="20" fill="#27334b" stroke="#121725" stroke-width="5"/></g>
+  <path d="M113 195c3-28 36-30 42-1m19 1c5-23 35-26 39-2" fill="${color}" stroke="#121725" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="263" cy="79" r="14" fill="#fff4df"/><circle cx="285" cy="41" r="9" fill="#ff7898"/><circle cx="241" cy="13" r="5" fill="#ffe2a1"/>
+  <path d="m36 47 5 12 12 4-12 5-5 12-5-12-12-5 12-4z" fill="#ffe2a1"/><path d="m269 128 3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#92e3c0"/>
+  </svg>`;
+}
+
+return { icon, catArt };
+})();
+
+// src/platform/services.js
+const module_7 = (() => {
+const { CONFIG, CATS } = module_0;
+const { UPGRADE_BY_ID } = module_1;
+const { clamp } = module_2;
+const STORAGE_KEY = 'miaotan-nightmarket-v1';
+const INITIAL = { version: 1, runs: 0, wins: 0, stamps: 0, kills: 0, bestCombo: 0, bestWave: 0, bestScore: 0,
+  cat: 'mint', tutorialDone: false, unlocked: ['mint'], records: [], discovered: [], achievements: [],
+  settings: { sound: true, music: true, volume: .42, reducedMotion: false }, checkpoint: null };
+function defaultProfile() { return JSON.parse(JSON.stringify(INITIAL)); }
+function nonneg(n, max = 1e12) { return typeof n === 'number' && Number.isFinite(n) ? clamp(Math.floor(n), 0, max) : 0; }
+function validateProfile(raw) {
+  const p = defaultProfile(); if (!raw || raw.version !== 1 || typeof raw !== 'object') return p;
+  for (const k of ['runs', 'wins', 'stamps', 'kills', 'bestCombo', 'bestWave', 'bestScore']) p[k] = nonneg(raw[k]);
+  p.unlocked = Array.isArray(raw.unlocked) ? [...new Set(['mint', ...raw.unlocked.filter(id => CATS.some(c => c.id === id))])] : ['mint'];
+  p.cat = p.unlocked.includes(raw.cat) ? raw.cat : 'mint'; p.tutorialDone = raw.tutorialDone === true;
+  p.discovered = Array.isArray(raw.discovered) ? [...new Set(raw.discovered.filter(id => UPGRADE_BY_ID[id]))] : [];
+  p.achievements = Array.isArray(raw.achievements) ? raw.achievements.filter(id => ['boss', 'combo', 'win', 'collector'].includes(id)) : [];
+  p.records = Array.isArray(raw.records) ? raw.records.slice(0, 30).filter(r => r && typeof r === 'object' && ['normal', 'daily', 'endless'].includes(r.mode)).map(r => ({ score: nonneg(r.score), wave: nonneg(r.wave, 10000), combo: nonneg(r.combo, 1e6), victory: !!r.victory, mode: r.mode, seed: nonneg(r.seed, 4294967295), date: /^\d{4}-\d{2}-\d{2}$/.test(r.date) ? r.date : '', seconds: nonneg(r.seconds, 1e8) })) : [];
+  if (raw.settings && typeof raw.settings === 'object') {
+    p.settings.sound = raw.settings.sound !== false; p.settings.music = raw.settings.music !== false; p.settings.reducedMotion = raw.settings.reducedMotion === true;
+    p.settings.volume = typeof raw.settings.volume === 'number' && Number.isFinite(raw.settings.volume) ? clamp(raw.settings.volume, 0, 1) : .42;
+  }
+  p.checkpoint = raw.checkpoint && typeof raw.checkpoint === 'object' ? raw.checkpoint : null;
+  return p;
+}
+class StorageService {
+  constructor(backend) {
+    this.available = true; this.memory = null;
+    try { this.backend = backend === undefined ? globalThis.localStorage : backend; if (!this.backend) this.available = false; }
+    catch { this.backend = null; this.available = false; }
+  }
+  load() {
+    let text = null;
+    try { text = this.backend?.getItem(STORAGE_KEY); } catch { this.available = false; }
+    if (text && text.length < 200000) { try { return validateProfile(JSON.parse(text)); } catch { /* Corrupt data is not a storage permission failure. */ } }
+    return this.memory ? validateProfile(this.memory) : defaultProfile();
+  }
+  save(profile) { this.memory = JSON.parse(JSON.stringify(profile)); try { if (!this.backend) { this.available = false; return false; } this.backend.setItem(STORAGE_KEY, JSON.stringify(profile)); this.available = true; return true; } catch { this.available = false; return false; } }
+  reset() { this.memory = null; try { this.backend?.removeItem(STORAGE_KEY); } catch { this.available = false; } }
+}
+class AnalyticsService {
+  constructor() { this.events = []; this.session = `local-${Date.now().toString(36)}`; }
+  track(name, data = {}) { this.events.push({ name, data, timestamp: new Date().toISOString(), session: this.session }); if (this.events.length > 256) this.events.shift(); }
+  export() { return JSON.stringify({ game: 'miaotan-nightmarket', version: CONFIG.gameVersion, network: 'none', events: this.events }, null, 2); }
+}
+class LeaderboardService {
+  constructor(profile) { this.profile = profile; }
+  list(mode, daily = '') { return this.profile.records.filter(r => r.mode === mode && (mode !== 'daily' || r.date === daily)).sort((a, b) => b.score - a.score).slice(0, 10); }
+}
+class PlatformService {
+  constructor() { this.name = 'local-web'; this.capabilities = Object.freeze({ remoteLogin: false, ads: false, payment: false, cloudSave: false, globalLeaderboard: false }); }
+  async initialize() { return this.capabilities; }
+  // An actual TapTap bridge must be inserted here; no invented SDK calls or fake users.
+  async submitScore() { return { submitted: false, reason: 'LOCAL_ONLY' }; }
+}
+function recordRun(profile, game, seconds, date) {
+  profile.runs++; if (game.victory) profile.wins++;
+  profile.kills += game.kills; profile.bestCombo = Math.max(profile.bestCombo, game.maxCombo);
+  profile.bestWave = Math.max(profile.bestWave, game.wave); profile.bestScore = Math.max(profile.bestScore, game.score);
+  const earned = game.kills > 0 ? Math.min(16, 1 + Math.floor(game.kills / 9) + game.bosses * 2 + (game.victory ? 4 : 0)) : 0;
+  profile.stamps += earned;
+  const unlocked = [];
+  for (const cat of CATS) if (profile.stamps >= cat.cost && !profile.unlocked.includes(cat.id)) { profile.unlocked.push(cat.id); unlocked.push(cat.name); }
+  profile.discovered = [...new Set([...profile.discovered, ...Object.keys(game.build)])];
+  for (const [id, condition] of [['boss', game.bosses > 0], ['combo', game.maxCombo >= 50], ['win', game.victory], ['collector', profile.discovered.length >= 10]]) if (condition && !profile.achievements.includes(id)) profile.achievements.push(id);
+  profile.records.push({ score: game.score, wave: game.wave, combo: game.maxCombo, victory: game.victory, mode: game.mode, seed: game.seed, date: game.mode === 'daily' ? game.daily : date, seconds: Math.round(seconds) });
+  profile.records = profile.records.sort((a, b) => b.score - a.score).slice(0, 30); profile.checkpoint = null;
+  return { earned, unlocked };
+}
+function resultTitle(game) {
+  if (game.victory && game.hearts === 1) return '一血守摊传说';
+  if (game.maxCombo >= 150) return '整条街都在弹';
+  if (game.build.blast && game.build.laser) return '全街烟花总导演';
+  if (game.build.split && game.build.pierce) return '猫爪暴雨制造者';
+  if (game.build.spark && game.build.ice) return '雷打冰糖发明家';
+  if (game.victory) return '夜市守护喵';
+  if (game.bosses > 0) return '捣蛋王克星';
+  return '深夜开摊新星';
+}
+class ShareService {
+  constructor() { this.lastUrl = null; }
+  async card(game, seconds) {
+    const canvas = document.createElement('canvas'); canvas.width = 720; canvas.height = 960;
+    const c = canvas.getContext('2d'); if (!c) throw Error('无法生成战绩卡');
+    c.fillStyle = '#151c2c'; c.fillRect(0, 0, 720, 960);
+    c.fillStyle = '#92e3c0'; c.fillRect(44, 54, 8, 120);
+    c.fillStyle = '#fff4df'; c.font = '900 66px system-ui, sans-serif'; c.fillText('喵弹夜市', 77, 114);
+    c.font = '22px system-ui, sans-serif'; c.fillStyle = '#a6b1c9'; c.fillText('MIDNIGHT BOUNCE CLUB', 80, 159);
+    c.fillStyle = '#ff7898'; c.font = 'bold 32px system-ui, sans-serif'; c.fillText(resultTitle(game), 56, 258);
+    c.fillStyle = '#ffe2a1'; c.font = '900 102px system-ui, sans-serif'; c.fillText(game.score.toLocaleString('en-US'), 51, 377);
+    c.font = '22px system-ui, sans-serif'; c.fillStyle = '#a6b1c9'; c.fillText('本局积分 · 非全球排名', 59, 419);
+    const stats = [`第 ${game.wave} 波`, `${game.maxCombo} 连击`, `${game.bosses} 位大王`];
+    c.fillStyle = '#fff4df'; c.font = 'bold 28px system-ui, sans-serif'; stats.forEach((t, i) => c.fillText(t, 56 + i * 224, 495));
+    c.strokeStyle = '#364258'; c.beginPath(); c.moveTo(56, 541); c.lineTo(665, 541); c.stroke();
+    c.font = '22px system-ui, sans-serif'; c.fillStyle = '#92e3c0'; c.fillText('这一局的秘密配方', 56, 589);
+    Object.entries(game.build).slice(0, 8).forEach(([id, lv], i) => {
+      c.fillStyle = '#293249'; c.fillRect(56 + (i % 2) * 310, 619 + Math.floor(i / 2) * 50, 293, 38);
+      c.fillStyle = '#fff4df'; c.font = '21px system-ui, sans-serif'; c.fillText(`${UPGRADE_BY_ID[id]?.name || id} ${'I'.repeat(lv)}`, 70 + (i % 2) * 310, 646 + Math.floor(i / 2) * 50);
+    });
+    c.fillStyle = '#a6b1c9'; c.font = '19px system-ui, sans-serif';
+    c.fillText(`${game.mode === 'daily' ? '每日同题 ' + game.daily : game.mode === 'endless' ? '无尽夜班' : '夜市保卫战'} · ${Math.round(seconds)} 秒`, 56, 865);
+    c.fillText(`种子 ${game.seed} · 单指弹射 / 改装 / 连锁`, 56, 899);
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    if (!blob) throw Error('浏览器不支持图片导出');
+    if (this.lastUrl) URL.revokeObjectURL(this.lastUrl); this.lastUrl = URL.createObjectURL(blob);
+    return { blob, url: this.lastUrl };
+  }
+  async nativeShare(blob) {
+    const file = new File([blob], 'miaotan-score.png', { type: 'image/png' });
+    if (navigator.canShare?.({ files: [file] })) { await navigator.share({ title: '喵弹夜市', files: [file] }); return true; }
+    return false;
+  }
+}
+
+return { defaultProfile, validateProfile, StorageService, AnalyticsService, LeaderboardService, PlatformService, recordRun, resultTitle, ShareService };
+})();
+
+// src/main.js
+const module_8 = (() => {
+const { CONFIG, CATS, ENEMY_NAMES } = module_0;
+const { UPGRADES, UPGRADE_BY_ID, SYNERGIES, activeSynergies } = module_1;
+const { hashSeed, dailyKey, clamp } = module_2;
+const { Engine } = module_3;
+const { Renderer } = module_4;
+const { AudioEngine } = module_5;
+const { icon, catArt } = module_6;
+const { StorageService, AnalyticsService, LeaderboardService, PlatformService, ShareService, recordRun, resultTitle } = module_7;
+const $ = id => document.getElementById(id);
+const storage = new StorageService(), analytics = new AnalyticsService(), platform = new PlatformService(), share = new ShareService();
+let profile = storage.load();
+const audio = new AudioEngine(), renderer = new Renderer($('board'));
+let game = null, home = true, paused = false, aux = null, panelReturn = 'home';
+let aim = { x: 208, y: 190 }, pointer = null, speed = 1, lastPhase = '', lastOverlay = '';
+let activeSeconds = 0, runId = '', recorded = false, earnings = { earned: 0, unlocked: [] };
+let accumulator = 0, lastFrame = 0, statClock = 0, toastUntil = 0, shareCard = null, recordMode = 'normal';
+let frameSamples = [], returnFocus = null;
+const query = new URLSearchParams(location.search), debug = query.has('debug');
+const today = () => dailyKey();
+analytics.track('game_open', { version: CONFIG.gameVersion, platform: platform.name });
+void platform.initialize();
+
+function save() { storage.save(profile); $('storage-warning').hidden = storage.available; document.querySelector('.phone').classList.toggle('storage-blocked', !storage.available); }
+function applySettings() {
+  audio.enabled = profile.settings.sound; audio.music = profile.settings.music;
+  audio.setVolume(profile.settings.volume); audio.setEnabled(profile.settings.sound);
+  renderer.reducedMotion = profile.settings.reducedMotion || matchMedia('(prefers-reduced-motion: reduce)').matches;
+  updateSoundButtons();
+}
+function updateSoundButtons() {
+  for (const id of ['sound', 'home-sound']) { $(id).innerHTML = icon(profile.settings.sound ? 'sound' : 'mute', 19); $(id).setAttribute('aria-label', profile.settings.sound ? '关闭声音' : '开启声音'); }
+}
+function toast(text, seconds = 2.4) { $('toast').textContent = text; $('toast').classList.add('visible'); toastUntil = performance.now() + seconds * 1000; }
+function syncSize() {
+  document.documentElement.style.setProperty('--vh', `${Math.round(window.visualViewport?.height || window.innerHeight)}px`);
+  if (!home) { const r = $('board-holder').getBoundingClientRect(); renderer.resize(r.width, r.height, window.devicePixelRatio || 1); }
+}
+function renderHome() {
+  const cat = CATS.find(c => c.id === profile.cat) || CATS[0];
+  $('brand-paw').innerHTML = icon('paw', 19); $('hero-art').innerHTML = catArt(cat.color);
+  $('cat-picker').innerHTML = CATS.map(c => {
+    const locked = !profile.unlocked.includes(c.id);
+    return `<button class="cat-option ${profile.cat === c.id ? 'selected' : ''} ${locked ? 'locked' : ''}" data-cat="${c.id}" aria-pressed="${profile.cat === c.id}"><span style="color:${c.color}">${icon('paw', 14)} ${c.name}</span><small>${locked ? `累计 ${c.cost} 印章解锁` : c.role}</small></button>`;
+  }).join('');
+  $('cat-info').textContent = `${cat.description} · 印章 ${profile.stamps}`;
+  $('continue').hidden = !profile.checkpoint;
+  $('daily').innerHTML = `${icon('moon', 17)} 今日同题`;
+  $('endless').innerHTML = `${icon('star', 17)} ${profile.achievements.includes('boss') ? '无尽夜班' : '无尽 · 击退大王解锁'}`;
+  $('daily-note').textContent = `${today()} · 每日固定种子 / 薄荷店长 / 本机比成绩`;
+  $('collection').innerHTML = `${icon('book', 19)}<span>改装手册 ${profile.discovered.length}/12</span>`;
+  $('records').innerHTML = `${icon('trophy', 19)}<span>本机战绩</span>`;
+  $('settings').innerHTML = `${icon('settings', 19)}<span>设置与说明</span>`;
+  updateSoundButtons();
+}
+function randomSeed() {
+  if (/^\d{1,10}$/.test(query.get('seed') || '')) return Number(query.get('seed')) >>> 0;
+  try { const n = new Uint32Array(1); crypto.getRandomValues(n); return n[0]; } catch { return Date.now() >>> 0; }
+}
+function begin(mode = 'normal', resume = false, seedOverride = null) {
+  void audio.unlock(); audio.pause(false);
+  if (resume) {
+    try { game = Engine.restore(profile.checkpoint.engine); activeSeconds = Math.max(0, Math.min(1e8, Number(profile.checkpoint.activeSeconds) || 0)); runId = `resume-${Date.now().toString(36)}`; }
+    catch { profile.checkpoint = null; save(); renderHome(); toast('上局存档格式异常，已安全清理。请重新开摊。'); return; }
+  } else {
+    const seed = mode === 'daily' ? hashSeed(`miaotan-v1-${today()}`) : (seedOverride === null ? randomSeed() : seedOverride >>> 0);
+    game = new Engine({ seed, mode, cat: mode === 'daily' ? 'mint' : profile.cat, daily: mode === 'daily' ? today() : '' });
+    activeSeconds = 0; runId = `run-${seed}-${Date.now().toString(36)}`;
+    if (!profile.tutorialDone) analytics.track('tutorial_start', { runId });
+  }
+  analytics.track('run_start', { runId, seed: game.seed, mode: game.mode, cat: game.cat, resume });
+  home = false; paused = false; aux = null; recorded = false; lastPhase = ''; lastOverlay = '';
+  accumulator = 0; speed = 1; pointer = null; shareCard = null;
+  aim = { x: game.shots ? game.playerX : 208, y: game.shots ? 150 : 190 };
+  $('home').hidden = true; $('game').hidden = false; renderer.clearEffects();
+  $('pause').innerHTML = icon('pause', 19); $('speed').textContent = '演出 ×1'; $('speed').classList.remove('active');
+  syncSize(); syncPhase(); updateStats(); updateLoadout();
+  $('board').focus({ preventScroll: true });
+}
+function checkpoint() {
+  if (!game) return;
+  const state = game.snapshot();
+  if (state) profile.checkpoint = { engine: state, activeSeconds: Math.round(activeSeconds), runId };
+  save();
+}
+function fire(x, y) {
+  if (home || paused || aux || game.phase !== 'aim') return false;
+  checkpoint();
+  const success = game.shoot(x, y);
+  if (success) {
+    if (game.shots === 1) {
+      analytics.track('first_action', { runId, seconds: Math.round(activeSeconds * 10) / 10 });
+      if (!profile.tutorialDone) { profile.tutorialDone = true; analytics.track('tutorial_complete', { runId }); save(); }
+    }
+    audio.effect('shot'); syncPhase(); updateStats();
+  }
+  return success;
+}
+function pauseGame() {
+  if (home || !game || game.phase === 'end') return;
+  paused = true; pointer = null; audio.pause(true); checkpoint(); lastOverlay = ''; renderOverlay();
+}
+function resumeGame() { paused = false; aux = null; accumulator = 0; audio.pause(false); void audio.unlock(); lastOverlay = ''; renderOverlay(); $('board').focus({ preventScroll: true }); }
+function goHome() {
+  if (game && game.phase !== 'end') checkpoint();
+  home = true; paused = false; aux = null; pointer = null; accumulator = 0; lastOverlay = '';
+  audio.pause(false); $('game').hidden = true; $('home').hidden = false; renderHome(); renderOverlay();
+}
+function showPanel(name) {
+  panelReturn = home ? 'home' : paused ? 'pause' : game?.phase === 'end' ? 'result' : 'game';
+  if (!home && game?.phase !== 'end') { paused = true; audio.pause(true); checkpoint(); }
+  aux = name; lastOverlay = ''; renderOverlay();
+}
+function closePanel() {
+  aux = null;
+  if (panelReturn === 'game') { paused = false; audio.pause(false); }
+  lastOverlay = ''; renderOverlay();
+}
+function syncPhase() {
+  if (!game || lastPhase === game.phase) return;
+  lastPhase = game.phase;
+  if (game.phase === 'aim' || game.phase === 'reward') checkpoint();
+  if (game.phase === 'end' && !recorded) {
+    recorded = true;
+    earnings = recordRun(profile, game, activeSeconds, today()); save();
+    analytics.track('run_end', { runId, victory: game.victory, wave: game.wave, score: game.score, maxCombo: game.maxCombo, seconds: Math.round(activeSeconds), build: { ...game.build } });
+    for (const cat of earnings.unlocked) analytics.track('progression_unlock', { cat, runId });
+    audio.effect(game.victory ? 'win' : 'lose');
+  }
+  lastOverlay = ''; renderOverlay(); updateStats(); updateLoadout();
+}
+function handleEvents(events) {
+  renderer.consume(events);
+  let killSound = false, boomSound = false;
+  for (const e of events) {
+    if (e.type === 'hit') audio.effect('hit', game.combo);
+    if (e.type === 'kill') killSound = true;
+    if (e.type === 'boom') boomSound = true;
+    if (e.type === 'damage') audio.effect('damage');
+    if (e.type === 'boss') { toast(`第 ${e.wave} 波 · 捣蛋王来捣乱！别让它越线。`, 3.1); }
+    if (e.type === 'rush') toast('夜宵潮来了！从本波起，每轮敌人前进 2 格。', 5);
+    if (e.type === 'bossKill') toast('捣蛋王退散！恢复 1 心。');
+    if (e.type === 'shield') toast('连击撑起了喵爪护盾！');
+    if (e.type === 'hunter') toast('标记已击破，本轮剩余弹珠更强！');
+    if (e.type === 'synergy') { toast(`配方成型：${e.name}`, 3); audio.effect('synergy'); }
+    if (e.type === 'recall') toast('本轮弹珠已回收，下一轮继续。', 1.4);
+    if (e.type === 'upgrade') { analytics.track('upgrade_select', { runId, id: e.id, level: e.level, wave: game.wave }); audio.effect('upgrade'); }
+  }
+  if (boomSound) audio.effect('boom'); else if (killSound) audio.effect('kill');
+}
+function updateStats() {
+  if (home || !game) return;
+  $('mode-label').textContent = `${debug ? '调试 · ' : ''}${game.mode === 'daily' ? '今日同题 ' + game.daily.slice(5) : game.mode === 'endless' ? '无尽夜班' : '夜市保卫战'}`;
+  $('wave-label').innerHTML = `${String(game.wave).padStart(2, '0')} <small>${game.mode === 'endless' ? '/ ∞' : game.wave > 18 ? '清场中' : '/ 18'}</small>`;
+  $('score-label').textContent = Math.round(game.score).toLocaleString('en-US');
+  $('hearts').innerHTML = Array.from({ length: CONFIG.maxHearts }, (_, i) => icon('heart', 15).replace('<svg ', `<svg class="${i < game.hearts ? '' : 'empty'}" `)).join('');
+  $('hearts').setAttribute('aria-label', `剩余 ${game.hearts} 颗心`);
+  $('shield-label').innerHTML = game.shields ? `${icon('shield', 12)} ${game.shields}` : '';
+  $('combo-label').textContent = game.phase === 'flight' ? `${game.combo} 连击${game.combo >= 25 ? '！' : ''}` : `最高 ${game.maxCombo} 连击`;
+  $('wave-track').innerHTML = Array.from({ length: 18 }, (_, i) => `<span class="wave-pip ${(i + 1) % 6 === 0 ? 'boss' : ''} ${i + 1 < game.wave ? 'done' : i + 1 === game.wave ? 'current' : ''}"></span>`).join('');
+  $('ball-label').textContent = `${game.ballCount} 颗弹珠 · ${game.damage} 基础伤害`;
+  $('action-hint').textContent = game.phase === 'flight' ? '弹珠出击中 · 可切换演出速度' : game.wave >= CONFIG.rushWave ? '夜宵潮 · 每轮前进 2 格，优先救险' : '借墙反弹，打到背面更赚';
+}
+function updateLoadout() {
+  if (!game) return;
+  $('loadout').innerHTML = Object.entries(game.build).map(([id, level]) => `<button class="loadout-chip ${UPGRADE_BY_ID[id].color}" data-loadout="${id}" aria-label="${UPGRADE_BY_ID[id].name} ${level}级">${icon(UPGRADE_BY_ID[id].icon, 16)}<small>${level}</small></button>`).join('') + `<span class="loadout-note">${activeSynergies(game.build).map(s => s.name).join(' / ') || '点击图标查看改装'}</span>`;
+}
+function heading(title, label = '') { return `<div class="modal-head"><h2>${title}</h2><button class="icon-button" data-action="close" aria-label="关闭菜单">${icon('close', 19)}</button></div>${label ? `<p class="sub">${label}</p>` : ''}`; }
+function rewardHtml() {
+  return `<p class="modal-overline">CHOOSE YOUR SECRET RECIPE</p><h2>加点料，继续开摊。</h2><p class="sub">本局改装三选一。搭出连锁，不只堆数字。</p><div class="reward-list">${game.offers.map((id, i) => {
+    const u = UPGRADE_BY_ID[id];
+    if (!u) return `<button class="upgrade-card" data-upgrade="${id}">${icon('heart')}<div><h3>${id === 'repair' ? '补给一颗心' : id === 'shield' ? '补充一层护盾' : '多一颗弹珠'}</h3><p>改装池即将集齐，补充本局资源。</p></div></button>`;
+    const lv = game.build[id] || 0;
+    const synergy = SYNERGIES.find(s => s.needs.includes(id) && !activeSynergies(game.build).some(a => a.id === s.id) && s.needs.filter(n => n !== id).every(n => game.build[n]));
+    return `<button class="upgrade-card" data-upgrade="${id}" aria-label="选择${u.name}"><span class="upgrade-icon ${u.color}">${icon(u.icon, 28)}</span><span class="upgrade-body"><h3>${u.name}<em>${lv ? `升至 ${lv + 1} 级` : '新机制'} · ${u.tag}</em></h3><p>${u.descriptions[lv]}</p>${synergy ? `<span class="synergy-hint">配方即将成型：${synergy.name}</span>` : ''}</span></button>`;
+  }).join('')}</div><div class="reward-actions"><button data-action="reroll" ${game.rerolls ? '' : 'disabled'}>${icon('rewind', 14)} 换一批 · 剩 ${game.rerolls} 次</button><button data-action="repair">不改装，恢复 1 心</button></div>`;
+}
+function resultHtml() {
+  return `<p class="modal-overline">${game.victory ? 'THE NIGHT IS OURS' : 'ONE MORE BOUNCE?'}</p><h2>${resultTitle(game)}</h2><p class="sub">${game.victory ? '夜市守住了，今天准时收摊。' : '这次先收摊。下一局，换一种配方。'}</p><div class="score-result">${game.score.toLocaleString('en-US')}</div><div class="score-caption">本局营业积分 · 仅保存在本机</div><div class="result-stats"><div><b>${game.wave}</b><small>到达波次</small></div><div><b>${game.maxCombo}</b><small>最高连击</small></div><div><b>${Math.round(activeSeconds)}s</b><small>有效游玩时间</small></div></div><div class="result-build">${Object.entries(game.build).map(([id, lv]) => `<span>${UPGRADE_BY_ID[id].name} ${'I'.repeat(lv)}</span>`).join('')}</div><div class="earned">夜市印章 +${earnings.earned} · 累计 ${profile.stamps}${earnings.unlocked.length ? `<br>新店长已解锁：${earnings.unlocked.join('、')}` : '<br>累计 8 / 20 印章解锁新店长，无需消耗。'}</div><button class="button primary full" data-action="restart">${icon('rewind', 18)} 再弹一局</button><button class="button secondary full" data-action="share">${icon('share', 17)} 生成本局战绩卡</button><div class="modal-footer"><button class="text-button" data-action="home">回夜市</button><button class="text-button" data-action="same-seed">同种子再挑战</button></div>`;
+}
+function settingsHtml() {
+  const s = profile.settings;
+  return `${heading('摊位设置')}<div class="settings-row"><span>总声音</span><button class="switch ${s.sound ? 'on' : ''}" role="switch" aria-checked="${s.sound}" aria-label="总声音" data-setting="sound"></button></div><div class="settings-row"><span>夜市背景音乐</span><button class="switch ${s.music ? 'on' : ''}" role="switch" aria-checked="${s.music}" aria-label="背景音乐" data-setting="music"></button></div><div class="settings-row"><label for="volume">音量</label><input id="volume" type="range" min="0" max="100" value="${Math.round(s.volume * 100)}"></div><div class="settings-row"><span>减少屏幕震动</span><button class="switch ${s.reducedMotion ? 'on' : ''}" role="switch" aria-checked="${s.reducedMotion}" aria-label="减少屏幕震动" data-setting="reducedMotion"></button></div><button class="button secondary full" data-action="help">${icon('info', 16)} 玩法与怪物说明</button><p class="legal-note">不登录，不加载广告，不连接任何统计服务。存档和本机榜存于当前浏览器；清理浏览器数据会清除进度。每日同题使用 UTC+8 日期，不是全球联网排行榜。<br>中途刷新会回到本轮发射前；没有云存档。</p><button class="button secondary full" data-action="export-events">导出本次会话事件 JSON</button><button class="text-button" data-action="reset-prompt">清空本机游戏进度</button>`;
+}
+function collectionHtml() {
+  const achievements = [['boss', '捣蛋王克星 · 击退一位大王'], ['combo', '全街连击 · 单轮 50 次命中'], ['win', '今晚不加班 · 保卫战通关'], ['collector', '夜市百事通 · 发现 10 种改装']];
+  return `${heading('秘密配方手册', `已发现 ${profile.discovered.length} / 12 种改装。所有改装从第一局起都可抽到。`)}<div class="collection-grid">${UPGRADES.map(u => `<div class="collection-item ${profile.discovered.includes(u.id) ? '' : 'unseen'}"><span class="${u.color}">${icon(u.icon, 25)}</span><b>${u.name}</b><p>${u.descriptions[0]}</p></div>`).join('')}</div><p class="modal-overline" style="margin-top:20px">夜市纪念章</p>${achievements.map(([id, text]) => `<div class="achievement">${icon(profile.achievements.includes(id) ? 'check' : 'star', 15)} ${text}</div>`).join('')}<p class="legal-note">玩法提示：雷链＋冰糖、分裂＋穿心、爆破＋热线、借墙＋回头客，会产生不同的连锁方式。</p>`;
+}
+function recordsHtml() {
+  const list = new LeaderboardService(profile).list(recordMode, today());
+  return `${heading('本机战绩', '没有虚构全球排名。仅显示当前浏览器保存的成绩。')}<div class="home-secondary" style="grid-template-columns:repeat(3,1fr)">${[['normal', '保卫战'], ['daily', '今日同题'], ['endless', '无尽']].map(([id, name]) => `<button class="button ${recordMode === id ? 'primary' : 'secondary'}" data-record-mode="${id}">${name}</button>`).join('')}</div>${list.length ? list.map((r, i) => `<div class="record-row"><span class="rank">${i + 1}</span><div>${r.victory ? '守住夜市' : '第 ' + r.wave + ' 波'} · ${r.combo} 连击<small>${r.date} · ${r.seconds} 秒 · 种子 ${r.seed}</small></div><b>${r.score.toLocaleString('en-US')}</b></div>`).join('') : '<div class="empty-state">这里还没有战绩。<br>结束一局后，留下你的第一枚脚印。</div>'}`;
+}
+function helpHtml() {
+  return `${heading('夜市营业指南')}<div class="help-section"><b>怎么打？</b><br>在场内按住并移动手指瞄准，松手发射；也可以直接点一个方向。电脑使用鼠标，或左右方向键＋空格。瞄准线只预览首个接触点，不预测升级后的所有连锁。</div><div class="help-section"><b>怎么赢？</b><br>保卫战共有 18 波来敌；第 6、12、18 波出现大王。发射结束后，敌人前进一格；第 13 波起进入夜宵潮，每轮前进两格。普通敌人越线消耗护盾或 1 心，大王越线直接结束。最后一波之后清空场地即获胜。没有倒计时逼你操作。</div><div class="help-section"><b>看懂场上的朋友</b><span class="enemy-legend gold">● 爆米花怪：击破炸到邻居。</span><span class="enemy-legend mint">● 招财鱼罐：击破，本局多 1 颗弹珠。</span><span class="enemy-legend blue">● 铁皮罐头：带甲时减伤；同一弹珠连续命中或开锁器可卸甲。</span><span class="enemy-legend pink">● 捣蛋王：血多、体型大；击退回复 1 心。</span></div><div class="help-section"><b>为什么要再来一局？</b><br>改装每局重置，印章和新店长永久保留。先体验借墙蓄力，再试爆破或雷电开局。每日同题人人固定同一个种子和店长；本版仅比较本机成绩。完成一局并击退大王后，解锁无尽模式；无尽第 18 波后敌人强度会加速增长。</div><div class="help-section"><b>重要的小细节</b><br>最后落回的弹珠不用等：演出最长 11 秒会自动回收，也可手动切换演出速度。切后台会暂停，回到页面点击继续。刷新回到本轮发射前。存档不可用时会明确提醒。</div><button class="button primary full" data-action="back-settings">明白，回到设置</button>`;
+}
+function renderOverlay() {
+  let kind = aux || (!home && paused ? 'pause' : !home && game?.phase === 'reward' ? 'reward' : !home && game?.phase === 'end' ? 'result' : '');
+  const key = `${kind}|${game?.offers?.join(',') || ''}|${recordMode}|${kind === 'settings' ? JSON.stringify(profile.settings) : ''}`;
+  if (lastOverlay === key) return; lastOverlay = key;
+  $('modal-layer').hidden = !kind; $('home').inert = !!kind; $('game').inert = !!kind;
+  if (!kind) { if (returnFocus?.isConnected && !returnFocus.closest('[hidden]')) returnFocus.focus({ preventScroll: true }); returnFocus = null; return; }
+  if (!returnFocus) returnFocus = document.activeElement;
+  let html = '';
+  if (kind === 'reward') html = rewardHtml();
+  if (kind === 'result') html = resultHtml();
+  if (kind === 'pause') html = `<p class="modal-overline">THE NIGHT CAN WAIT</p><h2>先歇一下。</h2><p class="sub">弹珠停在原地，夜市也会等你。</p><div class="pause-list"><button class="button primary" data-action="resume">${icon('play', 17)} 继续营业</button><button class="button secondary" data-action="settings">${icon('settings', 17)} 声音与设置</button><button class="button secondary" data-action="home">保存本轮，返回夜市</button><button class="text-button" data-action="abandon">结束本局并结算</button></div><p class="pause-tip">即时暂停可原地继续；刷新或返回主页后<br>会回到本轮发射之前，不会自动代打。</p>`;
+  if (kind === 'settings') html = settingsHtml();
+  if (kind === 'collection') html = collectionHtml();
+  if (kind === 'records') html = recordsHtml();
+  if (kind === 'help') html = helpHtml();
+  if (kind === 'reset') html = `${heading('清空本机进度？')}<p class="sub">这会删除当前浏览器内的店长解锁、战绩和未结束对局。不可恢复。</p><button class="button secondary full" data-action="back-settings">保留进度</button><button class="button full pink" data-action="reset-confirm">确认清空</button>`;
+  if (kind === 'share') html = `${heading('把名场面带走')}<img class="share-image" src="${shareCard?.url || ''}" alt="本局积分、连击和改装配方战绩卡"><a class="button primary full" href="${shareCard?.url || '#'}" download="miaotan-score.png">保存战绩卡 PNG</a><button class="button secondary full" data-action="native-share">系统分享</button><p class="legal-note">浏览器不支持保存时，可长按图片保存。战绩卡不包含姓名或账号信息。</p>`;
+  $('modal').innerHTML = html; $('modal').setAttribute('aria-label', { reward: '选择本局改装', result: '本局结算', pause: '游戏暂停', settings: '游戏设置', records: '本机战绩', share: '战绩卡', collection: '改装手册', help: '游戏说明', reset: '清空存档确认' }[kind] || '游戏菜单');
+  $('modal').scrollTop = 0; $('modal').focus({ preventScroll: true });
+}
+function exportText(text, name) {
+  const blob = new Blob([text], { type: 'application/json' }), url = URL.createObjectURL(blob), a = document.createElement('a');
+  a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1500);
+}
+async function action(name) {
+  if (name === 'resume') resumeGame();
+  if (name === 'home') goHome();
+  if (name === 'close') closePanel();
+  if (name === 'settings') showPanel('settings');
+  if (name === 'help') { aux = 'help'; lastOverlay = ''; renderOverlay(); }
+  if (name === 'back-settings') { aux = 'settings'; lastOverlay = ''; renderOverlay(); }
+  if (name === 'reset-prompt') { aux = 'reset'; lastOverlay = ''; renderOverlay(); }
+  if (name === 'reset-confirm') { storage.reset(); profile = storage.load(); game = null; applySettings(); goHome(); toast('已清空本机进度。'); }
+  if (name === 'reroll' && game?.reroll()) { checkpoint(); lastOverlay = ''; renderOverlay(); audio.effect('click'); }
+  if (name === 'repair' && game?.skipUpgrade()) { handleEvents(game.drainEvents()); syncPhase(); }
+  if (name === 'restart' || name === 'same-seed') {
+    if (!game) return;
+    const mode = game.mode, seed = game.seed; analytics.track('restart', { mode, sameSeed: name === 'same-seed', runId });
+    begin(mode, false, name === 'same-seed' ? seed : null);
+  }
+  if (name === 'abandon' && game) { aux = null; paused = false; audio.pause(false); game.end(false, '主动收摊'); handleEvents(game.drainEvents()); syncPhase(); }
+  if (name === 'export-events') exportText(analytics.export(), 'miaotan-local-events.json');
+  if (name === 'share' && game) {
+    try { shareCard = await share.card(game, activeSeconds); showPanel('share'); analytics.track('share_card_create', { runId }); }
+    catch (e) { toast(e.message || '战绩卡暂时无法生成'); }
+  }
+  if (name === 'native-share' && shareCard) {
+    try { if (!await share.nativeShare(shareCard.blob)) toast('当前浏览器不支持系统分享，请使用保存图片。'); }
+    catch (e) { if (e.name !== 'AbortError') toast('分享未完成，请保存图片后分享。'); }
+  }
+}
+$('start').addEventListener('click', () => begin('normal'));
+$('continue').addEventListener('click', () => begin('normal', true));
+$('daily').addEventListener('click', () => begin('daily'));
+$('endless').addEventListener('click', () => profile.achievements.includes('boss') ? begin('endless') : toast('在保卫战中击退一位捣蛋王，即可解锁无尽夜班。'));
+$('cat-picker').addEventListener('click', e => {
+  const id = e.target.closest('[data-cat]')?.dataset.cat; if (!id) return;
+  if (!profile.unlocked.includes(id)) { const cat = CATS.find(c => c.id === id); toast(`${cat.name}：${cat.description} 累计 ${cat.cost} 印章可解锁。`, 3); return; }
+  profile.cat = id; save(); renderHome(); audio.effect('click');
+});
+for (const panel of ['settings', 'records', 'collection']) $(panel).addEventListener('click', () => showPanel(panel));
+for (const id of ['sound', 'home-sound']) $(id).addEventListener('click', () => { profile.settings.sound = !profile.settings.sound; applySettings(); if (profile.settings.sound) void audio.unlock(); save(); });
+$('pause').addEventListener('click', pauseGame);
+$('speed').addEventListener('click', () => { speed = speed === 1 ? 2 : speed === 2 ? 3 : 1; $('speed').textContent = `演出 ×${speed}`; $('speed').classList.toggle('active', speed !== 1); });
+$('loadout').addEventListener('click', e => { const id = e.target.closest('[data-loadout]')?.dataset.loadout; if (id) toast(`${UPGRADE_BY_ID[id].name} ${game.build[id]}级：${UPGRADE_BY_ID[id].descriptions[game.build[id] - 1]}`, 3.2); });
+$('modal').addEventListener('click', e => {
+  const up = e.target.closest('[data-upgrade]');
+  if (up && game?.chooseUpgrade(up.dataset.upgrade)) { handleEvents(game.drainEvents()); syncPhase(); return; }
+  const setting = e.target.closest('[data-setting]');
+  if (setting) { const id = setting.dataset.setting; profile.settings[id] = !profile.settings[id]; applySettings(); if (profile.settings.sound) void audio.unlock(); save(); lastOverlay = ''; renderOverlay(); return; }
+  const recordTab = e.target.closest('[data-record-mode]');
+  if (recordTab) { recordMode = recordTab.dataset.recordMode; lastOverlay = ''; renderOverlay(); return; }
+  const button = e.target.closest('[data-action]'); if (button && !button.disabled) { void audio.unlock(); void action(button.dataset.action); }
+});
+$('modal').addEventListener('input', e => { if (e.target.id === 'volume') { profile.settings.volume = Number(e.target.value) / 100; audio.setVolume(profile.settings.volume); save(); } });
+function pointerPoint(e) { const r = $('board').getBoundingClientRect(); return { x: (e.clientX - r.left) * CONFIG.width / r.width, y: (e.clientY - r.top) * CONFIG.height / r.height }; }
+$('board').addEventListener('pointerdown', e => {
+  if (home || paused || aux || game.phase !== 'aim' || pointer !== null || (e.pointerType === 'mouse' && e.button !== 0)) return;
+  e.preventDefault(); pointer = e.pointerId; aim = pointerPoint(e); void audio.unlock();
+  try { $('board').setPointerCapture(e.pointerId); } catch { /* Pointer capture is optional. */ }
+});
+$('board').addEventListener('pointermove', e => {
+  if (!home && !paused && !aux && game.phase === 'aim' && (pointer === e.pointerId || e.pointerType === 'mouse' && pointer === null)) { aim = pointerPoint(e); if (pointer !== null) e.preventDefault(); }
+});
+$('board').addEventListener('pointerup', e => {
+  if (pointer !== e.pointerId) return; e.preventDefault(); aim = pointerPoint(e); pointer = null;
+  try { $('board').releasePointerCapture(e.pointerId); } catch { /* Some WebViews release automatically. */ }
+  fire(aim.x, aim.y);
+});
+$('board').addEventListener('pointercancel', () => { pointer = null; });
+$('board').addEventListener('lostpointercapture', () => { pointer = null; });
+$('board').addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', e => {
+  if (!$('modal-layer').hidden && e.key === 'Tab') {
+    const all = [...$('modal').querySelectorAll('button:not(:disabled),a[href],input,[tabindex="0"]')];
+    if (!all.length) return;
+    const first = all[0], last = all.at(-1);
+    if (e.shiftKey && (document.activeElement === first || document.activeElement === $('modal'))) { last.focus(); e.preventDefault(); }
+    else if (!e.shiftKey && (document.activeElement === last || document.activeElement === $('modal'))) { first.focus(); e.preventDefault(); }
+    return;
+  }
+  if (e.key === 'Escape') { if (aux) closePanel(); else if (paused) resumeGame(); else pauseGame(); e.preventDefault(); return; }
+  if (home || paused || aux || game?.phase !== 'aim' || ['INPUT', 'BUTTON', 'A'].includes(document.activeElement?.tagName)) return;
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+    const d = game.aimAt(aim.x, aim.y), a = clamp(Math.atan2(d.x, -d.y) + (e.key === 'ArrowLeft' ? -.055 : .055), -1.28, 1.28);
+    aim = { x: game.playerX + Math.sin(a) * 400, y: CONFIG.launchY - Math.cos(a) * 400 }; e.preventDefault();
+  }
+  if (e.code === 'Space' || e.key === 'Enter') { fire(aim.x, aim.y); e.preventDefault(); }
+});
+window.addEventListener('resize', syncSize); window.visualViewport?.addEventListener('resize', syncSize);
+if ('ResizeObserver' in window) new ResizeObserver(() => { if (!home) syncSize(); }).observe($('board-holder'));
+document.addEventListener('visibilitychange', () => { if (document.hidden) pauseGame(); });
+window.addEventListener('blur', () => { if (!aux) pauseGame(); });
+window.addEventListener('pagehide', () => { if (!home && game?.phase !== 'end') checkpoint(); });
+window.addEventListener('pageshow', e => { if (e.persisted) pauseGame(); syncSize(); });
+
+function frame(now) {
+  const rawDt = lastFrame ? (now - lastFrame) / 1000 : 0; const dt = Math.min(.075, rawDt); lastFrame = now;
+  if (rawDt > 0 && rawDt < 1 && !home && !paused) { frameSamples.push(rawDt * 1000); if (frameSamples.length > 1200) frameSamples.shift(); }
+  if (!home && game) {
+    if (!paused && !aux && game.phase !== 'end') {
+      activeSeconds += dt;
+      if (game.phase === 'flight') {
+        accumulator += dt * speed; let steps = 0;
+        while (accumulator >= CONFIG.fixedStep && steps++ < 30 && game.phase === 'flight') { game.step(); accumulator -= CONFIG.fixedStep; }
+        if (steps >= 30 || game.phase !== 'flight') accumulator = 0;
+      } else accumulator = 0;
+    }
+    handleEvents(game.drainEvents()); syncPhase();
+    renderer.draw(paused ? 0 : dt, game, aim, pointer !== null, paused || !!aux);
+    statClock += dt; if (statClock > .12) { statClock = 0; updateStats(); }
+  }
+  if (!document.hidden) audio.update();
+  if (toastUntil && now > toastUntil) { $('toast').classList.remove('visible'); toastUntil = 0; }
+  requestAnimationFrame(frame);
+}
+try {
+  if (profile.checkpoint) { try { Engine.restore(profile.checkpoint.engine); } catch { profile.checkpoint = null; save(); } }
+  applySettings(); renderHome(); syncSize(); $('storage-warning').hidden = storage.available; document.querySelector('.phone').classList.toggle('storage-blocked', !storage.available);
+  requestAnimationFrame(frame);
+} catch (error) { const p = document.createElement('p'); p.className = 'fatal'; p.textContent = `游戏启动失败：${error.message}。请重新打开 dist/index.html 或使用较新浏览器。`; document.body.appendChild(p); }
+if (debug) {
+  // Explicit opt-in diagnostics. Not a leaderboard trust boundary (all scores are local).
+  window.__nightmarket = {
+    get engine() { return game; }, get profile() { return profile; }, get paused() { return paused; },
+    get activeSeconds() { return activeSeconds; }, get renderer() { return renderer; },
+    get telemetry() { return JSON.parse(analytics.export()); },
+    get frameTimes() { return [...frameSamples]; }, begin, fire, pauseGame, resumeGame,
+    step(seconds) { if (!game || paused) return; for (let i = 0; i < Math.ceil(seconds / CONFIG.fixedStep) && game.phase === 'flight'; i++) { game.step(); if (i % 8 === 0) handleEvents(game.drainEvents()); } handleEvents(game.drainEvents()); syncPhase(); updateStats(); },
+    sync() { handleEvents(game?.drainEvents() || []); syncPhase(); updateStats(); updateLoadout(); },
+    checkpoint, goHome
+  };
+}
+
+return {  };
+})();
+
+})();
+</script>
+</body>
+</html>

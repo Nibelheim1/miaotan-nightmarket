@@ -1,0 +1,10 @@
+
+> miaotan-nightmarket@1.0.0 simulate
+> node tests/balance.mjs
+
+random/random {"runs":75,"ended":75,"wins":71,"winRate":0.947,"meanWave":19.55,"meanShots":19.44,"meanFlightSeconds":86.82,"p50FlightSeconds":85.86,"p95FlightSeconds":115.03,"maxBalls":93,"maxEnemies":20,"maxCombo":242}
+center/balanced {"runs":75,"ended":75,"wins":11,"winRate":0.147,"meanWave":12.93,"meanShots":12.88,"meanFlightSeconds":39.74,"p50FlightSeconds":31.07,"p95FlightSeconds":100.11,"maxBalls":87,"maxEnemies":27,"maxCombo":324}
+priority/balanced {"runs":75,"ended":75,"wins":73,"winRate":0.973,"meanWave":19.63,"meanShots":19.61,"meanFlightSeconds":74.88,"p50FlightSeconds":73,"p95FlightSeconds":95.22,"maxBalls":112,"maxEnemies":28,"maxCombo":294}
+bank/balanced {"runs":75,"ended":75,"wins":74,"winRate":0.987,"meanWave":19.08,"meanShots":19.08,"meanFlightSeconds":77.92,"p50FlightSeconds":77.61,"p95FlightSeconds":95.73,"maxBalls":112,"maxEnemies":19,"maxCombo":258}
+priority/explosion {"runs":75,"ended":75,"wins":70,"winRate":0.933,"meanWave":19.65,"meanShots":19.65,"meanFlightSeconds":83.43,"p50FlightSeconds":81.11,"p95FlightSeconds":112.94,"maxBalls":99,"maxEnemies":29,"maxCombo":294}
+priority/ricochet {"runs":75,"ended":75,"wins":74,"winRate":0.987,"meanWave":19.15,"meanShots":19.15,"meanFlightSeconds":83.72,"p50FlightSeconds":83.77,"p95FlightSeconds":114.3,"maxBalls":91,"maxEnemies":28,"maxCombo":328}
