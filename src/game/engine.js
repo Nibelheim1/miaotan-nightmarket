@@ -1,16 +1,20 @@
-import { CONFIG, CATS } from '../data/config.js';
+import { CONFIG, CATS, LEVELS } from '../data/config.js';
 import { UPGRADES, UPGRADE_BY_ID, activeSynergies } from '../data/upgrades.js';
 import { Random, clamp, finite } from '../core/random.js';
 
 /** Pure deterministic simulation. No DOM, sound, clock, network or persistence access. */
 export class Engine {
-  constructor({ seed = 1, mode = 'normal', cat = 'mint', daily = '' } = {}) {
+  constructor({ seed = 1, mode = 'normal', cat = 'mint', daily = '', level = 2 } = {}) {
     this.seed = seed >>> 0; this.rng = new Random(this.seed);
     this.mode = ['normal', 'daily', 'endless'].includes(mode) ? mode : 'normal';
+    // Only the campaign uses the level table; daily and endless stay on L2 rules.
+    this.level = this.mode === 'normal' ? clamp(Math.floor(level) || 2, 1, LEVELS.length) : 2;
+    this.L = LEVELS[this.level - 1];
     this.cat = CATS.some(c => c.id === cat) ? cat : 'mint';
-    if (this.mode === 'daily') this.cat = 'mint';
+    if (this.mode === 'daily' || this.level === 1) this.cat = 'mint'; // tutorial level is always Mint
     this.daily = String(daily).slice(0, 10); this.wave = 1; this.shots = 0;
-    this.hearts = CONFIG.startingHearts; this.shields = 0; this.score = 0;
+    this.maxHearts = CONFIG.maxHearts;
+    this.hearts = this.L.hearts; this.shields = 0; this.score = 0;
     this.kills = 0; this.bosses = 0; this.maxCombo = 0; this.combo = 0;
     this.playerX = CONFIG.width / 2; this.nextX = null; this.ballBonus = 0;
     this.build = {}; this.build[CATS.find(c => c.id === this.cat).upgrade] = 1;
@@ -18,12 +22,14 @@ export class Engine {
     this.phase = 'aim'; this.time = 0; this.shotTime = 0; this.elapsed = 0;
     this.nextId = 1; this.ballId = 1; this.pending = 0; this.spawned = 0;
     this.rerolls = 1; this.rewardCount = 0; this.victory = false; this.endReason = '';
+    this.adRewards = this.L.adLimit; this.extraPick = false; this.pendingReward = false; this.rewardViaAd = false;
+    this.stallStreak = 0; this.firstHitDone = false; this.firstKillDone = false;
     this.ops = 0; this.queue = []; this.fireflyCount = 0; this.hunterBuff = 0;
     this.markedId = null; this.guardUsed = false; this.launchClock = 0;
     this.direction = { x: 0, y: -1 }; this.initialBoard(); this.markTarget();
   }
-  get ballCount() { return Math.min(CONFIG.maxBaseBalls, CONFIG.initialBalls + this.wave - 1 + this.ballBonus); }
-  get damage() { return 1 + Math.floor((this.wave - 1) / 6) + this.hunterBuff; }
+  get ballCount() { return Math.min(CONFIG.maxBaseBalls, CONFIG.initialBalls + (this.wave - 1) * CONFIG.ballGrowth + this.ballBonus); }
+  get damage() { return 1 + Math.floor((this.wave - 1) / CONFIG.damageRampWaves) + this.hunterBuff; }
   emit(type, data = {}) { if (this.events.length < CONFIG.maxEvents) this.events.push({ type, ...data }); }
   drainEvents() { const e = this.events; this.events = []; return e; }
   addEnemy(col, row, hp, type = 'plain', width = CONFIG.block) {
@@ -34,35 +40,87 @@ export class Engine {
     this.enemies.push(enemy); return enemy;
   }
   initialBoard() {
-    // A readable, designed opening — not fake pre-rendered gameplay.
-    this.addEnemy(1, 2, 2); this.addEnemy(2, 2, 2, 'gift');
-    this.addEnemy(3, 2, 3, 'bomb'); this.addEnemy(4, 2, 2); this.addEnemy(5, 2, 2);
-    this.addEnemy(2, 1, 2); this.addEnemy(4, 1, 2);
+    // A readable, designed opening — not fake pre-rendered gameplay. The curated
+    // first shot detonates the centre bomb and clears the whole cross formation.
+    this.addEnemy(2, 2, 2); this.addEnemy(3, 1, 2, 'gift');
+    this.addEnemy(3, 2, 3, 'bomb'); this.addEnemy(4, 2, 2);
+    this.addEnemy(3, 3, 2);
   }
   markTarget() {
     const live = this.enemies.filter(e => e.hp > 0).sort((a, b) => (b.y - a.y) || (a.hp - b.hp));
     this.markedId = this.build.hunter ? live[0]?.id ?? null : null;
   }
+  isBossWave() { return this.wave % this.L.bossEvery === 0 || this.wave === this.L.waves; }
+  makeFormation(form, n) {
+    const cols = CONFIG.columns;
+    const row0run = k => { const s = Math.floor(this.rng.next() * (cols - k + 1)); return Array.from({ length: k }, (_, i) => [s + i, 0]); };
+    if (form === 'checker') {
+      if (2 * n - 1 > cols) return row0run(n);
+      const s = Math.floor(this.rng.next() * (cols - (2 * n - 1) + 1));
+      return Array.from({ length: n }, (_, i) => [s + i * 2, 0]);
+    }
+    if (form === 'columns') {
+      const k = Math.ceil(n / 2);
+      const picks = this.rng.shuffle([0, 1, 2, 3, 4, 5, 6]).slice(0, k).sort((a, b) => a - b);
+      const spots = [];
+      for (const c of picks) { spots.push([c, 0]); if (spots.length < n) spots.push([c, 1]); }
+      return spots.slice(0, n);
+    }
+    if (form === 'staggered') {
+      const nf = Math.ceil(n / 2), nb = n - nf;
+      const a = Math.floor(this.rng.next() * (cols - nf + 1));
+      const b = nb ? Math.floor(this.rng.next() * (cols - nb + 1)) : 0;
+      return [...Array.from({ length: nf }, (_, i) => [a + i, 0]), ...Array.from({ length: nb }, (_, i) => [b + i, 1])];
+    }
+    if (form === 'clusters') {
+      const sizes = this.rng.shuffle(n % 2 ? [Math.floor(n / 2), Math.ceil(n / 2)] : [n / 2, n / 2]);
+      for (let attempt = 0; attempt < 12; attempt++) {
+        const s1 = Math.floor(this.rng.next() * (cols - sizes[0] + 1));
+        const s2 = Math.floor(this.rng.next() * (cols - sizes[1] + 1));
+        const gap = s2 > s1 ? s2 - (s1 + sizes[0]) : s1 - (s2 + sizes[1]);
+        if (gap >= 1) {
+          const [a, b] = s2 > s1 ? [s1, s2] : [s2, s1];
+          const [na, nb] = s2 > s1 ? sizes : [sizes[1], sizes[0]];
+          return [...Array.from({ length: na }, (_, i) => [a + i, 0]), ...Array.from({ length: nb }, (_, i) => [b + i, 0])];
+        }
+      }
+      return row0run(n);
+    }
+    return row0run(n);
+  }
   spawnRow() {
     const pressure = this.mode === 'endless' ? (1 + Math.max(0, this.wave - CONFIG.campaignWaves) / CONFIG.endlessRampWaves) ** CONFIG.endlessRampPower : 1;
-    const hpBase = Math.round((CONFIG.baseHP + this.wave * CONFIG.hpSlope) * pressure);
-    let cols = this.rng.shuffle([0, 1, 2, 3, 4, 5, 6]);
-    if (this.wave % 6 === 0) {
-      this.addEnemy(2, 0, Math.round(this.wave * CONFIG.bossHPFactor * pressure), 'boss', CONFIG.block + CONFIG.cell);
-      cols = cols.filter(c => c !== 2 && c !== 3);
+    const hpBase = Math.round((CONFIG.baseHP + this.wave * this.L.hpSlope) * pressure);
+    // Formation difficulty is level-driven: contiguous rows teach the sweep,
+    // clusters split it, checkerboards leak it, columns demand vertical fire.
+    const n = (this.wave < 6 ? 2 : this.wave < this.L.rushWave ? 3 : 4) + this.L.enemyDelta;
+    let spots; // [column, row]
+    if (this.isBossWave()) {
+      this.addEnemy(2, 0, Math.round(this.wave * this.L.bossHP * pressure), 'boss', CONFIG.block + CONFIG.cell);
+      if (this.L.escorts >= 3) spots = [[4, 0], [5, 0], [6, 0]];
+      else { const s = this.rng.shuffle([0, 4, 5])[0]; spots = [[s, 0], [s + 1, 0]]; }
       this.emit('boss', { wave: this.wave });
+    } else {
+      let form = 'row';
+      if (this.wave >= 7 && this.wave < this.L.rushWave) {
+        form = this.L.midFormation === 'mix' ? (this.wave % 2 ? 'checker' : 'columns') : this.L.midFormation;
+      } else if (this.wave >= this.L.rushWave) form = 'staggered';
+      spots = this.makeFormation(form, n);
     }
-    const n = this.wave < 6 ? 3 : (this.wave < 13 ? 4 : 5);
-    for (const col of cols.slice(0, this.wave % 6 === 0 ? 2 : n)) {
+    const fresh = [];
+    for (const [col, row] of spots) {
       const p = this.rng.next();
-      let type = p < .17 ? 'bomb' : p < .29 ? 'gift' : p < .43 && this.wave >= 4 ? 'armor' : 'plain';
+      let type = p < .17 ? 'bomb' : p < .29 ? 'gift' : p < this.L.armorRate && this.wave >= 4 ? 'armor' : 'plain';
       let hp = Math.max(2, Math.round(hpBase * (.75 + this.rng.next() * .45)));
       if (type === 'bomb') hp = Math.max(2, Math.ceil(hp * .65));
-      this.addEnemy(col, 0, hp, type);
+      fresh.push(this.addEnemy(col, row, hp, type));
     }
-    // Bad-luck protection: no more than 3 consecutive rows without a bomb.
-    if (this.wave % 3 === 0 && !this.enemies.some(e => e.type === 'bomb' && e.y === CONFIG.gridTop)) {
-      const row = this.enemies.find(e => e.y === CONFIG.gridTop && e.type === 'plain');
+    // Bad-luck protection: early waves keep one bomb as a chain pivot; later
+    // waves never go more than 3 rows without one. Only fresh spawns qualify —
+    // carried-over enemies keep their identity and wounds.
+    const topRow = fresh.filter(e => e && e.type !== 'boss');
+    if ((this.wave <= this.L.bombGuarantee || this.wave % 3 === 0) && topRow.length && !topRow.some(e => e.type === 'bomb')) {
+      const row = topRow.find(e => e.type === 'plain');
       if (row) { row.type = 'bomb'; row.hp = row.maxHp = Math.ceil(row.hp * .7); }
     }
   }
@@ -78,6 +136,7 @@ export class Engine {
     this.direction = direction; this.phase = 'flight'; this.shots++;
     this.pending = this.ballCount; this.spawned = 0; this.balls = [];
     this.shotTime = 0; this.launchClock = 0; this.combo = 0;
+    this.firstHitDone = false; this.firstKillDone = false;
     this.nextX = null; this.guardUsed = false; this.hunterBuff = 0; this.fireflyCount = 0;
     this.emit('shot', { count: this.pending }); return true;
   }
@@ -147,6 +206,13 @@ export class Engine {
   ballHit(b, e) {
     b.hits++; this.combo++; this.maxCombo = Math.max(this.maxCombo, this.combo);
     let amount = this.damage * (b.child ? .65 : 1) * (1 + b.charge); b.charge = 0;
+    // L6: repeated hits by the same ball on the same target decay — weaving in
+    // place stays useful but stops being free.
+    if (this.L.repeatDecay < 1) {
+      b.seen = b.seen || Object.create(null);
+      const n = b.seen[e.id] = (b.seen[e.id] || 0) + 1;
+      if (n > 1) amount *= Math.max(.4, this.L.repeatDecay ** (n - 1));
+    }
     if (e.armor) {
       if (this.build.drill) { e.armor = false; this.chain(e, 2 + this.build.drill, this.damage); }
       else { amount = Math.max(.5, amount * .55); if (b.hits > 1) e.armor = false; }
@@ -157,6 +223,11 @@ export class Engine {
       else e.ice = true;
     }
     this.deal(e, amount, 'ball');
+    // Taro's innate talent: the first hit of every volley fires a free chain.
+    if (this.cat === 'taro' && !this.firstHitDone) {
+      this.firstHitDone = true; this.emit('talent', { cat: 'taro', x: e.x + e.w / 2, y: e.y + e.h / 2 });
+      this.chain(e, 2, this.damage);
+    }
     if (this.build.split && !b.split) {
       b.split = true;
       const n = 1 + this.build.split;
@@ -177,6 +248,9 @@ export class Engine {
     }
     if (this.combo === 10 || this.combo === 25 || this.combo % 50 === 0) this.emit('combo', { count: this.combo });
     this.flushDamage();
+    // Per-ball hit budget (levels 2+): a ball that has spent its budget sinks
+    // out — endless horizontal weaving is capped by design.
+    if (this.L.hitBudget && b.hits >= this.L.hitBudget) { b.alive = false; this.emit('spent', { x: b.x, y: b.y }); }
   }
   chain(origin, count, amount) {
     const ox = origin.x + origin.w / 2, oy = origin.y + origin.h / 2;
@@ -207,10 +281,14 @@ export class Engine {
     this.emit('kill', { x, y, kind: e.type });
     if (e.id === this.markedId) { this.hunterBuff = this.build.hunter || 0; this.emit('hunter'); }
     if (e.type === 'gift') { this.ballBonus = Math.min(8, this.ballBonus + 1); this.emit('gift', { x, y }); }
-    if (e.type === 'boss') { this.bosses++; this.hearts = Math.min(CONFIG.maxHearts, this.hearts + 1); this.score += 100 * this.wave; this.emit('bossKill', { x, y }); }
-    if (e.type === 'bomb' || this.build.blast) {
-      const radius = e.type === 'bomb' ? 98 : 64 + 10 * this.build.blast;
-      const damage = e.type === 'bomb' ? this.damage * 3 + this.wave : this.damage * (1 + this.build.blast);
+    if (e.type === 'boss') { this.bosses++; this.hearts = Math.min(this.maxHearts, this.hearts + 1); this.score += 100 * this.wave; this.pendingReward = true; this.emit('bossKill', { x, y }); }
+    // Peach's innate talent: the first kill of every volley always explodes.
+    const peachBurst = this.cat === 'peach' && !this.firstKillDone && e.type !== 'bomb';
+    if (peachBurst) { this.firstKillDone = true; this.emit('talent', { cat: 'peach', x, y }); }
+    if (e.type === 'bomb' || this.build.blast || peachBurst) {
+      const blastLv = this.build.blast || 1;
+      const radius = e.type === 'bomb' ? 98 : 64 + 10 * blastLv;
+      const damage = e.type === 'bomb' ? this.damage * 3 + this.wave : this.damage * (1 + blastLv);
       this.emit('boom', { x, y, radius });
       for (const other of this.enemies) if (other.hp > 0 && Math.hypot(other.x + other.w / 2 - x, other.y + other.h / 2 - y) <= radius) this.deal(other, damage, 'boom');
     }
@@ -219,13 +297,56 @@ export class Engine {
     }
   }
   finishShot() {
+    this.enemies = this.enemies.filter(e => e.hp > 0);
     this.playerX = this.nextX ?? this.playerX;
     this.score += this.combo >= 10 ? this.combo * 3 : 0;
     this.emit('volleyEnd', { combo: this.combo });
-    if (this.mode !== 'endless' && this.wave >= CONFIG.campaignWaves && !this.enemies.length) { this.end(true, '夜市守住了'); return; }
-    if (this.wave === 1 || (this.wave - 1) % 3 === 0) {
-      this.phase = 'reward'; this.rewardCount++; this.offers = this.rollOffers(); this.emit('reward');
-    } else this.nextWave();
+    // A wave passes only when every enemy is destroyed; leaks never clear a wave.
+    if (this.enemies.length) {
+      this.advanceEnemies();
+      if (this.phase === 'end') return;
+    }
+    if (!this.enemies.length && this.mode !== 'endless' && this.wave >= this.L.waves) { this.end(true, '夜市守住了'); return; }
+    if (this.pendingReward) {
+      // Boss down: the run's only free upgrade. No carry-over penalty on this volley.
+      this.pendingReward = false; this.rewardViaAd = false; this.extraPick = false; this.stallStreak = 0;
+      this.phase = 'reward'; this.rewardCount++; this.offers = this.rollOffers(); this.emit('reward', { via: 'boss' });
+      return;
+    }
+    if (!this.enemies.length) { this.stallStreak = 0; this.nextWave(); return; }
+    // Wave not cleared: consecutive failures escalate (1, 2, 3… hearts, shields
+    // cannot block), and the leftovers join the next wave. On the final wave
+    // there is no next wave — the mess stays until it is cleaned up.
+    this.stallStreak++;
+    const penalty = this.L.stallRamp ? Math.max(1, Math.round(this.stallStreak * this.L.stallRamp)) : 1;
+    this.hearts -= penalty;
+    this.emit('stalled', { remaining: this.enemies.length, penalty });
+    if (this.hearts <= 0) { this.hearts = 0; this.end(false, '打烊了，捣蛋鬼还没清完'); return; }
+    if (this.mode === 'endless' || this.wave < this.L.waves) { this.emit('carryover', { count: this.enemies.length }); this.nextWave(); return; }
+    this.phase = 'aim'; this.hunterBuff = 0; this.markTarget(); this.emit('wave', { wave: this.wave });
+  }
+  advanceEnemies() {
+    const step = CONFIG.cell * (this.wave >= this.L.rushWave ? 2 : 1);
+    const escaped = [];
+    for (const e of this.enemies) {
+      e.y += step;
+      if (e.y + e.h >= this.L.danger) {
+        if (e.type === 'boss') { this.hearts = 0; this.emit('damage', { boss: true }); }
+        else escaped.push(e);
+      }
+    }
+    if (this.hearts <= 0) { this.hearts = 0; this.end(false, '捣蛋王直接把摊子掀了'); return; }
+    for (const e of escaped) {
+      this.emit('leak', { x: e.x + e.w / 2, y: this.L.danger });
+      if (this.shields > 0) { this.shields--; this.emit('block'); }
+      else { this.hearts--; this.emit('damage', { boss: false }); }
+      // Escapees re-enter at the top of their column: they must still be destroyed.
+      const col = clamp(Math.round((e.x - CONFIG.gridLeft) / CONFIG.cell), 0, CONFIG.columns - 1);
+      let row = 0;
+      while (this.enemies.some(o => o !== e && o.hp > 0 && Math.round((o.x - CONFIG.gridLeft) / CONFIG.cell) === col && Math.round((o.y - CONFIG.gridTop) / CONFIG.cell) === row)) row++;
+      e.y = CONFIG.gridTop + row * CONFIG.cell;
+    }
+    if (this.hearts <= 0) { this.hearts = 0; this.end(false, '捣蛋鬼把夜市挤爆了'); }
   }
   rollOffers() {
     const available = UPGRADES.filter(u => (this.build[u.id] || 0) < u.max);
@@ -240,51 +361,63 @@ export class Engine {
     return ids;
   }
   reroll() { if (this.phase !== 'reward' || this.rerolls <= 0) return false; this.rerolls--; this.offers = this.rollOffers(); return true; }
+  // Rewarded-ad placements (ad SDK is a placeholder in PlatformService):
+  // 'boss_double' — inside a boss reward panel, pick a second upgrade;
+  // 'extra_upgrade' — from the field, open a fresh three-choice panel.
+  adDouble() {
+    if (this.phase !== 'reward' || this.adRewards <= 0 || this.extraPick) return false;
+    this.adRewards--; this.extraPick = true; this.emit('adReward', { placement: 'boss_double', remaining: this.adRewards }); return true;
+  }
+  grantAdReward() {
+    if (this.phase !== 'aim' || this.adRewards <= 0) return false;
+    this.adRewards--; this.extraPick = false; this.rewardViaAd = true;
+    this.phase = 'reward'; this.rewardCount++; this.offers = this.rollOffers();
+    this.emit('adReward', { placement: 'extra_upgrade', remaining: this.adRewards }); this.emit('reward', { via: 'ad' }); return true;
+  }
+  afterReward() {
+    this.offers = []; this.extraPick = false; this.rewardViaAd = false;
+    // After a boss reward the run moves on too: leftovers carry into the next
+    // wave — except on the final wave, where they must be cleaned up first.
+    if (this.enemies.length && this.mode !== 'endless' && this.wave >= this.L.waves) {
+      this.phase = 'aim'; this.hunterBuff = 0; this.markTarget(); this.emit('wave', { wave: this.wave });
+    } else this.nextWave();
+  }
   chooseUpgrade(id) {
     if (this.phase !== 'reward' || !this.offers.includes(id)) return false;
     const previous = activeSynergies(this.build).map(s => s.id);
-    if (id === 'repair') this.hearts = Math.min(CONFIG.maxHearts, this.hearts + 1);
+    if (id === 'repair') this.hearts = Math.min(this.maxHearts, this.hearts + 1);
     else if (id === 'balls') this.ballBonus = Math.min(8, this.ballBonus + 1);
     else if (id === 'shield') this.shields = Math.min(this.build.guard === 3 ? 3 : 2, this.shields + 1);
     else if (UPGRADE_BY_ID[id]) this.build[id] = Math.min(UPGRADE_BY_ID[id].max, (this.build[id] || 0) + 1);
     else return false;
     this.emit('upgrade', { id, level: this.build[id] || 1 });
     for (const s of activeSynergies(this.build)) if (!previous.includes(s.id)) this.emit('synergy', { name: s.name });
-    this.offers = []; this.nextWave(); return true;
+    if (this.extraPick) { this.extraPick = false; this.rewardViaAd = true; this.offers = this.rollOffers(); this.emit('reward', { via: 'ad' }); return true; }
+    this.afterReward(); return true;
   }
-  skipUpgrade() { if (this.phase !== 'reward') return false; this.hearts = Math.min(CONFIG.maxHearts, this.hearts + 1); this.emit('upgrade', { id: 'repair', level: 1 }); this.offers = []; this.nextWave(); return true; }
+  skipUpgrade() { if (this.phase !== 'reward') return false; this.hearts = Math.min(this.maxHearts, this.hearts + 1); this.emit('upgrade', { id: 'repair', level: 1 }); this.afterReward(); return true; }
   nextWave() {
-    for (const e of this.enemies) {
-      e.y += CONFIG.cell * (this.wave >= CONFIG.rushWave ? 2 : 1);
-      if (e.y + e.h >= CONFIG.danger) {
-        e.hp = 0;
-        if (e.type === 'boss') { this.hearts = 0; this.emit('damage', { boss: true }); }
-        else if (this.shields > 0) { this.shields--; this.emit('block'); }
-        else { this.hearts--; this.emit('damage', { boss: false }); }
-      }
-    }
-    this.enemies = this.enemies.filter(e => e.hp > 0);
-    if (this.hearts <= 0) { this.hearts = 0; this.end(false, '夜市被捣蛋鬼挤满了'); return; }
     this.wave++;
-    if (this.wave === CONFIG.rushWave) this.emit('rush');
-    if (this.mode === 'endless' || this.wave <= CONFIG.campaignWaves) this.spawnRow();
-    if (!this.enemies.length && this.mode !== 'endless') { this.end(true, '夜市守住了'); return; }
+    if (this.wave === this.L.rushWave) this.emit('rush');
+    this.spawnRow();
     this.phase = 'aim'; this.hunterBuff = 0; this.markTarget(); this.emit('wave', { wave: this.wave });
   }
   end(victory, reason) { this.phase = 'end'; this.victory = victory; this.endReason = reason; this.balls = []; this.pending = 0; this.emit('end', { victory, reason }); }
   snapshot() {
     if (!['aim', 'reward'].includes(this.phase)) return null;
     return JSON.parse(JSON.stringify({ version: 1, seed: this.seed, rng: this.rng.state,
-      mode: this.mode, cat: this.cat, daily: this.daily, wave: this.wave, shots: this.shots,
+      mode: this.mode, cat: this.cat, daily: this.daily, level: this.level, wave: this.wave, shots: this.shots,
       hearts: this.hearts, shields: this.shields, score: this.score, kills: this.kills, bosses: this.bosses,
       maxCombo: this.maxCombo, playerX: this.playerX, ballBonus: this.ballBonus, build: this.build,
       enemies: this.enemies, phase: this.phase, offers: this.offers, nextId: this.nextId,
-      rerolls: this.rerolls, elapsed: this.elapsed, rewardCount: this.rewardCount }));
+      rerolls: this.rerolls, elapsed: this.elapsed, rewardCount: this.rewardCount,
+      adRewards: this.adRewards, extraPick: this.extraPick, rewardViaAd: this.rewardViaAd, stallStreak: this.stallStreak }));
   }
   static restore(s) {
     if (!s || s.version !== 1 || !['aim', 'reward'].includes(s.phase) || !Array.isArray(s.enemies) || s.enemies.length > CONFIG.maxEnemies) throw Error('Invalid checkpoint');
-    const ranges = { seed: [0, 4294967295], rng: [0, 4294967295], wave: [1, 10000], shots: [0, 20000], hearts: [1, 5], shields: [0, 3], score: [0, 1e12], kills: [0, 1e8], bosses: [0, 1e5], maxCombo: [0, 1e6], playerX: [15, 405], ballBonus: [0, 8], nextId: [1, 1e8], rerolls: [0, 1], elapsed: [0, 1e9], rewardCount: [0, 10000] };
+    const ranges = { seed: [0, 4294967295], rng: [0, 4294967295], wave: [1, 10000], shots: [0, 20000], hearts: [1, CONFIG.maxHearts], shields: [0, 3], score: [0, 1e12], kills: [0, 1e8], bosses: [0, 1e5], maxCombo: [0, 1e6], playerX: [15, 405], ballBonus: [0, 8], nextId: [1, 1e8], rerolls: [0, 1], elapsed: [0, 1e9], rewardCount: [0, 10000], adRewards: [0, CONFIG.adRewardLimit], stallStreak: [0, 10000] };
     for (const [key, [low, high]] of Object.entries(ranges)) if (!finite(s[key]) || s[key] < low || s[key] > high || (!['elapsed', 'playerX'].includes(key) && !Number.isInteger(s[key]))) throw Error(`Invalid checkpoint field: ${key}`);
+    if (typeof s.extraPick !== 'boolean' || typeof s.rewardViaAd !== 'boolean' || (s.extraPick && s.phase !== 'reward')) throw Error('Invalid ad state');
     if (!['normal', 'daily', 'endless'].includes(s.mode) || !CATS.some(c => c.id === s.cat)) throw Error('Invalid mode');
     if (!s.build || typeof s.build !== 'object' || Array.isArray(s.build)) throw Error('Invalid build');
     for (const [id, level] of Object.entries(s.build)) if (!UPGRADE_BY_ID[id] || !Number.isInteger(level) || level < 1 || level > UPGRADE_BY_ID[id].max) throw Error('Invalid upgrade');
@@ -296,9 +429,12 @@ export class Engine {
       if (e.x < 15 || e.x + e.w > 405 || e.y < 28 || e.y + e.h >= CONFIG.danger || e.w < 10 || e.w > 100 || e.h !== CONFIG.block || e.hp <= 0 || e.hp > e.maxHp || e.maxHp > 1e8) throw Error('Out of bounds enemy');
       if (!['plain', 'bomb', 'armor', 'gift', 'boss'].includes(e.type)) throw Error('Invalid enemy type');
     }
-    const g = new Engine({ seed: s.seed, mode: s.mode, cat: s.cat, daily: s.daily });
+    const level = s.level === undefined ? 2 : s.level; // pre-1.4 checkpoints default to L2 rules
+    if (!Number.isInteger(level) || level < 1 || level > LEVELS.length) throw Error('Invalid level');
+    const g = new Engine({ seed: s.seed, mode: s.mode, cat: s.cat, daily: s.daily, level });
     for (const key of Object.keys(ranges)) if (key !== 'rng') g[key] = s[key];
     g.rng.state = s.rng >>> 0; g.phase = s.phase; g.build = { ...s.build }; g.offers = [...s.offers];
+    g.extraPick = s.extraPick; g.rewardViaAd = s.rewardViaAd;
     g.enemies = s.enemies.map(e => ({ id: e.id, x: e.x, y: e.y, w: e.w, h: e.h, hp: e.hp, maxHp: e.maxHp,
       type: e.type, ice: !!e.ice, armor: !!e.armor, tapped: !!e.tapped, hit: -100 }));
     g.markTarget(); g.events = []; return g;

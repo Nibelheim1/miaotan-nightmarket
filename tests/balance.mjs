@@ -7,6 +7,15 @@ export function chooseAim(g, policy = 'priority', rng = new Random(g.seed)) {
   if (g.shots === 0 && policy !== 'random') return { x: 208, y: 190 };
   if (policy === 'random') { const a = (rng.next() - .5) * 2.5; return { x: g.playerX + Math.sin(a) * 500, y: CONFIG.launchY - Math.cos(a) * 500 }; }
   if (policy === 'center') return { x: 210, y: 80 };
+  if (policy === 'sweep') {
+    // Intended skill expression: a shallow angle that sweeps across the lowest row.
+    const live = g.enemies.filter(e => e.hp > 0);
+    if (!live.length) return { x: 210, y: 50 };
+    const rowY = Math.max(...live.map(e => e.y));
+    const inRow = live.filter(e => Math.abs(e.y - rowY) < 30);
+    const cx = inRow.reduce((s, e) => s + e.x + e.w / 2, 0) / inRow.length;
+    return cx > g.playerX ? { x: 30, y: 520 } : { x: 390, y: 520 };
+  }
   const priority = g.enemies.filter(e => e.hp > 0).map(e => ({ e, weight: e.y * 1.2 + (e.type === 'boss' ? 58 : e.type === 'bomb' ? 85 : 0) - e.hp * .3 })).sort((a, b) => b.weight - a.weight);
   const e = priority[0]?.e;
   if (!e) return { x: 210, y: 50 };
@@ -21,10 +30,12 @@ export function chooseUpgrade(g, policy = 'balanced', rng = new Random(g.seed + 
     : ['split', 'blast', 'spark', 'ice', 'laser', 'return', 'guard', 'wall', 'pierce', 'firefly', 'drill', 'hunter'];
   return [...g.offers].sort((a, b) => preferences.indexOf(a) - preferences.indexOf(b))[0];
 }
-export function simulate(seed, aimPolicy = 'priority', upgradePolicy = 'balanced', mode = 'normal') {
-  const g = new Engine({ seed, mode }); const rng = new Random(seed + 9876);
+export function simulate(seed, aimPolicy = 'priority', upgradePolicy = 'balanced', mode = 'normal', level = 2) {
+  const g = new Engine({ seed, mode, level }); const rng = new Random(seed + 9876);
   let iterations = 0, maxBalls = 0, maxEnemies = 0, firstReward = null, maxShot = 0;
-  while (g.phase !== 'end' && iterations++ < 1000000 && g.shots < (mode === 'endless' ? 120 : 40)) {
+  while (g.phase !== 'end' && iterations++ < 1000000 && g.shots < (mode === 'endless' ? 120 : 60)) {
+    // Agents act like ad-engaged players: spend all placeholder ad rewards from wave 3.
+    if (g.phase === 'aim' && g.adRewards > 0 && g.shots > 0 && g.wave >= 3) { g.grantAdReward(); continue; }
     if (g.phase === 'aim') { const aim = chooseAim(g, aimPolicy, rng); g.shoot(aim.x, aim.y); }
     else if (g.phase === 'reward') { if (firstReward === null) firstReward = g.elapsed; g.chooseUpgrade(chooseUpgrade(g, upgradePolicy, rng)); }
     else g.step(1 / 60);
@@ -32,7 +43,7 @@ export function simulate(seed, aimPolicy = 'priority', upgradePolicy = 'balanced
     g.drainEvents();
     if (![g.score, g.wave, g.hearts, g.elapsed, ...g.balls.flatMap(b => [b.x, b.y, b.vx, b.vy])].every(Number.isFinite)) throw Error('Non-finite state at seed ' + seed);
   }
-  return { seed, aimPolicy, upgradePolicy, mode, victory: g.victory, ended: g.phase === 'end', wave: g.wave, shots: g.shots, score: g.score, combo: g.maxCombo,
+  return { seed, aimPolicy, upgradePolicy, mode, level, victory: g.victory, ended: g.phase === 'end', wave: g.wave, shots: g.shots, score: g.score, combo: g.maxCombo,
     flightSeconds: +g.elapsed.toFixed(2), firstReward: firstReward === null ? null : +firstReward.toFixed(2), maxBalls, maxEnemies, maxShot: +maxShot.toFixed(3), build: g.build };
 }
 function summarize(rows) {
@@ -45,14 +56,16 @@ function summarize(rows) {
 }
 if (process.argv[1]?.endsWith('balance.mjs')) {
   const perPolicy = Number(process.env.SIM_RUNS || 75);
-  const policies = [['random', 'random'], ['center', 'balanced'], ['priority', 'balanced'], ['bank', 'balanced'], ['priority', 'explosion'], ['priority', 'ricochet']];
+  const policies = [['random', 'random'], ['center', 'balanced'], ['priority', 'balanced'], ['bank', 'balanced'], ['sweep', 'balanced'], ['priority', 'explosion'], ['priority', 'ricochet'], ['sweep', 'explosion']];
   const results = [], groups = {};
   const started = Date.now();
-  for (const [aim, upgrades] of policies) {
+  const runGroup = (aim, upgrades, level) => {
     const rows = [];
-    for (let i = 0; i < perPolicy; i++) rows.push(simulate(i + 1, aim, upgrades));
-    results.push(...rows); groups[aim + '/' + upgrades] = summarize(rows); console.log(aim + '/' + upgrades, JSON.stringify(groups[aim + '/' + upgrades]));
-  }
+    for (let i = 0; i < perPolicy; i++) rows.push(simulate(i + 1, aim, upgrades, 'normal', level));
+    results.push(...rows); groups[`L${level} ${aim}/${upgrades}`] = summarize(rows); console.log(`L${level} ${aim}/${upgrades}`, JSON.stringify(groups[`L${level} ${aim}/${upgrades}`]));
+  };
+  for (const [aim, upgrades] of policies) runGroup(aim, upgrades, 2); // baseline level
+  for (const level of [1, 3, 4, 5, 6]) for (const [aim, upgrades] of [['sweep', 'balanced'], ['bank', 'balanced'], ['random', 'random']]) runGroup(aim, upgrades, level);
   const report = { generatedAt: new Date().toISOString(), config: CONFIG, perPolicy, simulatedRuns: results.length,
     disclaimer: 'Deterministic scripted agents, not human retention or new-player win-rate measurements. flightSeconds excludes aiming, reading, pauses and UI. No market probability is inferred.',
     groups, total: summarize(results), executionSeconds: (Date.now() - started) / 1000, results };

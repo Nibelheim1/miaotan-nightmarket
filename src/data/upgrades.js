@@ -11,7 +11,7 @@ export const UPGRADES = Object.freeze([
   { id: 'wall', name: '借墙蓄力', icon: 'bounce', color: 'mint', tag: '角度', max: 3,
     descriptions: ['撞侧墙后，下一次命中造成双倍伤害。', '可连续蓄力 2 次；每次蓄力增加一份伤害。', '可连续蓄力 3 次。贴墙折射更有威力。'] },
   { id: 'return', name: '回头客', icon: 'return', color: 'gold', tag: '续航', max: 2,
-    descriptions: ['每颗主弹落到底部时，额外弹回去 1 次。', '每颗主弹可从底部弹回去 2 次。'] },
+    descriptions: ['每颗主弹落到底，回头再打 1 趟。', '每颗主弹能回头打 2 趟。'] },
   { id: 'ice', name: '冰糖脆壳', icon: 'snow', color: 'blue', tag: '破冰', max: 3,
     descriptions: ['第一击裹上冰糖，下一次弹珠或雷电击中时碎裂，伤害翻倍。', '冰糖碎裂造成 3 倍伤害。', '冰糖碎裂造成 4 倍伤害。'] },
   { id: 'laser', name: '清巷热线', icon: 'laser', color: 'pink', tag: '清行', max: 3,
@@ -19,9 +19,9 @@ export const UPGRADES = Object.freeze([
   { id: 'firefly', name: '飞鱼烟花', icon: 'fish', color: 'gold', tag: '追击', max: 3,
     descriptions: ['每击破 3 个敌人，向两侧放出小弹珠。', '每击破 2 个敌人，就放出追击弹珠。', '每次击破都放出追击弹珠。'] },
   { id: 'guard', name: '喵爪护盾', icon: 'shield', color: 'mint', tag: '防守', max: 3,
-    descriptions: ['单轮达到 35 次连击，获得 1 层护盾。本轮限一次。', '达到 25 次连击就获得护盾。', '达到 18 次连击就获得护盾；可储存 3 层。'] },
+    descriptions: ['一杆打出 35 连击，撑起 1 层护盾。一杆限一次。', '25 连击就能撑起来。', '18 连击就撑起来，最多囤 3 层。'] },
   { id: 'hunter', name: '弱点铃铛', icon: 'target', color: 'gold', tag: '集火', max: 3,
-    descriptions: ['每轮标记最下方的敌人；击破标记后，余下弹珠本轮伤害 +1。', '击破后本轮伤害 +2。', '击破后本轮伤害 +3。先解决威胁，再清场。'] },
+    descriptions: ['每轮标记最靠下的捣蛋鬼；打碎铃铛，本杆剩下的弹珠伤害 +1。', '打碎后本杆伤害 +2。', '打碎后本杆伤害 +3。先打最凶的，再收拾全场。'] },
   { id: 'drill', name: '罐头开锁器', icon: 'key', color: 'purple', tag: '破甲', max: 2,
     descriptions: ['击中铁皮罐头立即卸甲，向附近敌人发射一次闪电。', '对捣蛋王首次命中也触发卸甲闪电；普通卸甲会命中更多邻居。'] }
 ]);

@@ -34,8 +34,12 @@ export class Renderer {
       if (e.type === 'ice') this.burst(e.x, e.y, PALETTE.blue, 9);
       if (e.type === 'split') this.burst(e.x, e.y, PALETTE.purple, 4);
       if (e.type === 'gift') this.texts.push({ x: e.x, y: e.y, text: '+1 弹珠', color: PALETTE.gold, life: 1.1, total: 1.1 });
-      if (e.type === 'bossKill') { this.shake = 8; this.texts.push({ x: 210, y: 210, text: '大王退散！+1 ♥', color: PALETTE.gold, life: 1.8, total: 1.8 }); }
+      if (e.type === 'bossKill') { this.shake = 8; this.texts.push({ x: 210, y: 210, text: '大王跑路啦！+1 ♥', color: PALETTE.gold, life: 1.8, total: 1.8 }); }
       if (e.type === 'damage') this.shake = 9;
+      if (e.type === 'leak') { this.shake = Math.max(this.shake, 5); this.texts.push({ x: e.x, y: e.y - 24, text: '溜了溜了，还会回来！', color: PALETTE.pink, life: 1.3, total: 1.3 }); }
+      if (e.type === 'stalled') this.texts.push({ x: 210, y: 300, text: `还没清完！打烊倒计时 -1 ♥`, color: PALETTE.pink, life: 1.5, total: 1.5 });
+      if (e.type === 'talent') { this.burst(e.x, e.y, e.cat === 'peach' ? PALETTE.pink : PALETTE.purple, 8); this.texts.push({ x: e.x, y: e.y - 18, text: e.cat === 'peach' ? '开门红！' : '静电场！', color: e.cat === 'peach' ? PALETTE.pink : PALETTE.purple, life: .9, total: .9 }); }
+      if (e.type === 'spent') this.burst(e.x, e.y, '#6b7590', 3);
       if (e.type === 'hit' && e.damage >= 5 && this.texts.length < 20) this.texts.push({ x: e.x, y: e.y, text: `${Math.ceil(e.damage)}`, color: PALETTE.cream, life: .48, total: .48 });
     }
     if (this.effects.length > 64) this.effects.splice(0, this.effects.length - 64);
@@ -77,7 +81,7 @@ export class Renderer {
       c.beginPath(); c.arc(x, y + 2, 4.5, 0, Math.PI * 2); c.fill();
     }
     c.strokeStyle = game.enemies.some(e => e.y + e.h > 396) ? PALETTE.pink : '#bd6981';
-    c.globalAlpha = .75; c.setLineDash([7, 7]); c.lineWidth = 1.5; line(c, [[22, CONFIG.danger], [398, CONFIG.danger]]); c.setLineDash([]); c.globalAlpha = 1;
+    c.globalAlpha = .75; c.setLineDash([7, 7]); c.lineWidth = 1.5; line(c, [[22, game.L.danger], [398, game.L.danger]]); c.setLineDash([]); c.globalAlpha = 1;
     c.fillStyle = '#192333'; round(c, 16, 503, 388, 67, 14); c.fill();
     c.font = '10px system-ui, sans-serif'; c.textAlign = 'left'; c.fillStyle = '#8795ae'; c.fillText('夜市防线', 27, 483);
     c.textAlign = 'right'; c.fillText('捣蛋王越线将直接结束', 392, 483);
