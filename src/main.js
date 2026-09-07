@@ -192,7 +192,11 @@ function rewardHtml() {
   }).join('')}</div>${game.extraPick ? '<p class="sub">广告生效：这碗吃完，还能再挑一碗！</p>' : ''}<div class="reward-actions"><button data-action="reroll" ${game.rerolls ? '' : 'disabled'}>${icon('rewind', 14)} 换一锅 · 剩 ${game.rerolls} 次</button><button data-action="ad-double" ${game.adRewards > 0 && !game.extraPick ? '' : 'disabled'}>${icon('play', 14)} 看广告多吃一碗 · 剩 ${game.adRewards} 次</button><button data-action="repair">不加料，回 1 颗心</button></div>`;
 }
 function resultHtml() {
-  return `<p class="modal-overline">${game.victory ? 'THE NIGHT IS OURS' : 'ONE MORE BOUNCE?'}</p><h2>${resultTitle(game)}</h2><p class="sub">${game.victory ? '捣蛋鬼一只不剩，今晚准时收摊！' : `${game.endReason || '捣蛋鬼占了上风'}。擦擦爪子，换锅配方再来。`}</p><div class="score-result">${game.score.toLocaleString('en-US')}</div><div class="score-caption">今晚营业额 · 只记在这台设备上</div><div class="result-stats"><div><b>${game.wave}</b><small>撑到第几波</small></div><div><b>${game.maxCombo}</b><small>最猛连击</small></div><div><b>${Math.round(activeSeconds)}s</b><small>摆摊时长</small></div></div><div class="result-build">${Object.entries(game.build).map(([id, lv]) => `<span>${UPGRADE_BY_ID[id].name} ${'I'.repeat(lv)}</span>`).join('')}</div><div class="earned">印章 +${earnings.earned} · 兜里一共 ${profile.stamps} 枚${earnings.unlockedLevel ? `<br>新关卡开张：第${earnings.unlockedLevel}关 · ${LEVELS[earnings.unlockedLevel - 1].name}！` : ''}${earnings.unlocked.length ? `<br>新店长上岗：${earnings.unlocked.join('、')}！` : !earnings.unlockedLevel ? '<br>攒到 8 / 20 枚印章，就能请新店长上岗。' : ''}</div><button class="button primary full" data-action="restart">${icon('rewind', 18)} 再摆一摊</button><button class="button secondary full" data-action="share">${icon('share', 17)} 把今晚晒出去</button><div class="modal-footer"><button class="text-button" data-action="home">回夜市</button><button class="text-button" data-action="same-seed">同一锅再来</button></div>`;
+  const nextLevel = game.victory && game.mode === 'normal' && game.level < LEVELS.length ? game.level + 1 : 0;
+  const primary = nextLevel
+    ? `<button class="button primary full" data-action="next-level">${icon('play', 18)} 下一关：${LEVELS[nextLevel - 1].name} →</button>`
+    : `<button class="button primary full" data-action="restart">${icon('rewind', 18)} 再摆一摊</button>`;
+  return `<p class="modal-overline">${game.victory ? 'THE NIGHT IS OURS' : 'ONE MORE BOUNCE?'}</p><h2>${resultTitle(game)}</h2><p class="sub">${game.victory ? '捣蛋鬼一只不剩，今晚准时收摊！' : `${game.endReason || '捣蛋鬼占了上风'}。擦擦爪子，换锅配方再来。`}</p><div class="score-result">${game.score.toLocaleString('en-US')}</div><div class="score-caption">今晚营业额 · 只记在这台设备上</div><div class="result-stats"><div><b>${game.wave}</b><small>撑到第几波</small></div><div><b>${game.maxCombo}</b><small>最猛连击</small></div><div><b>${Math.round(activeSeconds)}s</b><small>摆摊时长</small></div></div><div class="result-build">${Object.entries(game.build).map(([id, lv]) => `<span>${UPGRADE_BY_ID[id].name} ${'I'.repeat(lv)}</span>`).join('')}</div><div class="earned">印章 +${earnings.earned} · 兜里一共 ${profile.stamps} 枚${earnings.unlockedLevel ? `<br>新关卡开张：第${earnings.unlockedLevel}关 · ${LEVELS[earnings.unlockedLevel - 1].name}！` : ''}${earnings.unlocked.length ? `<br>新店长上岗：${earnings.unlocked.join('、')}！` : !earnings.unlockedLevel ? '<br>攒到 8 / 20 枚印章，就能请新店长上岗。' : ''}</div>${primary}<button class="button secondary full" data-action="share">${icon('share', 17)} 把今晚晒出去</button><div class="modal-footer"><button class="text-button" data-action="home">回夜市</button><button class="text-button" data-action="same-seed">同一锅再来</button></div>`;
 }
 function settingsHtml() {
   const s = profile.settings;
@@ -260,6 +264,11 @@ async function action(name) {
   if (name === 'reroll' && game?.reroll()) { checkpoint(); lastOverlay = ''; renderOverlay(); audio.effect('click'); }
   if (name === 'ad-double') void runAd('boss_double');
   if (name === 'repair' && game?.skipUpgrade()) { handleEvents(game.drainEvents()); syncPhase(); }
+  if (name === 'next-level' && game) {
+    const next = Math.min(game.level + 1, LEVELS.length);
+    profile.selectedLevel = next; save(); analytics.track('restart', { mode: 'normal', sameSeed: false, level: next, runId });
+    begin('normal', false, null, next);
+  }
   if (name === 'restart' || name === 'same-seed') {
     if (!game) return;
     const mode = game.mode, seed = game.seed, level = game.level; analytics.track('restart', { mode, sameSeed: name === 'same-seed', level, runId });
