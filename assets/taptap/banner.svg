@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <rect width="1920" height="1080" fill="#111827"/>
+  <circle cx="160" cy="150" r="5" fill="#92e3c0" opacity=".7"/>
+  <circle cx="270" cy="230" r="8" fill="#ff6e91" opacity=".75"/>
+  <circle cx="1740" cy="150" r="7" fill="#ffe2a1" opacity=".85"/>
+  <circle cx="1810" cy="260" r="4" fill="#92e3c0" opacity=".7"/>
+  <path d="M110 790 C370 700 610 720 820 810" fill="none" stroke="#26344d" stroke-width="4"/>
+  <path d="M110 790 C370 700 610 720 820 810" fill="none" stroke="#92e3c0" stroke-width="2" stroke-dasharray="3 30"/>
+  <text x="140" y="190" fill="#92e3c0" font-family="Microsoft YaHei, Arial, sans-serif" font-size="34" letter-spacing="10">MIDNIGHT BOUNCE CLUB</text>
+  <text x="140" y="380" fill="#fff4df" font-family="Microsoft YaHei, Arial, sans-serif" font-size="142" font-weight="700">喵弹</text>
+  <text x="140" y="530" fill="#92e3c0" font-family="Microsoft YaHei, Arial, sans-serif" font-size="142" font-weight="700">夜市</text>
+  <text x="150" y="620" fill="#a8b4ca" font-family="Microsoft YaHei, Arial, sans-serif" font-size="34">按住瞄准，松手弹射；让弹珠绕到怪物背后。</text>
+  <rect x="145" y="700" width="400" height="92" rx="46" fill="#92e3c0"/>
+  <text x="345" y="762" text-anchor="middle" fill="#172236" font-family="Microsoft YaHei, Arial, sans-serif" font-size="34" font-weight="700">街机弹射 · 肉鸽成长</text>
+  <rect x="1000" y="100" width="760" height="880" rx="48" fill="#192438" stroke="#3d4c68" stroke-width="8"/>
+  <rect x="1055" y="230" width="650" height="600" rx="28" fill="#151f33" stroke="#52617d" stroke-width="5"/>
+  <path d="M1110 700 L1650 700" stroke="#ff6e91" stroke-width="6" stroke-dasharray="22 18"/>
+  <path d="M1380 700 L1380 380" stroke="#92e3c0" stroke-width="5" stroke-dasharray="8 18" opacity=".8"/>
+  <circle cx="1380" cy="640" r="18" fill="#ffe2a1"/>
+  <path d="M1380 640 C1320 570 1350 510 1425 440" fill="none" stroke="#ffe2a1" stroke-width="8"/>
+  <circle cx="1210" cy="420" r="48" fill="#8acced"/>
+  <circle cx="1380" cy="360" r="48" fill="#b890ff"/>
+  <circle cx="1550" cy="420" r="48" fill="#ff9bc5"/>
+  <text x="1210" y="435" text-anchor="middle" fill="#192438" font-family="Arial, sans-serif" font-size="40" font-weight="700">2</text>
+  <text x="1380" y="375" text-anchor="middle" fill="#192438" font-family="Arial, sans-serif" font-size="40" font-weight="700">3</text>
+  <text x="1550" y="435" text-anchor="middle" fill="#192438" font-family="Arial, sans-serif" font-size="40" font-weight="700">2</text>
+  <image href="icon.png" x="1310" y="760" width="140" height="140"/>
+  <text x="1380" y="925" text-anchor="middle" fill="#a8b4ca" font-family="Arial, sans-serif" font-size="27" letter-spacing="4">ONE MORE BOUNCE. ONE MORE NIGHT.</text>
+</svg>
